@@ -79,13 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="Title: Git commandsDate: 2018-05-20Tags: git,noteCategory: GitSlug: git-cmds [TOC] git 空间 专用名词 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库  新建仓库12345# 将当前目录初始化为 git 仓库$ git init">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/Git commands/index.html">
 <meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Title: Git commandsDate: 2018-05-20Tags: git,noteCategory: GitSlug: git-cmds [TOC] git 空间 专用名词 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库  新建仓库12345# 将当前目录初始化为 git 仓库$ git init">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png">
+<meta property="og:updated_time" content="2018-05-19T06:08:00.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blog">
+<meta name="twitter:description" content="Title: Git commandsDate: 2018-05-20Tags: git,noteCategory: GitSlug: git-cmds [TOC] git 空间 专用名词 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库  新建仓库12345# 将当前目录初始化为 git 仓库$ git init">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/15/Git commands/">
 
 
 
 
 
-  <title>Blog</title>
+  <title> | Blog</title>
   
 
 
@@ -140,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,238 +219,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/vim 正则表达式/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Shaocheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/15/vim 正则表达式/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-15T17:12:11+08:00">
-                2019-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Title: vim 正则表达式<br>Date: 2018-05-20<br>Tags: vim,note<br>Category: Vim</p>
-<h2 id="模式设置"><a href="#模式设置" class="headerlink" title="模式设置"></a>模式设置</h2><ul>
-<li>元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。</li>
-<li>由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。</li>
-<li>在 vim 中，不同模式下的元字符的使用方式是不同的。<h3 id="magic-模式-m"><a href="#magic-模式-m" class="headerlink" title="magic 模式 (\m)"></a>magic 模式 (\m)</h3></li>
-<li>这是 vim 中的默认模式，也是 vim 推荐的用法。在 \m(magic) 模式下，除了三个元字符之外，其他的元字符都要加上反斜杠进行转义。这三个元字符是：<ul>
-<li><code>$</code><ul>
-<li>用于匹配行末</li>
-</ul>
-</li>
-<li><code>^</code><ul>
-<li>用于匹配行首</li>
-</ul>
-</li>
-<li><code>.*</code> <ul>
-<li>用于匹配任意字符</li>
-<li><code>.</code> 匹配的是任意单个的字符，而 <code>*</code> 匹配的是任意的数量。</li>
-<li><code>.</code> 也可以与其他表示数量的元字符使用，同样不用加反斜杠。</li>
-<li><code>*</code> 也可以与其他表示字符的元字符使用，也不用加反斜杠。<h3 id="nomagic-模式-M"><a href="#nomagic-模式-M" class="headerlink" title="nomagic 模式 (\M)"></a>nomagic 模式 (\M)</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>\M 模式与 \m 模式很相近，唯一的不同是对待 <code>.*</code> 的区别, \M 模式下将其视为普通的字符。<h3 id="very-magic-模式-v"><a href="#very-magic-模式-v" class="headerlink" title="very magic 模式 (\v)"></a>very magic 模式 (\v)</h3></li>
-<li>在此模式下，一切元字符都 <code>不用</code> 加反斜杠，直接使用即可。</li>
-<li><code>一切</code> 并不准确，只有字符类的元字符才可以不加反斜杠，字母类的元字符还是要加上反斜杠。<h3 id="very-nomagic-模式-V"><a href="#very-nomagic-模式-V" class="headerlink" title="very nomagic 模式 (\V)"></a>very nomagic 模式 (\V)</h3></li>
-<li>在此模式下，一切元字符都 <code>必须</code> 加反斜杠。<h2 id="元字符分类"><a href="#元字符分类" class="headerlink" title="元字符分类"></a>元字符分类</h2>以下皆以 magic 模式下的写法进行说明</li>
-</ul>
-<h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><h5 id=""><a href="#" class="headerlink" title="."></a><code>.</code></h5><ul>
-<li>匹配任意单个字符</li>
-</ul>
-<h5 id="abc"><a href="#abc" class="headerlink" title="[abc]"></a><code>[abc]</code></h5><ul>
-<li>匹配中括号中任意一个字符</li>
-</ul>
-<h5 id="abc-1"><a href="#abc-1" class="headerlink" title="[^abc]"></a><code>[^abc]</code></h5><ul>
-<li>匹配除方括号中字符外的任意一个字符</li>
-</ul>
-<h5 id="d"><a href="#d" class="headerlink" title="\d"></a><code>\d</code></h5><ul>
-<li>匹配任意数字，等同于 <code>[0-9]</code></li>
-</ul>
-<h5 id="D"><a href="#D" class="headerlink" title="\D"></a><code>\D</code></h5><ul>
-<li>匹配任意数字之外的字符，等同于 <code>[^0-9]</code></li>
-</ul>
-<h5 id="w"><a href="#w" class="headerlink" title="\w"></a><code>\w</code></h5><ul>
-<li>匹配任意一个数字或字母，等同于 <code>[0-9a-zA-Z]</code></li>
-</ul>
-<h5 id="W"><a href="#W" class="headerlink" title="\W"></a><code>\W</code></h5><ul>
-<li>匹配任意一个字母或数字之外的字符，等同于 <code>[^0-9a-zA-Z]</code></li>
-</ul>
-<h5 id="s"><a href="#s" class="headerlink" title="\s"></a><code>\s</code></h5><ul>
-<li>匹配任意空白字符</li>
-</ul>
-<h5 id="S"><a href="#S" class="headerlink" title="\S"></a><code>\S</code></h5><ul>
-<li>匹配任意非空白字符</li>
-</ul>
-<h5 id="x"><a href="#x" class="headerlink" title="\x"></a><code>\x</code></h5><ul>
-<li>匹配任意一个十六进制的字符，等同于 <code>[0-9a-fA-F]</code></li>
-</ul>
-<h5 id="X"><a href="#X" class="headerlink" title="\X"></a><code>\X</code></h5><ul>
-<li>匹配任意非一个十六进制的字符，等同于 <code>[^0-9a-fA-F]</code></li>
-</ul>
-<h3 id="匹配数量"><a href="#匹配数量" class="headerlink" title="匹配数量"></a>匹配数量</h3><h4 id="匹配优先，即贪婪匹配，尽可能多的匹配"><a href="#匹配优先，即贪婪匹配，尽可能多的匹配" class="headerlink" title="匹配优先，即贪婪匹配，尽可能多的匹配"></a>匹配优先，即贪婪匹配，尽可能多的匹配</h4><h5 id="-1"><a href="#-1" class="headerlink" title="*"></a><code>*</code></h5><ul>
-<li>0 到任意多个</li>
-</ul>
-<h5 id="-2"><a href="#-2" class="headerlink" title="\+"></a><code>\+</code></h5><ul>
-<li>1 到任意多个</li>
-</ul>
-<h5 id="-3"><a href="#-3" class="headerlink" title="\?"></a><code>\?</code></h5><ul>
-<li>0 个或 1 个</li>
-</ul>
-<h5 id="n"><a href="#n" class="headerlink" title="\{n}"></a><code>\{n}</code></h5><ul>
-<li>n 个</li>
-</ul>
-<h5 id="n-m"><a href="#n-m" class="headerlink" title="\{n,m}"></a><code>\{n,m}</code></h5><ul>
-<li>n 个到 m 个之间</li>
-</ul>
-<h5 id="n-1"><a href="#n-1" class="headerlink" title="\{n,}"></a><code>\{n,}</code></h5><ul>
-<li>最少 n 个，但是会尽可能多的去尝试匹配</li>
-</ul>
-<h5 id="m"><a href="#m" class="headerlink" title="\{,m}"></a><code>\{,m}</code></h5><ul>
-<li>最多 m 个</li>
-<li>忽略优先，即非贪婪匹配，尽可能少的匹配</li>
-</ul>
-<h5 id="n-m-1"><a href="#n-m-1" class="headerlink" title="\{-n,m}"></a><code>\{-n,m}</code></h5><ul>
-<li>匹配 n 到 m 个，但是匹配到 n 个之后就不会再去尝试匹配下一个字符</li>
-</ul>
-<h5 id="m-1"><a href="#m-1" class="headerlink" title="\{-,m}"></a><code>\{-,m}</code></h5><ul>
-<li>匹配 0 到 m 个，在非贪婪匹配模式下，这种情况会全部匹配，因为可以匹配 0 个，而匹配到 0 个之后就不会再去尝试匹配下一个字符。</li>
-</ul>
-<h5 id="n-2"><a href="#n-2" class="headerlink" title="\{-n,}"></a><code>\{-n,}</code></h5><ul>
-<li>至少匹配 n 个，这种情况下就只会匹配 n 个。</li>
-</ul>
-<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><h5 id="-4"><a href="#-4" class="headerlink" title="`"></a>`</h5><ul>
-<li>匹配行尾</li>
-</ul>
-<h5 id="-5"><a href="#-5" class="headerlink" title="^"></a><code>^</code></h5><ul>
-<li>匹配行首</li>
-</ul>
-<h5 id="lt-gt"><a href="#lt-gt" class="headerlink" title="\&lt;, \&gt;"></a><code>\&lt;, \&gt;</code></h5><ul>
-<li>匹配单词的开始和结尾</li>
-</ul>
-<h2 id="变量捕获"><a href="#变量捕获" class="headerlink" title="变量捕获"></a>变量捕获</h2><h3 id="普通捕获"><a href="#普通捕获" class="headerlink" title="普通捕获"></a>普通捕获</h3><ul>
-<li>使用 <code>\(</code> 和 <code>\)</code> 括起的匹配内容可以在后面使用 <code>\1</code>, <code>\2</code> 进行捕获。<h3 id="函数式捕获"><a href="#函数式捕获" class="headerlink" title="函数式捕获"></a>函数式捕获</h3></li>
-<li>在函数式中使用时，可以使用 <code>submatch(1)</code>, <code>submatch(2)</code> 来引用 <code>\1</code>， <code>\2</code> 的内容。</li>
-<li>函数式的使用方式为 <code>s/str/\=函数式</code><ul>
-<li><code>line(&quot;.&quot;)</code> 表示当前行的行号</li>
-<li><code>line(&quot;&lt;&quot;)</code> 表示当前选中行行首的行号<h2 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h2></li>
-</ul>
-</li>
-</ul>
-<h4 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -475,9 +251,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/15/Git commands/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -527,9 +301,7 @@
       
 
       
-        
-          
-            <p>Title: Git commands<br>Date: 2018-05-20<br>Tags: git,note<br>Category: Git<br>Slug: git-cmds</p>
+        <p>Title: Git commands<br>Date: 2018-05-20<br>Tags: git,note<br>Category: Git<br>Slug: git-cmds</p>
 <p>[TOC]</p>
 <h3 id="git-空间"><a href="#git-空间" class="headerlink" title="git 空间"></a>git 空间</h3><p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img"></p>
 <h4 id="专用名词"><a href="#专用名词" class="headerlink" title="专用名词"></a>专用名词</h4><ul>
@@ -590,8 +362,6 @@
 <li>最后需要把 .gitignore 文件提交到 Git，检验其是否起作用的标准是 <code>git status</code>  命令的输出是否是<code>working directory clean</code></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -608,140 +378,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Shaocheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/15/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-15T15:28:11+08:00">
-                2019-01-15
-              </time>
+              <a href="/2019/01/15/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2019/01/15/vim 正则表达式/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -751,10 +413,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -762,6 +425,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -782,8 +449,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -825,6 +501,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-空间"><span class="nav-number">1.</span> <span class="nav-text">git 空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#专用名词"><span class="nav-number">1.1.</span> <span class="nav-text">专用名词</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建仓库"><span class="nav-number">2.</span> <span class="nav-text">新建仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置选项"><span class="nav-number">3.</span> <span class="nav-text">配置选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">4.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件增删"><span class="nav-number">5.</span> <span class="nav-text">文件增删</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码提交"><span class="nav-number">6.</span> <span class="nav-text">代码提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">7.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看信息"><span class="nav-number">8.</span> <span class="nav-text">查看信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程同步"><span class="nav-number">9.</span> <span class="nav-text">远程同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库"><span class="nav-number">10.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略文件"><span class="nav-number">11.</span> <span class="nav-text">忽略文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -965,6 +657,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
