@@ -187,6 +187,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -215,414 +235,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/vim 正则表达式/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Shaocheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/15/vim 正则表达式/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-15T17:12:11+08:00">
-                2019-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Title: vim 正则表达式<br>Date: 2018-05-20<br>Tags: vim,note<br>Category: Vim</p>
-<h2 id="模式设置"><a href="#模式设置" class="headerlink" title="模式设置"></a>模式设置</h2><ul>
-<li>元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。</li>
-<li>由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。</li>
-<li>在 vim 中，不同模式下的元字符的使用方式是不同的。<h3 id="magic-模式-m"><a href="#magic-模式-m" class="headerlink" title="magic 模式 (\m)"></a>magic 模式 (\m)</h3></li>
-<li>这是 vim 中的默认模式，也是 vim 推荐的用法。在 \m(magic) 模式下，除了三个元字符之外，其他的元字符都要加上反斜杠进行转义。这三个元字符是：<ul>
-<li><code>$</code><ul>
-<li>用于匹配行末</li>
-</ul>
-</li>
-<li><code>^</code><ul>
-<li>用于匹配行首</li>
-</ul>
-</li>
-<li><code>.*</code> <ul>
-<li>用于匹配任意字符</li>
-<li><code>.</code> 匹配的是任意单个的字符，而 <code>*</code> 匹配的是任意的数量。</li>
-<li><code>.</code> 也可以与其他表示数量的元字符使用，同样不用加反斜杠。</li>
-<li><code>*</code> 也可以与其他表示字符的元字符使用，也不用加反斜杠。<h3 id="nomagic-模式-M"><a href="#nomagic-模式-M" class="headerlink" title="nomagic 模式 (\M)"></a>nomagic 模式 (\M)</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>\M 模式与 \m 模式很相近，唯一的不同是对待 <code>.*</code> 的区别, \M 模式下将其视为普通的字符。<h3 id="very-magic-模式-v"><a href="#very-magic-模式-v" class="headerlink" title="very magic 模式 (\v)"></a>very magic 模式 (\v)</h3></li>
-<li>在此模式下，一切元字符都 <code>不用</code> 加反斜杠，直接使用即可。</li>
-<li><code>一切</code> 并不准确，只有字符类的元字符才可以不加反斜杠，字母类的元字符还是要加上反斜杠。<h3 id="very-nomagic-模式-V"><a href="#very-nomagic-模式-V" class="headerlink" title="very nomagic 模式 (\V)"></a>very nomagic 模式 (\V)</h3></li>
-<li>在此模式下，一切元字符都 <code>必须</code> 加反斜杠。<h2 id="元字符分类"><a href="#元字符分类" class="headerlink" title="元字符分类"></a>元字符分类</h2>以下皆以 magic 模式下的写法进行说明</li>
-</ul>
-<h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><h5 id=""><a href="#" class="headerlink" title="."></a><code>.</code></h5><ul>
-<li>匹配任意单个字符</li>
-</ul>
-<h5 id="abc"><a href="#abc" class="headerlink" title="[abc]"></a><code>[abc]</code></h5><ul>
-<li>匹配中括号中任意一个字符</li>
-</ul>
-<h5 id="abc-1"><a href="#abc-1" class="headerlink" title="[^abc]"></a><code>[^abc]</code></h5><ul>
-<li>匹配除方括号中字符外的任意一个字符</li>
-</ul>
-<h5 id="d"><a href="#d" class="headerlink" title="\d"></a><code>\d</code></h5><ul>
-<li>匹配任意数字，等同于 <code>[0-9]</code></li>
-</ul>
-<h5 id="D"><a href="#D" class="headerlink" title="\D"></a><code>\D</code></h5><ul>
-<li>匹配任意数字之外的字符，等同于 <code>[^0-9]</code></li>
-</ul>
-<h5 id="w"><a href="#w" class="headerlink" title="\w"></a><code>\w</code></h5><ul>
-<li>匹配任意一个数字或字母，等同于 <code>[0-9a-zA-Z]</code></li>
-</ul>
-<h5 id="W"><a href="#W" class="headerlink" title="\W"></a><code>\W</code></h5><ul>
-<li>匹配任意一个字母或数字之外的字符，等同于 <code>[^0-9a-zA-Z]</code></li>
-</ul>
-<h5 id="s"><a href="#s" class="headerlink" title="\s"></a><code>\s</code></h5><ul>
-<li>匹配任意空白字符</li>
-</ul>
-<h5 id="S"><a href="#S" class="headerlink" title="\S"></a><code>\S</code></h5><ul>
-<li>匹配任意非空白字符</li>
-</ul>
-<h5 id="x"><a href="#x" class="headerlink" title="\x"></a><code>\x</code></h5><ul>
-<li>匹配任意一个十六进制的字符，等同于 <code>[0-9a-fA-F]</code></li>
-</ul>
-<h5 id="X"><a href="#X" class="headerlink" title="\X"></a><code>\X</code></h5><ul>
-<li>匹配任意非一个十六进制的字符，等同于 <code>[^0-9a-fA-F]</code></li>
-</ul>
-<h3 id="匹配数量"><a href="#匹配数量" class="headerlink" title="匹配数量"></a>匹配数量</h3><h4 id="匹配优先，即贪婪匹配，尽可能多的匹配"><a href="#匹配优先，即贪婪匹配，尽可能多的匹配" class="headerlink" title="匹配优先，即贪婪匹配，尽可能多的匹配"></a>匹配优先，即贪婪匹配，尽可能多的匹配</h4><h5 id="-1"><a href="#-1" class="headerlink" title="*"></a><code>*</code></h5><ul>
-<li>0 到任意多个</li>
-</ul>
-<h5 id="-2"><a href="#-2" class="headerlink" title="\+"></a><code>\+</code></h5><ul>
-<li>1 到任意多个</li>
-</ul>
-<h5 id="-3"><a href="#-3" class="headerlink" title="\?"></a><code>\?</code></h5><ul>
-<li>0 个或 1 个</li>
-</ul>
-<h5 id="n"><a href="#n" class="headerlink" title="\{n}"></a><code>\{n}</code></h5><ul>
-<li>n 个</li>
-</ul>
-<h5 id="n-m"><a href="#n-m" class="headerlink" title="\{n,m}"></a><code>\{n,m}</code></h5><ul>
-<li>n 个到 m 个之间</li>
-</ul>
-<h5 id="n-1"><a href="#n-1" class="headerlink" title="\{n,}"></a><code>\{n,}</code></h5><ul>
-<li>最少 n 个，但是会尽可能多的去尝试匹配</li>
-</ul>
-<h5 id="m"><a href="#m" class="headerlink" title="\{,m}"></a><code>\{,m}</code></h5><ul>
-<li>最多 m 个</li>
-<li>忽略优先，即非贪婪匹配，尽可能少的匹配</li>
-</ul>
-<h5 id="n-m-1"><a href="#n-m-1" class="headerlink" title="\{-n,m}"></a><code>\{-n,m}</code></h5><ul>
-<li>匹配 n 到 m 个，但是匹配到 n 个之后就不会再去尝试匹配下一个字符</li>
-</ul>
-<h5 id="m-1"><a href="#m-1" class="headerlink" title="\{-,m}"></a><code>\{-,m}</code></h5><ul>
-<li>匹配 0 到 m 个，在非贪婪匹配模式下，这种情况会全部匹配，因为可以匹配 0 个，而匹配到 0 个之后就不会再去尝试匹配下一个字符。</li>
-</ul>
-<h5 id="n-2"><a href="#n-2" class="headerlink" title="\{-n,}"></a><code>\{-n,}</code></h5><ul>
-<li>至少匹配 n 个，这种情况下就只会匹配 n 个。</li>
-</ul>
-<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><h5 id="-4"><a href="#-4" class="headerlink" title="`"></a>`</h5><ul>
-<li>匹配行尾</li>
-</ul>
-<h5 id="-5"><a href="#-5" class="headerlink" title="^"></a><code>^</code></h5><ul>
-<li>匹配行首</li>
-</ul>
-<h5 id="lt-gt"><a href="#lt-gt" class="headerlink" title="\&lt;, \&gt;"></a><code>\&lt;, \&gt;</code></h5><ul>
-<li>匹配单词的开始和结尾</li>
-</ul>
-<h2 id="变量捕获"><a href="#变量捕获" class="headerlink" title="变量捕获"></a>变量捕获</h2><h3 id="普通捕获"><a href="#普通捕获" class="headerlink" title="普通捕获"></a>普通捕获</h3><ul>
-<li>使用 <code>\(</code> 和 <code>\)</code> 括起的匹配内容可以在后面使用 <code>\1</code>, <code>\2</code> 进行捕获。<h3 id="函数式捕获"><a href="#函数式捕获" class="headerlink" title="函数式捕获"></a>函数式捕获</h3></li>
-<li>在函数式中使用时，可以使用 <code>submatch(1)</code>, <code>submatch(2)</code> 来引用 <code>\1</code>， <code>\2</code> 的内容。</li>
-<li>函数式的使用方式为 <code>s/str/\=函数式</code><ul>
-<li><code>line(&quot;.&quot;)</code> 表示当前行的行号</li>
-<li><code>line(&quot;&lt;&quot;)</code> 表示当前选中行行首的行号<h2 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h2></li>
-</ul>
-</li>
-</ul>
-<h4 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/Git commands/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Shaocheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/15/Git commands/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-15T17:12:02+08:00">
-                2019-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Title: Git commands<br>Date: 2018-05-20<br>Tags: git,note<br>Category: Git<br>Slug: git-cmds</p>
-<p>[TOC]</p>
-<h3 id="git-空间"><a href="#git-空间" class="headerlink" title="git 空间"></a>git 空间</h3><p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img"></p>
-<h4 id="专用名词"><a href="#专用名词" class="headerlink" title="专用名词"></a>专用名词</h4><ul>
-<li>Workspace：工作区</li>
-<li>Index / Stage：暂存区</li>
-<li>Repository：仓库区（或本地仓库）</li>
-<li>Remote：远程仓库</li>
-</ul>
-<h3 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将当前目录初始化为 git 仓库</span></span><br><span class="line">$ git init </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在当前目录新建一个目录，将其初始化为 git 仓库</span></span><br><span class="line">$ git init [proj-name]</span><br></pre></td></tr></table></figure>
-<h3 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h3><ul>
-<li><p>~/.gitconfig 是全局配置文件，对这台电脑下的所有仓库起作用</p>
-</li>
-<li><p>.git/config 只对当前git仓库起作用</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前的 Git 配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 Git 配置文件，该文件位置在 .git/config</span></span><br><span class="line">git config -a [global]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line"><span class="comment"># --global参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用。</span></span><br><span class="line">git config [--global] user.name [your name]</span><br><span class="line">git config [--global] user.email [your email]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改默认编辑器为 vim</span></span><br><span class="line"><span class="comment"># 打开.git/config文件，在core中添加 editor=vim</span></span><br><span class="line">[core]</span><br><span class="line">    repositoryformatversion = 0</span><br><span class="line">    filemode = <span class="literal">true</span></span><br><span class="line">    bare = <span class="literal">false</span></span><br><span class="line">    logallrefupdates = <span class="literal">true</span></span><br><span class="line">    editor = vim</span><br></pre></td></tr></table></figure>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ul>
-<li>每次提交记录都会产生一个提交的版本号，该版本号是使用哈希算法得到的每次提交都不同的一个值</li>
-<li>在 git 中，使用 <code>HEAD</code> 表示当前版本，上一个版本是 <code>HEAD^</code> ，上上一个版本是 <code>HEAD^^</code> ，向上 100 个版本写作 <code>HEAD~100</code></li>
-<li>git 中回退到上一个版本的命令是: </li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
-<ul>
-<li>然而当回退到上一个版本之后，当前版本的提交记录就没有了，如果又想恢复到当前版本，只能在历史记录中找 <code>git log</code> 命令的输出结果，从中找到当前版本的版本号，然后使用下面命令恢复</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号</span><br><span class="line"><span class="comment"># 版本号不必写全，只要可以与其他版本号区分开即可</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果已经丢失了当前版本的版本号，可以通过 <code>git reflog</code> 命令，该命令的结果包含了每一次的操作</li>
-<li>从中可以找到当前版本的版本号</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">d1fb1cb HEAD@&#123;0&#125;: commit: add some <span class="built_in">exit</span> key shortcuts <span class="keyword">in</span> .vimrc</span><br><span class="line">3a61b19 HEAD@&#123;1&#125;: commit: add git <span class="built_in">log</span> <span class="built_in">alias</span> to display with colors</span><br><span class="line">76fc02c HEAD@&#123;2&#125;: commit: add ~/.gitconfig</span><br></pre></td></tr></table></figure>
-<h3 id="文件增删"><a href="#文件增删" class="headerlink" title="文件增删"></a>文件增删</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加指定文件到 index 区</span></span><br><span class="line">git add [file1] [file2]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有文件到 index 区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 workspace 区文件，并将删除操作放入 index 区</span></span><br><span class="line">git rm [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止追踪该文件，但该文件会保存在 workspace</span></span><br><span class="line">git rm --cached [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改名文件，并将操作放入 index 区</span></span><br><span class="line">git mv [file_ori] [file_renamed]</span><br></pre></td></tr></table></figure>
-<h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line">git commit -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区的指定文件到仓库区</span></span><br><span class="line">git commit [file1] [file2] ... -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用一次新的commit，替代上一次提交</span></span><br><span class="line"><span class="comment"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span></span><br><span class="line">git commit --amend -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重做上一次commit，并包括指定文件的新变化</span></span><br><span class="line">git commit --amend [file1] [file2] ...</span><br></pre></td></tr></table></figure>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支和远程分支</span></span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">git branch [new_branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">git checkout -b [new_branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定分支，并更新工作区</span></span><br><span class="line">git checkout [new_branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到上一个分支</span></span><br><span class="line">git checkout -</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">git merge [branch name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d [branch name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制删除</span></span><br><span class="line">git branch -D [branch name]</span><br></pre></td></tr></table></figure>
-<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示有变更的文件</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更加直观的方式显示</span></span><br><span class="line">git status -sb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前分支的版本历史</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示commit历史，以及每次commit发生变更的文件</span></span><br><span class="line">git <span class="built_in">log</span> <span class="built_in">stat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索提交历史，根据关键词</span></span><br><span class="line">git <span class="built_in">log</span> -S [keyword]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和工作区的差异</span></span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和上一个commit的差异</span></span><br><span class="line">git diff --cached [file]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示工作区与当前分支最新commit之间的差异</span></span><br><span class="line">git diff HEAD</span><br></pre></td></tr></table></figure>
-<h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有远程仓库</span></span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加一个新的远程仓库，并命名</span></span><br><span class="line">git remote add [shortname] [url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取回远程仓库的变化，并与本地分支合并</span></span><br><span class="line">git pull [remote] [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传本地指定分支到远程仓库</span></span><br><span class="line">git push [remote] [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强行推送当前分支到远程仓库，即使有冲突</span></span><br><span class="line">git push [remote] [branch] --force</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送所有分支到远程仓库</span></span><br><span class="line">git push [remote] --all</span><br></pre></td></tr></table></figure>
-<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
-<li>创建 SSH-Key<ul>
-<li>生成公钥 <code>id_rsa.pub</code> 和 私钥 <code>id_rsa</code> ，将公钥上传到 github 的SSH-Key 中</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"email@exam.com"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试是否可以连接服务器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<ul>
-<li>添加远程仓库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 要添加的仓库已经在 github 中创建完成</span></span><br><span class="line">git remote add origin git@github.com:yourname/repo_name.git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将本地库的内容推送到远程库上</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br><span class="line"><span class="comment"># 由于远程库是空的，我们第⼀一次推送master分⽀支时，加上了 -u参数，Git不但会把本地的master分⽀支内容</span></span><br><span class="line"><span class="comment"># 推送的远程新的master分⽀支，还会把本地的master分⽀支和远程的master分⽀支关联起来，在以后的推送或者</span></span><br><span class="line"><span class="comment"># 拉取时就可以简化命令。</span></span><br></pre></td></tr></table></figure>
-<h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python:   # # 后面的是注释</span></span><br><span class="line">*.py[cod]   <span class="comment"># 可以匹配 *.pyc &amp; *.pyo &amp; *.pyd</span></span><br><span class="line">*.egg-info</span><br><span class="line">dist</span><br><span class="line">build</span><br><span class="line">src/        <span class="comment"># 文件夹后面加上 /</span></span><br><span class="line">.bundle/*   <span class="comment"># 区别在哪？</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后需要把 .gitignore 文件提交到 Git，检验其是否起作用的标准是 <code>git status</code>  命令的输出是否是<code>working directory clean</code></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
     
       
 
@@ -708,20 +320,324 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/15/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/Git commands/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/22/Git commands/" itemprop="url">Git commands</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-22T00:00:00+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          git 空间
+专用名词
+Workspace：工作区
+Index / Stage：暂存区
+Repository：仓库区（或本地仓库）
+Remote：远程仓库
+
+新建仓库12345# 将当前目录初始化为 git 仓库$ git init # 在当前目录新建一个目录，将其初始化为 git 仓库$ git 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/22/Git commands/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/vim 正则表达式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/20/vim 正则表达式/" itemprop="url">vim 正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-20T00:00:00+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vim/" itemprop="url" rel="index">
+                    <span itemprop="name">Vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="模式设置"><a href="#模式设置" class="headerlink" title="模式设置"></a>模式设置</h2><ul>
+<li><p>元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。</p>
+</li>
+<li><p>由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。</p>
+</li>
+<li><p>在 vim 中，不同模式下的元字符的使用方式是不同的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/20/vim 正则表达式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
     
     
     
@@ -805,7 +721,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
