@@ -82,14 +82,14 @@
 <meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
 <meta name="keywords" content="note,hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于hexo的blog搭建记录">
+<meta property="og:title" content="基于 hexo 的 blog 搭建记录">
 <meta property="og:url" content="http://yoursite.com/2019/01/15/hexo blog 搭建过程/index.html">
-<meta property="og:site_name" content="Blog">
+<meta property="og:site_name" content="Silicon Walker">
 <meta property="og:description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-15T14:40:35.605Z">
+<meta property="og:updated_time" content="2019-01-18T14:31:46.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于hexo的blog搭建记录">
+<meta name="twitter:title" content="基于 hexo 的 blog 搭建记录">
 <meta name="twitter:description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>基于hexo的blog搭建记录 | Blog</title>
+  <title>基于 hexo 的 blog 搭建记录 | Silicon Walker</title>
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Blog</span>
+        <span class="site-title">Silicon Walker</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -262,7 +262,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
+      <meta itemprop="name" content="Silicon Walker">
     </span>
 
     
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于hexo的blog搭建记录</h1>
+          <h1 class="post-title" itemprop="name headline">基于 hexo 的 blog 搭建记录</h1>
         
 
         <div class="post-meta">
@@ -359,7 +359,7 @@
 <h3 id="远程部署"><a href="#远程部署" class="headerlink" title="远程部署"></a>远程部署</h3><h4 id="创建-GitHub-Page"><a href="#创建-GitHub-Page" class="headerlink" title="创建 GitHub Page"></a>创建 GitHub Page</h4><p>在GitHub中新建一个repo，名字必须是GitHub的 <code>username.github.io</code>。</p>
 <h4 id="连接-GitHub-账户"><a href="#连接-GitHub-账户" class="headerlink" title="连接 GitHub 账户"></a>连接 GitHub 账户</h4><p>在 git bash 中生成ssh的key，在windows系统中生成的key默认位于<code>C:\Users\username\.ssh</code>中。将生成的 <code>id_rsa.pub</code>其中的内容复制到GitHub设置中的SSH key的位置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>设置github邮箱和用户名</p>
+<p>在git bash中使用下面命令设置github邮箱和用户名</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name github_username</span><br><span class="line">git config user.email xxx@xxx.com</span><br></pre></td></tr></table></figure>
 <h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>修改网站的用户名等信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: site_name</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author: author_name</span><br><span class="line">language:</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
@@ -378,14 +378,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## theme: landscape</span><br><span class="line">## theme: maupassant</span><br><span class="line">## theme: fexo</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 <p>next主题本身自带了四种风格，可以在其主题配置文件中搜索 scheme 关键字，然后设置相应的风格。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line"># scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
-<h4 id="添加-tag-页面"><a href="#添加-tag-页面" class="headerlink" title="添加 tag 页面"></a>添加 tag 页面</h4><p>step 1，生成 tags page</p>
+<h4 id="添加-tags-页面"><a href="#添加-tags-页面" class="headerlink" title="添加 tags 页面"></a>添加 tags 页面</h4><p>step 1，生成 tags page</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 <p>step 2，打开 /source/tags/index.md，添加 type 项为 tags</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2016-06-08 16:19:38</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>step 3，在配置文件中打开 tags 页面</p>
 <p>打开 <code>/themes/next/_config.yml</code>，找到menu，取消tags选项的注释。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure></p>
 <h4 id="添加-categories-页面"><a href="#添加-categories-页面" class="headerlink" title="添加 categories 页面"></a>添加 categories 页面</h4><p>与添加 tags 页面相同，只需要将 tags 替换为 categories。</p>
-<h4 id="文章中添加tag和category"><a href="#文章中添加tag和category" class="headerlink" title="文章中添加tag和category"></a>文章中添加tag和category</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Note</span><br><span class="line">tags:</span><br><span class="line">- vim</span><br><span class="line">- fun</span><br></pre></td></tr></table></figure>
+<h4 id="为文章添加tag和category"><a href="#为文章添加tag和category" class="headerlink" title="为文章添加tag和category"></a>为文章添加tag和category</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Note</span><br><span class="line">tags:</span><br><span class="line">- vim</span><br><span class="line">- fun</span><br></pre></td></tr></table></figure>
 <h4 id="添加阅读全文按钮"><a href="#添加阅读全文按钮" class="headerlink" title="添加阅读全文按钮"></a>添加阅读全文按钮</h4><p>也就是说，在首页显示文章的摘录并显示 阅读全文 按钮，可以通过以下方法：</p>
 <ol>
 <li>在文章中使用 <!-- more --> 手动进行截断，Hexo 推荐使用的方式</li>
@@ -435,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/15/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/18/bash快捷键/" rel="prev" title="bash常用快捷键">
+                bash常用快捷键 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -525,7 +525,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -536,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -569,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件安装"><span class="nav-number">1.</span> <span class="nav-text">软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地部署"><span class="nav-number">2.</span> <span class="nav-text">本地部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程部署"><span class="nav-number">3.</span> <span class="nav-text">远程部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-GitHub-Page"><span class="nav-number">3.1.</span> <span class="nav-text">创建 GitHub Page</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接-GitHub-账户"><span class="nav-number">3.2.</span> <span class="nav-text">连接 GitHub 账户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">4.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题配置"><span class="nav-number">5.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启用next主题"><span class="nav-number">5.1.</span> <span class="nav-text">启用next主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-tag-页面"><span class="nav-number">5.2.</span> <span class="nav-text">添加 tag 页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-categories-页面"><span class="nav-number">5.3.</span> <span class="nav-text">添加 categories 页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章中添加tag和category"><span class="nav-number">5.4.</span> <span class="nav-text">文章中添加tag和category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加阅读全文按钮"><span class="nav-number">5.5.</span> <span class="nav-text">添加阅读全文按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改默认标签符号"><span class="nav-number">5.6.</span> <span class="nav-text">修改默认标签符号</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件安装"><span class="nav-number">1.</span> <span class="nav-text">软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地部署"><span class="nav-number">2.</span> <span class="nav-text">本地部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程部署"><span class="nav-number">3.</span> <span class="nav-text">远程部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-GitHub-Page"><span class="nav-number">3.1.</span> <span class="nav-text">创建 GitHub Page</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接-GitHub-账户"><span class="nav-number">3.2.</span> <span class="nav-text">连接 GitHub 账户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">4.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题配置"><span class="nav-number">5.</span> <span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启用next主题"><span class="nav-number">5.1.</span> <span class="nav-text">启用next主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-tags-页面"><span class="nav-number">5.2.</span> <span class="nav-text">添加 tags 页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-categories-页面"><span class="nav-number">5.3.</span> <span class="nav-text">添加 categories 页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为文章添加tag和category"><span class="nav-number">5.4.</span> <span class="nav-text">为文章添加tag和category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加阅读全文按钮"><span class="nav-number">5.5.</span> <span class="nav-text">添加阅读全文按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改默认标签符号"><span class="nav-number">5.6.</span> <span class="nav-text">修改默认标签符号</span></a></li></ol></li></ol></div>
             
 
           </div>

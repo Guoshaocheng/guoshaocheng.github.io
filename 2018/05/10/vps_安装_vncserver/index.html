@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="note,vim,">
+  <meta name="keywords" content="note,linux,vps,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="模式设置 元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。  由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。  在 vim 中，不同模式下的元字符的使用方式是不同的。">
-<meta name="keywords" content="note,vim">
+<meta name="description" content="记录在CentOS系统上安装安装桌面环境和vncserver的主要命令。">
+<meta name="keywords" content="note,linux,vps">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim 正则表达式">
-<meta property="og:url" content="http://yoursite.com/2018/05/20/vim 正则表达式/index.html">
+<meta property="og:title" content="在 CentOS 上安装 vncserver">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/vps_安装_vncserver/index.html">
 <meta property="og:site_name" content="Silicon Walker">
-<meta property="og:description" content="模式设置 元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。  由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。  在 vim 中，不同模式下的元字符的使用方式是不同的。">
+<meta property="og:description" content="记录在CentOS系统上安装安装桌面环境和vncserver的主要命令。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-18T14:14:05.436Z">
+<meta property="og:updated_time" content="2019-01-18T14:44:12.547Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim 正则表达式">
-<meta name="twitter:description" content="模式设置 元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。  由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。  在 vim 中，不同模式下的元字符的使用方式是不同的。">
+<meta name="twitter:title" content="在 CentOS 上安装 vncserver">
+<meta name="twitter:description" content="记录在CentOS系统上安装安装桌面环境和vncserver的主要命令。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/20/vim 正则表达式/">
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/vps_安装_vncserver/">
 
 
 
 
 
-  <title>vim 正则表达式 | Silicon Walker</title>
+  <title>在 CentOS 上安装 vncserver | Silicon Walker</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/vim 正则表达式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/vps_安装_vncserver/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guo Shaocheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vim 正则表达式</h1>
+          <h1 class="post-title" itemprop="name headline">在 CentOS 上安装 vncserver</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-20T00:00:00+08:00">
-                2018-05-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T00:00:00+08:00">
+                2018-05-10
               </time>
             
 
@@ -342,156 +342,30 @@
       
 
       
-        <h2 id="模式设置"><a href="#模式设置" class="headerlink" title="模式设置"></a>模式设置</h2><ul>
-<li><p>元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。</p>
-</li>
-<li><p>由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。</p>
-</li>
-<li><p>在 vim 中，不同模式下的元字符的使用方式是不同的。</p>
-</li>
-</ul>
+        <p>记录在CentOS系统上安装安装桌面环境和vncserver的主要命令。</p>
 <a id="more"></a>
-<h3 id="magic-模式-m"><a href="#magic-模式-m" class="headerlink" title="magic 模式 (\m)"></a>magic 模式 (\m)</h3><ul>
-<li>这是 vim 中的默认模式，也是 vim 推荐的用法。在 <code>\m</code>(magic) 模式下，除了三个元字符之外，其他的元字符都要加上反斜杠进行转义。这三个元字符是：<ul>
-<li><code>$</code><ul>
-<li>用于匹配行末</li>
+<h3 id="查看系统是否支持"><a href="#查看系统是否支持" class="headerlink" title="查看系统是否支持"></a>查看系统是否支持</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum grouplist</span><br></pre></td></tr></table></figure>
+<h3 id="安装桌面环境"><a href="#安装桌面环境" class="headerlink" title="安装桌面环境"></a>安装桌面环境</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install kdepim</span><br><span class="line">yum groupinstall <span class="string">"X Window System"</span> <span class="string">"KDE"</span> <span class="string">"Desktop"</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装-vncserver"><a href="#安装-vncserver" class="headerlink" title="安装 vncserver"></a>安装 vncserver</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install tigervnc tigervnc-server</span><br><span class="line"><span class="comment"># or ?</span></span><br><span class="line"><span class="comment"># yum install vnc vnc-server -y</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置-vnc-密码"><a href="#设置-vnc-密码" class="headerlink" title="设置 vnc 密码"></a>设置 vnc 密码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br></pre></td></tr></table></figure>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 vnc，会生成 /root/.vnc/xstartup</span></span><br><span class="line">vncserver</span><br><span class="line">vim /root/.vnc/xstartup</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 <code>twm</code> 替换为 <code>startkde</code></li>
+<li>如果安装的是 GNome 桌面，要将 <code>twm</code> 换成 <code>gnome-session</code></li>
 </ul>
+<h3 id="启动-vncserver"><a href="#启动-vncserver" class="headerlink" title="启动 vncserver"></a>启动 vncserver</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
+<h3 id="vncserver常用命令"><a href="#vncserver常用命令" class="headerlink" title="vncserver常用命令"></a>vncserver常用命令</h3><ul>
+<li><p>查看运行的服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -list</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>^</code><ul>
-<li>用于匹配行首</li>
-</ul>
+<li><p>杀掉指定服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :n</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>.*</code> <ul>
-<li>用于匹配任意字符</li>
-<li><code>.</code> 匹配的是任意单个的字符，而 <code>*</code> 匹配的是任意的数量。</li>
-<li><code>.</code> 也可以与其他表示数量的元字符使用，同样不用加反斜杠。</li>
-<li><code>*</code> 也可以与其他表示字符的元字符使用，也不用加反斜杠</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="nomagic-模式-M"><a href="#nomagic-模式-M" class="headerlink" title="nomagic 模式 (\M)"></a>nomagic 模式 (\M)</h3><ul>
-<li><code>\M</code> 模式与 <code>\m</code> 模式很相近，唯一的不同是对待 <code>.*</code> 的区别, <code>\M</code> 模式下将其视为普通的字符。</li>
-</ul>
-<h3 id="very-magic-模式-v"><a href="#very-magic-模式-v" class="headerlink" title="very magic 模式 (\v)"></a>very magic 模式 (\v)</h3><ul>
-<li>在此模式下，一切元字符都 <code>不用</code> 加反斜杠，直接使用即可。</li>
-<li><code>一切</code> 并不准确，只有字符类的元字符才可以不加反斜杠，字母类的元字符还是要加上反斜杠。</li>
-</ul>
-<h3 id="very-nomagic-模式-V"><a href="#very-nomagic-模式-V" class="headerlink" title="very nomagic 模式 (\V)"></a>very nomagic 模式 (\V)</h3><ul>
-<li>在此模式下，一切元字符都 <code>必须</code> 加反斜杠。</li>
-</ul>
-<h2 id="元字符分类"><a href="#元字符分类" class="headerlink" title="元字符分类"></a>元字符分类</h2><p>以下皆以 <code>magic</code> 模式下的写法进行说明</p>
-<h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><p><code>.</code></p>
-<ul>
-<li>匹配任意单个字符</li>
-</ul>
-<p><code>[abc]</code></p>
-<ul>
-<li>匹配中括号中任意一个字符</li>
-</ul>
-<p><code>[^abc]</code></p>
-<ul>
-<li>匹配除方括号中字符外的任意一个字符</li>
-</ul>
-<p><code>\d</code></p>
-<ul>
-<li>匹配任意数字，等同于 <code>[0-9]</code></li>
-</ul>
-<p><code>\D</code></p>
-<ul>
-<li>匹配任意数字之外的字符，等同于 <code>[^0-9]</code></li>
-</ul>
-<p><code>\w</code></p>
-<ul>
-<li>匹配任意一个数字或字母，等同于 <code>[0-9a-zA-Z]</code></li>
-</ul>
-<p><code>\W</code></p>
-<ul>
-<li>匹配任意一个字母或数字之外的字符，等同于 <code>[^0-9a-zA-Z]</code></li>
-</ul>
-<p><code>\s</code></p>
-<ul>
-<li>匹配任意空白字符</li>
-</ul>
-<p><code>\S</code></p>
-<ul>
-<li>匹配任意非空白字符</li>
-</ul>
-<p><code>\x</code></p>
-<ul>
-<li>匹配任意一个十六进制的字符，等同于 <code>[0-9a-fA-F]</code></li>
-</ul>
-<p><code>\X</code></p>
-<ul>
-<li>匹配任意非一个十六进制的字符，等同于 <code>[^0-9a-fA-F]</code></li>
-</ul>
-<h3 id="匹配数量"><a href="#匹配数量" class="headerlink" title="匹配数量"></a>匹配数量</h3><p>匹配优先，即贪婪匹配，尽可能多的匹配</p>
-<p><code>*</code></p>
-<ul>
-<li>0 到任意多个</li>
-</ul>
-<p><code>\+</code></p>
-<ul>
-<li>1 到任意多个</li>
-</ul>
-<p><code>\?</code></p>
-<ul>
-<li>0 个或 1 个</li>
-</ul>
-<p><code>\{n}</code></p>
-<ul>
-<li>n 个</li>
-</ul>
-<p><code>\{n,m}</code></p>
-<ul>
-<li>n 个到 m 个之间</li>
-</ul>
-<p><code>\{n,}</code></p>
-<ul>
-<li>最少 n 个，但是会尽可能多的去尝试匹配</li>
-</ul>
-<p><code>\{,m}</code></p>
-<ul>
-<li>最多 m 个</li>
-<li>忽略优先，即非贪婪匹配，尽可能少的匹配</li>
-</ul>
-<p><code>\{-n,m}</code></p>
-<ul>
-<li>匹配 n 到 m 个，但是匹配到 n 个之后就不会再去尝试匹配下一个字符</li>
-</ul>
-<p><code>\{-,m}</code></p>
-<ul>
-<li>匹配 0 到 m 个，在非贪婪匹配模式下，这种情况会全部匹配，因为可以匹配 0 个，而匹配到 0 个之后就不会再去尝试匹配下一个字符。</li>
-</ul>
-<p><code>\{-n,}</code></p>
-<ul>
-<li>至少匹配 n 个，这种情况下就只会匹配 n 个。</li>
-</ul>
-<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><p><code>$</code></p>
-<ul>
-<li>匹配行尾</li>
-</ul>
-<p><code>^</code></p>
-<ul>
-<li>匹配行首</li>
-</ul>
-<p><code>\&lt;, \&gt;</code></p>
-<ul>
-<li>匹配单词的开始和结尾</li>
-</ul>
-<h2 id="变量捕获"><a href="#变量捕获" class="headerlink" title="变量捕获"></a>变量捕获</h2><h3 id="普通捕获"><a href="#普通捕获" class="headerlink" title="普通捕获"></a>普通捕获</h3><ul>
-<li>使用 <code>\(</code> 和 <code>\)</code> 括起的匹配内容可以在后面使用 <code>\1</code>, <code>\2</code> 进行捕获。</li>
-</ul>
-<h3 id="函数式捕获"><a href="#函数式捕获" class="headerlink" title="函数式捕获"></a>函数式捕获</h3><ul>
-<li>在函数式中使用时，可以使用 <code>submatch(1)</code>, <code>submatch(2)</code> 来引用 <code>\1</code>， <code>\2</code> 的内容。</li>
-<li>函数式的使用方式为 <code>s/str/\=函数式</code><ul>
-<li><code>line(&quot;.&quot;)</code> 表示当前行的行号</li>
-<li><code>line(&quot;&lt;&quot;)</code> 表示当前选中行行首的行号</li>
-</ul>
+<li><p>修改密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h2><h3 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h3>
+
       
     </div>
     
@@ -510,7 +384,9 @@
           
             <a href="/tags/note/" rel="tag"><i class="fa fa-tag"></i> note</a>
           
-            <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/vps/" rel="tag"><i class="fa fa-tag"></i> vps</a>
           
         </div>
       
@@ -523,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/10/vps_安装_vncserver/" rel="next" title="在 CentOS 上安装 vncserver">
-                <i class="fa fa-chevron-left"></i> 在 CentOS 上安装 vncserver
+              <a href="/2018/05/05/Perl one line commands/" rel="next" title="Perl单行命令">
+                <i class="fa fa-chevron-left"></i> Perl单行命令
               </a>
             
           </div>
@@ -533,8 +409,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/22/Git commands/" rel="prev" title="Git 的基本操作">
-                Git 的基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/20/vim 正则表达式/" rel="prev" title="vim 正则表达式">
+                vim 正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -667,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式设置"><span class="nav-number">1.</span> <span class="nav-text">模式设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#magic-模式-m"><span class="nav-number">1.1.</span> <span class="nav-text">magic 模式 (\m)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nomagic-模式-M"><span class="nav-number">1.2.</span> <span class="nav-text">nomagic 模式 (\M)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#very-magic-模式-v"><span class="nav-number">1.3.</span> <span class="nav-text">very magic 模式 (\v)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#very-nomagic-模式-V"><span class="nav-number">1.4.</span> <span class="nav-text">very nomagic 模式 (\V)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符分类"><span class="nav-number">2.</span> <span class="nav-text">元字符分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配字符"><span class="nav-number">2.1.</span> <span class="nav-text">匹配字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配数量"><span class="nav-number">2.2.</span> <span class="nav-text">匹配数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配位置"><span class="nav-number">2.3.</span> <span class="nav-text">匹配位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量捕获"><span class="nav-number">3.</span> <span class="nav-text">变量捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通捕获"><span class="nav-number">3.1.</span> <span class="nav-text">普通捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式捕获"><span class="nav-number">3.2.</span> <span class="nav-text">函数式捕获</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环视"><span class="nav-number">4.</span> <span class="nav-text">环视</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Todo"><span class="nav-number">4.1.</span> <span class="nav-text">Todo</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看系统是否支持"><span class="nav-number">1.</span> <span class="nav-text">查看系统是否支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装桌面环境"><span class="nav-number">2.</span> <span class="nav-text">安装桌面环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-vncserver"><span class="nav-number">3.</span> <span class="nav-text">安装 vncserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置-vnc-密码"><span class="nav-number">4.</span> <span class="nav-text">设置 vnc 密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境"><span class="nav-number">5.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-vncserver"><span class="nav-number">6.</span> <span class="nav-text">启动 vncserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vncserver常用命令"><span class="nav-number">7.</span> <span class="nav-text">vncserver常用命令</span></a></li></ol></div>
             
 
           </div>
