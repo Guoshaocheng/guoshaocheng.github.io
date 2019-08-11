@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Silicon Walker">
 <meta property="og:description" content="该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。本文是系列的第二篇，记录 grep 命令的常用用法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-11T12:58:35.168Z">
+<meta property="og:updated_time" content="2019-08-11T13:00:43.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 常用命令 - grep">
 <meta name="twitter:description" content="该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。本文是系列的第二篇，记录 grep 命令的常用用法。">
@@ -348,7 +348,7 @@
 <p>grep 命令包括有着不同版本的变体，通常 Linux 系统上使用的 grep 是 GNU grep，其拓展了基本的正则表达式元字符。</p>
 <p>rgrep 是递归式的 grep，用于对当前目录进行递归搜索。</p>
 <p>egrep 是扩展的 grep，支持更多的正则表达式元字符。</p>
-<p>grep(fixed grep/fast grep) 被称为固定 grep 或者快速 grep，它按字面解释所有的字符，即正则表达式的元字符帮助被特殊处理。</p>
+<p>grep(fixed grep/fast grep) 被称为固定 grep 或者快速 grep，它按字面解释所有的字符，即正则表达式的元字符不会被特殊处理。</p>
 <h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [options] pattern file</span><br></pre></td></tr></table></figure>
 <h3 id="grep-选项"><a href="#grep-选项" class="headerlink" title="grep 选项"></a>grep 选项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">## 基本选项</span><br><span class="line">-c -&gt; 为每个文件显示其匹配到的行的数目</span><br><span class="line">-i -&gt; 忽略大小写</span><br><span class="line">-l -&gt; 只列出匹配行所在文件的文件名称，每个文件只列一次，使用换行符分割</span><br><span class="line">-L -&gt; 只列出未匹配行所在文件的文件名称</span><br><span class="line">-n -&gt; 在匹配到的每一行前面加上其在文中的相对行号</span><br><span class="line">-s -&gt; 当对不存在的文件进行匹配时，将给出文件不存在的报错信息。</span><br><span class="line">      当使用 -s 选项时，不显示文件不存在或者文件不可读的报错信息</span><br><span class="line">-v -&gt; 反向查找，只显示不匹配的行</span><br><span class="line">-w -&gt; 将 pattern 作为一个 word 进行查找，只使用与 grep</span><br><span class="line">-h -&gt; 当列出的文件多于一个时，grep会在每行文件内容之前加上其文件名。</span><br><span class="line">      当使用 -h 选项时，不打印文件名。</span><br><span class="line"></span><br><span class="line">## 新增选项</span><br><span class="line">-n       -&gt; 打印匹配行及其前后 n 行的内容</span><br><span class="line">-A n     -&gt; 打印匹配行及其后 n 行的内容</span><br><span class="line">-B n     -&gt; 打印匹配行及其前 n 行的内容</span><br><span class="line">-C n     -&gt; 与 -n 作用相同</span><br><span class="line">-m n     -&gt; 每个文件最多匹配 n 行，找到 n 行的匹配之后，停止读该文件</span><br><span class="line">-f file  -&gt; 从 file 中获取匹配模式，每行一个</span><br><span class="line">-e       -&gt; 指定一个pattern，可以多次使用</span><br></pre></td></tr></table></figure>
 <h3 id="grep-使用的正则表达式元字符"><a href="#grep-使用的正则表达式元字符" class="headerlink" title="grep 使用的正则表达式元字符"></a>grep 使用的正则表达式元字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">^          -&gt; 行首定位符</span><br><span class="line">$          -&gt; 行尾定位符</span><br><span class="line">\&lt;         -&gt; 词首定位符</span><br><span class="line">\&gt;         -&gt; 词尾定位符</span><br><span class="line">*          -&gt; 匹配 0 个或多个前导字符</span><br><span class="line">.          -&gt; 匹配一个任意字符</span><br><span class="line">[]         -&gt; 匹配在中括号中任意一个字符</span><br><span class="line">[^]        -&gt; 匹配不在中括号的任意一个字符</span><br><span class="line">\(PAT\)    -&gt; 捕获匹配到的字符，使用 \1 来引用</span><br><span class="line">x\&#123;m\&#125;     -&gt; 匹配连续 m 个 x</span><br><span class="line">x\&#123;m,\&#125;    -&gt; 匹配至少连续 m 个 x</span><br><span class="line">x\&#123;m,n\&#125;   -&gt; 匹配连续 m 到 n 个 x</span><br></pre></td></tr></table></figure>
@@ -391,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/10/vim 常用命令/" rel="next" title="vim 常用命令">
-                <i class="fa fa-chevron-left"></i> vim 常用命令
+              <a href="/2019/08/10/Linux 常用命令-1/" rel="next" title="Linux 常用命令 - find">
+                <i class="fa fa-chevron-left"></i> Linux 常用命令 - find
               </a>
             
           </div>
@@ -400,10 +400,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/11/Linux 常用命令-1/" rel="prev" title="Linux 常用命令 - find">
-                Linux 常用命令 - find <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
