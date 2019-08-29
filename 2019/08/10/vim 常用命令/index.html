@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="大概一年多没有用过 vim 了，最近又开始用了之后发现竟然有些命令竟然记不清楚了，于是在一个闲来无事的周六下午，将以前杂乱无章的笔记整理如下。">
+<meta name="description" content="本文总结了vim基本的操作方式和一些常用的命令。">
 <meta name="keywords" content="note,linux,vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim 常用命令">
 <meta property="og:url" content="http://yoursite.com/2019/08/10/vim 常用命令/index.html">
 <meta property="og:site_name" content="Silicon Walker">
-<meta property="og:description" content="大概一年多没有用过 vim 了，最近又开始用了之后发现竟然有些命令竟然记不清楚了，于是在一个闲来无事的周六下午，将以前杂乱无章的笔记整理如下。">
+<meta property="og:description" content="本文总结了vim基本的操作方式和一些常用的命令。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-21T13:34:57.172Z">
+<meta property="og:updated_time" content="2019-08-29T14:23:57.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim 常用命令">
-<meta name="twitter:description" content="大概一年多没有用过 vim 了，最近又开始用了之后发现竟然有些命令竟然记不清楚了，于是在一个闲来无事的周六下午，将以前杂乱无章的笔记整理如下。">
+<meta name="twitter:description" content="本文总结了vim基本的操作方式和一些常用的命令。">
 
 
 
@@ -342,7 +342,7 @@
       
 
       
-        <p>大概一年多没有用过 vim 了，最近又开始用了之后发现竟然有些命令竟然记不清楚了，于是在一个闲来无事的周六下午，将以前杂乱无章的笔记整理如下。</p>
+        <p>本文总结了vim基本的操作方式和一些常用的命令。</p>
 <a id="more"></a>
 <h3 id="退出-vim-的-n-种方式"><a href="#退出-vim-的-n-种方式" class="headerlink" title="退出 vim 的 n 种方式"></a>退出 vim 的 n 种方式</h3><h4 id="不保存修改内容"><a href="#不保存修改内容" class="headerlink" title="不保存修改内容"></a>不保存修改内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:q&lt;enter&gt;</span><br><span class="line">:qa&lt;enter&gt;</span><br><span class="line">:q!&lt;enter&gt;</span><br><span class="line">:qa!&lt;enter&gt;</span><br><span class="line">Shift+z+q</span><br></pre></td></tr></table></figure>
 <h4 id="保存修改内容"><a href="#保存修改内容" class="headerlink" title="保存修改内容"></a>保存修改内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:wq&lt;enter&gt;</span><br><span class="line">:wqa&lt;enter&gt;</span><br><span class="line">Shift+z+z</span><br><span class="line">:x&lt;enter&gt;</span><br></pre></td></tr></table></figure>
@@ -380,6 +380,8 @@
 <li>vim会自动将perl脚本的执行结果替换perl脚本</li>
 </ol>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="快速在命令行插入单词"><a href="#快速在命令行插入单词" class="headerlink" title="快速在命令行插入单词"></a>快速在命令行插入单词</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Ctrl-r&gt;&lt;Ctrl-w&gt;  <span class="comment">## 将当前光标所在单词插入到命令行光标所在位置</span></span><br></pre></td></tr></table></figure>
+<h4 id="同步滚屏"><a href="#同步滚屏" class="headerlink" title="同步滚屏"></a>同步滚屏</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> scrollbind <span class="comment">## 所有要同步滚屏的分屏都要设置一次该命令</span></span><br><span class="line">:<span class="built_in">set</span> noscrollbind </span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> wrap           <span class="comment">## 当一行太长不能在屏幕上显示全时，换行显示</span></span><br><span class="line"><span class="built_in">set</span> nowrap         <span class="comment">## 不换行显示，此时可以水平滚屏</span></span><br><span class="line"><span class="built_in">set</span> scrollbind=hor <span class="comment">## 绑定左右同步滚屏</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> scroll=x      <span class="comment">## 使用Ctrl-D/Ctrl-U翻页时翻过的行数</span></span><br><span class="line"><span class="built_in">set</span> scrolloff=x   <span class="comment">## 从光标当前行到屏幕首行或到屏幕尾行的最小行数，如果该值很大，则光标总是位于屏幕中间一行</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看插件列表"><a href="#查看插件列表" class="headerlink" title="查看插件列表"></a>查看插件列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:scriptnames</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -414,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/18/bash 快捷键/" rel="next" title="Linux 命令行快捷键">
-                <i class="fa fa-chevron-left"></i> Linux 命令行快捷键
+              <a href="/2019/08/10/Linux 常用命令-find/" rel="next" title="Linux 常用命令 - find">
+                <i class="fa fa-chevron-left"></i> Linux 常用命令 - find
               </a>
             
           </div>
@@ -424,8 +426,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/10/Linux 常用命令-1/" rel="prev" title="Linux 常用命令 - find">
-                Linux 常用命令 - find <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/11/Linux 常用命令-grep/" rel="prev" title="Linux 常用命令 - grep">
+                Linux 常用命令 - grep <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +505,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -525,7 +527,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -558,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#退出-vim-的-n-种方式"><span class="nav-number">1.</span> <span class="nav-text">退出 vim 的 n 种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不保存修改内容"><span class="nav-number">1.1.</span> <span class="nav-text">不保存修改内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存修改内容"><span class="nav-number">1.2.</span> <span class="nav-text">保存修改内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#另存为其他文件"><span class="nav-number">1.3.</span> <span class="nav-text">另存为其他文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">2.</span> <span class="nav-text">快速移动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行首行尾跳转"><span class="nav-number">2.1.</span> <span class="nav-text">行首行尾跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#词首词尾跳转"><span class="nav-number">2.2.</span> <span class="nav-text">词首词尾跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行内跳转"><span class="nav-number">2.3.</span> <span class="nav-text">行内跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行间跳转"><span class="nav-number">2.4.</span> <span class="nav-text">行间跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位置标记"><span class="nav-number">2.5.</span> <span class="nav-text">位置标记</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速复制"><span class="nav-number">3.</span> <span class="nav-text">快速复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏录制"><span class="nav-number">4.</span> <span class="nav-text">宏录制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区"><span class="nav-number">5.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字操作"><span class="nav-number">6.</span> <span class="nav-text">数字操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式切换"><span class="nav-number">7.</span> <span class="nav-text">模式切换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-gt-insert"><span class="nav-number">7.1.</span> <span class="nav-text">normal -&gt; insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-gt-normal"><span class="nav-number">7.2.</span> <span class="nav-text">insert -&gt; normal</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ex-命令"><span class="nav-number">8.</span> <span class="nav-text">Ex 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-Ex-命令的历史"><span class="nav-number">8.1.</span> <span class="nav-text">关于 Ex 命令的历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进入Ex模式"><span class="nav-number">8.2.</span> <span class="nav-text">进入Ex模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用Ex命令格式"><span class="nav-number">8.3.</span> <span class="nav-text">常用Ex命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range的格式"><span class="nav-number">8.4.</span> <span class="nav-text">range的格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global命令"><span class="nav-number">9.</span> <span class="nav-text">global命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令格式"><span class="nav-number">9.1.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#global命令的例子"><span class="nav-number">9.2.</span> <span class="nav-text">global命令的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存会话"><span class="nav-number">10.</span> <span class="nav-text">保存会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行外部命令"><span class="nav-number">11.</span> <span class="nav-text">执行外部命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行shell命令"><span class="nav-number">11.1.</span> <span class="nav-text">执行shell命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行perl命令"><span class="nav-number">11.2.</span> <span class="nav-text">执行perl命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">12.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速在命令行插入单词"><span class="nav-number">12.1.</span> <span class="nav-text">快速在命令行插入单词</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#退出-vim-的-n-种方式"><span class="nav-number">1.</span> <span class="nav-text">退出 vim 的 n 种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不保存修改内容"><span class="nav-number">1.1.</span> <span class="nav-text">不保存修改内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存修改内容"><span class="nav-number">1.2.</span> <span class="nav-text">保存修改内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#另存为其他文件"><span class="nav-number">1.3.</span> <span class="nav-text">另存为其他文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">2.</span> <span class="nav-text">快速移动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行首行尾跳转"><span class="nav-number">2.1.</span> <span class="nav-text">行首行尾跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#词首词尾跳转"><span class="nav-number">2.2.</span> <span class="nav-text">词首词尾跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行内跳转"><span class="nav-number">2.3.</span> <span class="nav-text">行内跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行间跳转"><span class="nav-number">2.4.</span> <span class="nav-text">行间跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位置标记"><span class="nav-number">2.5.</span> <span class="nav-text">位置标记</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速复制"><span class="nav-number">3.</span> <span class="nav-text">快速复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏录制"><span class="nav-number">4.</span> <span class="nav-text">宏录制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区"><span class="nav-number">5.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字操作"><span class="nav-number">6.</span> <span class="nav-text">数字操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式切换"><span class="nav-number">7.</span> <span class="nav-text">模式切换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-gt-insert"><span class="nav-number">7.1.</span> <span class="nav-text">normal -&gt; insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-gt-normal"><span class="nav-number">7.2.</span> <span class="nav-text">insert -&gt; normal</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ex-命令"><span class="nav-number">8.</span> <span class="nav-text">Ex 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-Ex-命令的历史"><span class="nav-number">8.1.</span> <span class="nav-text">关于 Ex 命令的历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进入Ex模式"><span class="nav-number">8.2.</span> <span class="nav-text">进入Ex模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用Ex命令格式"><span class="nav-number">8.3.</span> <span class="nav-text">常用Ex命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range的格式"><span class="nav-number">8.4.</span> <span class="nav-text">range的格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global命令"><span class="nav-number">9.</span> <span class="nav-text">global命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令格式"><span class="nav-number">9.1.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#global命令的例子"><span class="nav-number">9.2.</span> <span class="nav-text">global命令的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存会话"><span class="nav-number">10.</span> <span class="nav-text">保存会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行外部命令"><span class="nav-number">11.</span> <span class="nav-text">执行外部命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行shell命令"><span class="nav-number">11.1.</span> <span class="nav-text">执行shell命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行perl命令"><span class="nav-number">11.2.</span> <span class="nav-text">执行perl命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">12.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速在命令行插入单词"><span class="nav-number">12.1.</span> <span class="nav-text">快速在命令行插入单词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步滚屏"><span class="nav-number">12.2.</span> <span class="nav-text">同步滚屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看插件列表"><span class="nav-number">12.3.</span> <span class="nav-text">查看插件列表</span></a></li></ol></li></ol></div>
             
 
           </div>
