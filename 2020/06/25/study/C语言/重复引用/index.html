@@ -1,5 +1,0 @@
-<p>头文件中使用 <code>#ifndef/#define/#endif</code> 防止该头文件被重复引用<br>头文件的结构一般是：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _NAME_OF_HEAD_FILE_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _NAME_OF_HEAD_FILE_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// content of head file</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<p>条件指示符#ifndef 的最主要目的是防止头文件的重复包含和编译。</p>
-<p>在c语言中，对同一个变量或者函数进行多次声明是不会报错的。所以如果h文件里只是进行了声明工作，即使不使用<code>#ifndef</code> 宏定义，一个c文件多次包含同一个h文件也不会报错。</p>
-<p>使用#ifndef可以避免下面这种错误：如果在h文件中定义了全局变量，一个c文件包含同一个h文件多次，如果不加#ifndef宏定义，会出现变量重复定义的错误；如果加了<code>#ifndef</code>，则不会出现这种错.</p>

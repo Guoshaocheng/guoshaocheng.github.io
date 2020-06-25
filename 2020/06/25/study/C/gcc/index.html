@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
+<meta name="description" content="GCC工具链通常所说的GCC是GUN Compiler Collection的简称，是Linux系统上常用的编译工具。GCC实质上不是一个单独的程序，而是多个程序的集合，因此通常称为GCC工具链。工具链软件包括GCC、C运行库、Binutils、GDB等。 BinutilsGNU Binary Utilities或binutils是一整套的编程语言工具程序，用来处理许多格式的目标文件。 编译过程预">
 <meta name="keywords" content="c语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C 数组">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/study/C语言/数组/index.html">
+<meta property="og:title" content="GCC 工具链">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/study/C/gcc/index.html">
 <meta property="og:site_name" content="Silicon Walker">
-<meta property="og:description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
+<meta property="og:description" content="GCC工具链通常所说的GCC是GUN Compiler Collection的简称，是Linux系统上常用的编译工具。GCC实质上不是一个单独的程序，而是多个程序的集合，因此通常称为GCC工具链。工具链软件包括GCC、C运行库、Binutils、GDB等。 BinutilsGNU Binary Utilities或binutils是一整套的编程语言工具程序，用来处理许多格式的目标文件。 编译过程预">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T06:44:03.089Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1574820431638.png">
+<meta property="og:updated_time" content="2020-06-25T06:45:34.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C 数组">
-<meta name="twitter:description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
+<meta name="twitter:title" content="GCC 工具链">
+<meta name="twitter:description" content="GCC工具链通常所说的GCC是GUN Compiler Collection的简称，是Linux系统上常用的编译工具。GCC实质上不是一个单独的程序，而是多个程序的集合，因此通常称为GCC工具链。工具链软件包括GCC、C运行库、Binutils、GDB等。 BinutilsGNU Binary Utilities或binutils是一整套的编程语言工具程序，用来处理许多格式的目标文件。 编译过程预">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1574820431638.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/C语言/数组/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/C/gcc/">
 
 
 
 
 
-  <title>C 数组 | Silicon Walker</title>
+  <title>GCC 工具链 | Silicon Walker</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/C语言/数组/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/C/gcc/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guo Shaocheng">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C 数组</h1>
+          <h1 class="post-title" itemprop="name headline">GCC 工具链</h1>
         
 
         <div class="post-meta">
@@ -342,45 +344,16 @@
       
 
       
-        <h2 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h2><p><code>str_arr</code> 只是C语言中的字符数组，不是C语言中的字符串。</p>
-<p>二者区别在于，字符数组不能使用C语言 <code>string.h</code> 提供的各种字符串函数。</p>
-<p><code>str</code> 是C语言中的字符串，区别在于其以 <code>\0</code> 或者<code>0</code> 结尾，这二者与 <code>&#39;0&#39;</code> 不同。</p>
-<ul>
-<li><code>0</code> 表示整数的零，int 类型，4个字节</li>
-<li><code>\0</code> 一定是1个字节的大小，是整数 0</li>
-<li><code>&#39;0&#39;</code> 表示字符0，对应ASCII码中的 0x30</li>
-</ul>
-<p>结尾的0：</p>
-<ul>
-<li>0 用于标识字符串的结尾位置，字符串操作函数中需要用到这个0；</li>
-<li>在计算字符串长度时(strlen函数)，不计入上述的 0 ；</li>
-<li>但是在内存中 0 还是要占据相应的位置，比如 <code>&quot;hello&quot;</code> 字符串长度为5，但是占据6个字节的内存空间；</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str_arr[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> str[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>,<span class="string">'\0'</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>“hello”</p>
-<ul>
-<li>用这个形式初始化的字符串会在末尾自动添加表示结尾的 0；</li>
-</ul>
-<p>数组形式和指针形式字符串的区别：</p>
-<ul>
-<li><p><code>char *str_ptr</code> 实际上隐式地含义是 <code>const char *str_ptr</code> ，即是一个常量。</p>
-</li>
-<li><p>指针 <code>str_ptr</code> 指向一个字符串常量，被存储在内存中的只读区域，不能被修改。</p>
-</li>
-<li><p>在编译时就已经初始化字符串的值，两个指向完全相同的字符串的指针指向同一个位置。</p>
-</li>
-<li><p><code>str_arr</code> 可以修改字符串的值。</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *str_ptr  = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">char</span> str_arr[] = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
-<p>char* 不一定是字符串：</p>
-<ul>
-<li>char* 指表示指向char类型的指针，可能是字符串，可能是单个字符；<ul>
-<li>类似于int*，表示指向单个int类型或者int类型数组的指针，并不一定表示int类型数组；</li>
-</ul>
-</li>
-<li>只有当 char* 指向的字符串以 0 结尾时，才能说他指向字符串；</li>
-</ul>
+        <h1 id="GCC工具链"><a href="#GCC工具链" class="headerlink" title="GCC工具链"></a>GCC工具链</h1><p>通常所说的GCC是GUN Compiler Collection的简称，是Linux系统上常用的编译工具。GCC实质上不是一个单独的程序，而是多个程序的集合，因此通常称为GCC工具链。工具链软件包括GCC、C运行库、Binutils、GDB等。</p>
+<h2 id="Binutils"><a href="#Binutils" class="headerlink" title="Binutils"></a>Binutils</h2><p><strong>GNU Binary Utilities</strong>或<strong>binutils</strong>是一整套的<a href="https://zh.wikipedia.org/wiki/程式語言" target="_blank" rel="noopener">编程语言</a>工具程序，用来处理许多格式的<a href="https://zh.wikipedia.org/wiki/目的檔" target="_blank" rel="noopener">目标文件</a>。</p>
+<h1 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h1><h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a><strong>预处理</strong></h2><p>对 <code>define</code> 和 <code>include</code>中的内容进行纯文本替换</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -E -o a.i a.c</span><br><span class="line">#<span class="meta"># cpp -o ...</span></span><br></pre></td></tr></table></figure>
+<h3 id="预编译指令"><a href="#预编译指令" class="headerlink" title="预编译指令"></a>预编译指令</h3><p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1574820431638.png" alt="1574820431638"></p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a><strong>编译</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -S -o a.s a.c/a.i</span><br></pre></td></tr></table></figure>
+<h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a><strong>汇编</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c -o a.o a.s/a.i/a.c</span><br><span class="line">#<span class="meta"># as -o ...</span></span><br></pre></td></tr></table></figure>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a><strong>链接</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o a a<span class="number">.0</span>/a.s/a.i/a.c</span><br></pre></td></tr></table></figure>
+<p>默认生成 <code>a.out</code> 和上述各个过程的中间文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc a.c --save-temps</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -411,8 +384,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/25/study/C语言/指针/" rel="next" title="C 语言指针">
-                <i class="fa fa-chevron-left"></i> C 语言指针
+              <a href="/2020/06/25/study/Linux/python/" rel="next" title="python 语法">
+                <i class="fa fa-chevron-left"></i> python 语法
               </a>
             
           </div>
@@ -421,8 +394,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/25/study/C语言/记录/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/25/study/C/全局变量/" rel="prev" title="C 语言全局变量">
+                C 语言全局变量 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,7 +473,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -555,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符数组"><span class="nav-number">1.</span> <span class="nav-text">字符数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC工具链"><span class="nav-number">1.</span> <span class="nav-text">GCC工具链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Binutils"><span class="nav-number">1.1.</span> <span class="nav-text">Binutils</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译过程"><span class="nav-number">2.</span> <span class="nav-text">编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预处理"><span class="nav-number">2.1.</span> <span class="nav-text">预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预编译指令"><span class="nav-number">2.1.1.</span> <span class="nav-text">预编译指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译"><span class="nav-number">2.2.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编"><span class="nav-number">2.3.</span> <span class="nav-text">汇编</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">2.4.</span> <span class="nav-text">链接</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="全局变量初始值初始化 如果没有对全局变量进行初始化，在编译时刻会自动得到0值。  指针会得到NULL值。  本地变量不会自动初始化为默认值。   全局变量的初始化发生在main函数之前，所以不能用不确定的值初始化全局变量  作用域 局部变量的优先级高于全局变量  静态本地变量相同 静态本地变量实际上是特殊的全局变量，生存期为全局 二者位于内存中相同的内存区域，都是存储在静态存储区，比如片上SRAM">
+<meta name="description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
 <meta name="keywords" content="c语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C 语言全局变量">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/study/C语言/全局变量/index.html">
+<meta property="og:title" content="C 数组">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/study/C/数组/index.html">
 <meta property="og:site_name" content="Silicon Walker">
-<meta property="og:description" content="全局变量初始值初始化 如果没有对全局变量进行初始化，在编译时刻会自动得到0值。  指针会得到NULL值。  本地变量不会自动初始化为默认值。   全局变量的初始化发生在main函数之前，所以不能用不确定的值初始化全局变量  作用域 局部变量的优先级高于全局变量  静态本地变量相同 静态本地变量实际上是特殊的全局变量，生存期为全局 二者位于内存中相同的内存区域，都是存储在静态存储区，比如片上SRAM">
+<meta property="og:description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T06:43:44.547Z">
+<meta property="og:updated_time" content="2020-06-25T06:44:03.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C 语言全局变量">
-<meta name="twitter:description" content="全局变量初始值初始化 如果没有对全局变量进行初始化，在编译时刻会自动得到0值。  指针会得到NULL值。  本地变量不会自动初始化为默认值。   全局变量的初始化发生在main函数之前，所以不能用不确定的值初始化全局变量  作用域 局部变量的优先级高于全局变量  静态本地变量相同 静态本地变量实际上是特殊的全局变量，生存期为全局 二者位于内存中相同的内存区域，都是存储在静态存储区，比如片上SRAM">
+<meta name="twitter:title" content="C 数组">
+<meta name="twitter:description" content="字符数组str_arr 只是C语言中的字符数组，不是C语言中的字符串。 二者区别在于，字符数组不能使用C语言 string.h 提供的各种字符串函数。 str 是C语言中的字符串，区别在于其以 \0 或者0 结尾，这二者与 &amp;#39;0&amp;#39; 不同。  0 表示整数的零，int 类型，4个字节 \0 一定是1个字节的大小，是整数 0 &amp;#39;0&amp;#39; 表示字符0，对应ASCII码中的 0">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/C语言/全局变量/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/C/数组/">
 
 
 
 
 
-  <title>C 语言全局变量 | Silicon Walker</title>
+  <title>C 数组 | Silicon Walker</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/C语言/全局变量/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/C/数组/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guo Shaocheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C 语言全局变量</h1>
+          <h1 class="post-title" itemprop="name headline">C 数组</h1>
         
 
         <div class="post-meta">
@@ -342,45 +342,45 @@
       
 
       
-        <h2 id="全局变量初始值"><a href="#全局变量初始值" class="headerlink" title="全局变量初始值"></a>全局变量初始值</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
-<li><p>如果没有对全局变量进行初始化，在编译时刻会自动得到0值。</p>
-</li>
-<li><p>指针会得到NULL值。</p>
+        <h2 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h2><p><code>str_arr</code> 只是C语言中的字符数组，不是C语言中的字符串。</p>
+<p>二者区别在于，字符数组不能使用C语言 <code>string.h</code> 提供的各种字符串函数。</p>
+<p><code>str</code> 是C语言中的字符串，区别在于其以 <code>\0</code> 或者<code>0</code> 结尾，这二者与 <code>&#39;0&#39;</code> 不同。</p>
 <ul>
-<li>本地变量不会自动初始化为默认值。</li>
+<li><code>0</code> 表示整数的零，int 类型，4个字节</li>
+<li><code>\0</code> 一定是1个字节的大小，是整数 0</li>
+<li><code>&#39;0&#39;</code> 表示字符0，对应ASCII码中的 0x30</li>
 </ul>
-</li>
-<li>全局变量的初始化发生在main函数之前，所以不能用不确定的值初始化全局变量</li>
-</ul>
-<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><ul>
-<li>局部变量的优先级高于全局变量</li>
-</ul>
-<h2 id="静态本地变量"><a href="#静态本地变量" class="headerlink" title="静态本地变量"></a>静态本地变量</h2><h3 id="相同"><a href="#相同" class="headerlink" title="相同"></a>相同</h3><ul>
-<li>静态本地变量实际上是特殊的全局变量，生存期为全局</li>
-<li>二者位于内存中相同的内存区域，都是存储在静态存储区，比如片上SRAM中；</li>
-<li>二者在编译时就已经确定了地址和值（如果不设置初值则系统默认分配为0），因此在运行时不消耗时间；</li>
-</ul>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
-<li>唯一区别在于：静态本地变量的作用域只局限于声明的函数内部</li>
-</ul>
-<h3 id="避免"><a href="#避免" class="headerlink" title="避免"></a>避免</h3><p>尽量避免使用全局变量和静态本地变量在函数之间传递参数和结果</p>
+<p>结尾的0：</p>
 <ul>
-<li>EE出身的程序员喜欢这样用</li>
-<li>因为历史原因，汇编程序中没有本地变量，只有全局变量</li>
-<li>这样在多个线程的时候好像会出问题，丰田汽车的案子？？</li>
+<li>0 用于标识字符串的结尾位置，字符串操作函数中需要用到这个0；</li>
+<li>在计算字符串长度时(strlen函数)，不计入上述的 0 ；</li>
+<li>但是在内存中 0 还是要占据相应的位置，比如 <code>&quot;hello&quot;</code> 字符串长度为5，但是占据6个字节的内存空间；</li>
 </ul>
-<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><ol>
-<li>局部变量在栈上分配空间，如果不进行初始化，则变量的值是内存中原有的值；</li>
-<li>局部变量只有在函数每次被调用时才在栈上分配空间；</li>
-</ol>
-<h2 id="返回指针的函数"><a href="#返回指针的函数" class="headerlink" title="返回指针的函数"></a>返回指针的函数</h2><ol>
-<li>返回本地变量的地址是危险的<ul>
-<li>因为本地变量作用期结束之后，本地变量所在地址后被回收，并分配给其他本地变量；</li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str_arr[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;</span><br><span class="line"><span class="keyword">char</span> str[] = &#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>,<span class="string">'\0'</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>“hello”</p>
+<ul>
+<li>用这个形式初始化的字符串会在末尾自动添加表示结尾的 0；</li>
+</ul>
+<p>数组形式和指针形式字符串的区别：</p>
+<ul>
+<li><p><code>char *str_ptr</code> 实际上隐式地含义是 <code>const char *str_ptr</code> ，即是一个常量。</p>
+</li>
+<li><p>指针 <code>str_ptr</code> 指向一个字符串常量，被存储在内存中的只读区域，不能被修改。</p>
+</li>
+<li><p>在编译时就已经初始化字符串的值，两个指向完全相同的字符串的指针指向同一个位置。</p>
+</li>
+<li><p><code>str_arr</code> 可以修改字符串的值。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *str_ptr  = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">char</span> str_arr[] = <span class="string">"hello"</span>;</span><br></pre></td></tr></table></figure>
+<p>char* 不一定是字符串：</p>
+<ul>
+<li>char* 指表示指向char类型的指针，可能是字符串，可能是单个字符；<ul>
+<li>类似于int*，表示指向单个int类型或者int类型数组的指针，并不一定表示int类型数组；</li>
 </ul>
 </li>
-<li>返回全局变量或者静态本地变量的地址是安全的</li>
-<li>最好的做法是返回传入的指针</li>
-</ol>
+<li>只有当 char* 指向的字符串以 0 结尾时，才能说他指向字符串；</li>
+</ul>
 
       
     </div>
@@ -411,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/25/study/C语言/gcc/" rel="next" title="GCC 工具链">
-                <i class="fa fa-chevron-left"></i> GCC 工具链
+              <a href="/2020/06/25/study/C/指针/" rel="next" title="C 语言指针">
+                <i class="fa fa-chevron-left"></i> C 语言指针
               </a>
             
           </div>
@@ -420,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/25/study/C语言/函数返回数组/" rel="prev" title="函数返回数组">
-                函数返回数组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -555,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量初始值"><span class="nav-number">1.</span> <span class="nav-text">全局变量初始值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">1.2.</span> <span class="nav-text">作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态本地变量"><span class="nav-number">2.</span> <span class="nav-text">静态本地变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同"><span class="nav-number">2.1.</span> <span class="nav-text">相同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">2.2.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免"><span class="nav-number">2.3.</span> <span class="nav-text">避免</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量"><span class="nav-number">3.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回指针的函数"><span class="nav-number">4.</span> <span class="nav-text">返回指针的函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符数组"><span class="nav-number">1.</span> <span class="nav-text">字符数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a></li></ol></div>
             
 
           </div>
