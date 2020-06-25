@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,sed,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。本文是系列的第三篇，记录 sed 命令的常用用法。">
+<meta name="keywords" content="linux,sed">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sed 语法">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/study/Linux/sed/index.html">
+<meta property="og:site_name" content="Silicon Walker">
+<meta property="og:description" content="该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。本文是系列的第三篇，记录 sed 命令的常用用法。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-25T06:08:06.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sed 语法">
+<meta name="twitter:description" content="该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。本文是系列的第三篇，记录 sed 命令的常用用法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/26/study/Linux/sed/">
+
+
+
+
+
+  <title>sed 语法 | Silicon Walker</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silicon Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/study/Linux/sed/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silicon Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sed 语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-26T00:00:00+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>该系列文章用于记录 Linux 系统下常用的命令，包括用于文件查找 find 命令，以及文本处理的三剑客 - grep, sed, awk。<br>本文是系列的第三篇，记录 sed 命令的常用用法。</p>
+<a id="more"></a>
+<h2 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h2><h3 id="n-选项"><a href="#n-选项" class="headerlink" title="-n 选项"></a>-n 选项</h3><p>默认情况下，sed会打印处理之后的模式空间中内容全部打印出来；如果指定了 -n 选项则只打印匹配行修改之后的结果。</p>
+<p>在使用 d 命令时，如果加上 -n 选项则不会打印任何内容，因为匹配行全部都被删除了，所以匹配行处理之后的内容是空。</p>
+<p><code>CAUTION:</code> 在使用 d 命令时，-n 选项与 -i 选项不能同时使用，否则会情况文件。</p>
+<h3 id="i-选项"><a href="#i-选项" class="headerlink" title="-i 选项"></a>-i 选项</h3><p>默认情况下，sed只是将经过处理之后的模式空间中的内容打印出来，并没有修改原文件的内容。</p>
+<p>加上 -i 选项后，相当于用经过处理之后的模式空间中的内容替换原文件的内容。</p>
+<h3 id="e-选项"><a href="#e-选项" class="headerlink" title="-e 选项"></a>-e 选项</h3><p>每个 -e 可以指定一条子命令，如果只有一条子命令可以不使用 -e 选项。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'s/old/new/'</span> -e <span class="string">'s/small/large/'</span> file</span><br></pre></td></tr></table></figure>
+<p>或者可以使用分号指定多个子命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/new/; s/small/large/'</span> file</span><br></pre></td></tr></table></figure>
+<h3 id="f-选项"><a href="#f-选项" class="headerlink" title="-f 选项"></a>-f 选项</h3><p>当子命令过多时，无论使用 -e 选项或者分号都会使得命令过长，此时可以通过使用 -f 选项指定 sed 脚本文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -f scr.sed</span><br></pre></td></tr></table></figure>
+<p><code>scr.sed</code>脚本的内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s/old/new/</span><br><span class="line">s/small/large/</span><br></pre></td></tr></table></figure>
+<h3 id="r-选项"><a href="#r-选项" class="headerlink" title="-r 选项"></a>-r 选项</h3><p>默认情况下sed只支持基本的正则表达式，-r 选项使sed支持扩展的正则表达式。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="s命令"><a href="#s命令" class="headerlink" title="s命令"></a>s命令</h3><h4 id="基本替换格式"><a href="#基本替换格式" class="headerlink" title="基本替换格式"></a>基本替换格式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/new/'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="字符中包含单引号"><a href="#字符中包含单引号" class="headerlink" title="字符中包含单引号"></a>字符中包含单引号</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">"s/old's/new's/"</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="在每一行行首添加内容"><a href="#在每一行行首添加内容" class="headerlink" title="在每一行行首添加内容"></a>在每一行行首添加内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/^/## /'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="在每一行行尾添加内容"><a href="#在每一行行尾添加内容" class="headerlink" title="在每一行行尾添加内容"></a>在每一行行尾添加内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/$/ --- /'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="只替换第3行内容"><a href="#只替换第3行内容" class="headerlink" title="只替换第3行内容"></a>只替换第3行内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'3s/old/new/'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="只替换第3行到第6行的内容"><a href="#只替换第3行到第6行的内容" class="headerlink" title="只替换第3行到第6行的内容"></a>只替换第3行到第6行的内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'3,6s/old/new/'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="只替换每行的第2个old"><a href="#只替换每行的第2个old" class="headerlink" title="只替换每行的第2个old"></a>只替换每行的第2个old</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/new/2'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="只替换每行的第3个以后的old"><a href="#只替换每行的第3个以后的old" class="headerlink" title="只替换每行的第3个以后的old"></a>只替换每行的第3个以后的old</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/new/3g'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="只替换每行所有的old"><a href="#只替换每行所有的old" class="headerlink" title="只替换每行所有的old"></a>只替换每行所有的old</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/new/g'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="替换多个模式"><a href="#替换多个模式" class="headerlink" title="替换多个模式"></a>替换多个模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'1,3s/old/new/g; 3,$s/one/two/g'</span> file</span><br><span class="line">等价于</span><br><span class="line">sed -e <span class="string">'1,3s/old/new/g'</span> -e <span class="string">'3,$s/one/two/g'</span> file</span><br></pre></td></tr></table></figure>
+<h4 id="模式捕获与引用"><a href="#模式捕获与引用" class="headerlink" title="模式捕获与引用"></a>模式捕获与引用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/old/&lt;&amp;&gt;/g'</span> file  <span class="comment">## 将所有的old全部替换为&lt;old&gt;</span></span><br><span class="line">sed <span class="string">'s/(old) older (oldest)/\1 -&gt; \2/g'</span> file  <span class="comment">## 第一个括号的捕获使用\1引用，第二个括号的捕获使用\2引用，</span></span><br></pre></td></tr></table></figure>
+<h3 id="i命令"><a href="#i命令" class="headerlink" title="i命令"></a>i命令</h3><p>在匹配行前插入一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'1 i add text at begin'</span> file</span><br></pre></td></tr></table></figure>
+<p>如果不指定范围，则默认作用于每一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'i====='</span> file  <span class="comment">## 将在每一行前添加=====</span></span><br></pre></td></tr></table></figure>
+<h3 id="a命令"><a href="#a命令" class="headerlink" title="a命令"></a>a命令</h3><p>在匹配行后插入一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'$ a add text at end'</span> file</span><br></pre></td></tr></table></figure>
+<p>如果不指定范围，则默认作用于每一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'a====='</span> file  <span class="comment">## 将在每一行后添加=====</span></span><br></pre></td></tr></table></figure>
+<h3 id="c命令"><a href="#c命令" class="headerlink" title="c命令"></a>c命令</h3><p>替换匹配行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'2 c new line, replace line 2'</span> file</span><br></pre></td></tr></table></figure>
+<p>如果不指定范围，则默认作用于每一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'c====='</span> file  <span class="comment">## 将将每一行替换为=====</span></span><br></pre></td></tr></table></figure>
+<h3 id="d命令"><a href="#d命令" class="headerlink" title="d命令"></a>d命令</h3><p>删除匹配行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'3d'</span> file</span><br></pre></td></tr></table></figure>
+<p>如果不指定范围，则默认作用于每一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'d'</span> file  <span class="comment">## 将删除所有行</span></span><br></pre></td></tr></table></figure>
+<h3 id="p命令"><a href="#p命令" class="headerlink" title="p命令"></a>p命令</h3><p>打印匹配行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'p'</span> file -n  <span class="comment">## -n可以让sed只打印处理的行</span></span><br></pre></td></tr></table></figure>
+<p>如果不指定范围，则默认作用于每一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'p'</span> file  </span><br><span class="line"><span class="comment">## 将每行打印两次，由于sed默认会打印模式空间中处理后的内容，而p命令会打印匹配的内容</span></span><br><span class="line"><span class="comment">## 在此例中，模式空间中内容未作任何处理，而p命令不指定范围默认全部匹配，因此会将每一行打印两次</span></span><br></pre></td></tr></table></figure>
+<h3 id="N命令"><a href="#N命令" class="headerlink" title="N命令"></a>N命令</h3><p>将文本中的偶数行纳入上一行，即sed会一次读入两行进行处理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'N; s/old/new/'</span> file <span class="comment">## 只对连续两行的第一个old进行替换，忽略其余old</span></span><br></pre></td></tr></table></figure>
+<h3 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h3><p>range格式对上述<code>s, i, a, c, d, p</code>命令通用，其中具体的行号都可以换为模式匹配，下面以p命令为例进行说明。</p>
+<h4 id="数字定址单行"><a href="#数字定址单行" class="headerlink" title="数字定址单行"></a>数字定址单行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'2p'</span>       file -n    <span class="comment">## 打印第2行</span></span><br></pre></td></tr></table></figure>
+<h4 id="模式匹配单行"><a href="#模式匹配单行" class="headerlink" title="模式匹配单行"></a>模式匹配单行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'/fish/p'</span>       file -n    <span class="comment">## 打印匹配fish的行</span></span><br></pre></td></tr></table></figure>
+<h4 id="从模式匹配到模式匹配"><a href="#从模式匹配到模式匹配" class="headerlink" title="从模式匹配到模式匹配"></a>从模式匹配到模式匹配</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'/fish/,/dog/p'</span> file -n    <span class="comment">## 从匹配fish的行，到匹配dog的行（如果存在多对匹配，则将全部打印）</span></span><br></pre></td></tr></table></figure>
+<h4 id="从数字定址到模式匹配"><a href="#从数字定址到模式匹配" class="headerlink" title="从数字定址到模式匹配"></a>从数字定址到模式匹配</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'1,/fish/p'</span>     file -n    <span class="comment">## 从第一行到匹配fish的行</span></span><br></pre></td></tr></table></figure>
+<h4 id="从模式匹配到数字定址"><a href="#从模式匹配到数字定址" class="headerlink" title="从模式匹配到数字定址"></a>从模式匹配到数字定址</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'/fish/,$p'</span>     file -n    <span class="comment">## 从匹配fish的行到最后一行</span></span><br></pre></td></tr></table></figure>
+<h4 id="从模式匹配到相对数字定址"><a href="#从模式匹配到相对数字定址" class="headerlink" title="从模式匹配到相对数字定址"></a>从模式匹配到相对数字定址</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'/fish/,+3p'</span>    file -n    <span class="comment">## 从匹配fish的行到后面三行（一共4行）</span></span><br></pre></td></tr></table></figure>
+<h4 id="复杂的数字定址"><a href="#复杂的数字定址" class="headerlink" title="复杂的数字定址"></a>复杂的数字定址</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'4, ~3p'</span> file -n           <span class="comment">## 从第4行开始，到下一个3的倍数之间的行，在此例中为从第4行到第6行</span></span><br><span class="line">sed <span class="string">'4~3p'</span> file -n             <span class="comment">## 从第4行开始，每隔三行匹配一行，在此例中，匹配行为4，7，10，13…………</span></span><br></pre></td></tr></table></figure>
+<h4 id="地址反转"><a href="#地址反转" class="headerlink" title="地址反转"></a>地址反转</h4><p>如果address range后有<code>!</code>，则表示address range表示的行不执行后面的命令，即文本中不匹配address range的行执行后续的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'1,/fish/!d'</span> file <span class="comment">## 保留从第一行到匹配fish行的内容，删除其余行</span></span><br></pre></td></tr></table></figure>
+<h3 id="命令嵌套"><a href="#命令嵌套" class="headerlink" title="命令嵌套"></a>命令嵌套</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'3,6 &#123;/dog/d&#125;'</span> file              <span class="comment">## 删除3到6行之间的dog</span></span><br><span class="line">sed <span class="string">'3,6 &#123;/dog/&#123;/fish/d&#125;&#125;'</span>           <span class="comment">## 在3到6行之间，先选择匹配dog的行，删除其中匹配fish的行</span></span><br><span class="line">sed <span class="string">'3,6 &#123;/dog/d; s/old/new/g&#125;'</span> file <span class="comment">## 在3到6行，删除匹配dog的行，另外将old替换为new</span></span><br><span class="line">sed <span class="string">'/macrocells/ &#123;s=^=// =&#125;'</span> * -n</span><br></pre></td></tr></table></figure>
+<h3 id="Pattern-Space-amp-Hold-Space"><a href="#Pattern-Space-amp-Hold-Space" class="headerlink" title="Pattern Space &amp; Hold Space"></a>Pattern Space &amp; Hold Space</h3><p>pattern space指当前正在处理的行，一般是文本中的一行，当使用<code>N</code>命令时，pattern space中包含文本中的两行。</p>
+<p>hold space可用于保持sed处理的中间结果，完成一些比较复杂的文本处理任务。如果不做任何操作则为空。</p>
+<p><code>g</code>命令：hold space 的内容替换 pattern space 的内容</p>
+<p><code>G</code>命令：hold space 的内容追加到 pattern space 的内容之后</p>
+<p><code>h</code>命令：pattern space 的内容替换 hold space 的内容</p>
+<p><code>H</code>命令：pattern space 的内容追加到 hold space 的内容之后</p>
+<p><code>x</code>命令：交换pattern space和hold space 的内容</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g</td>
+<td>hold    &gt;  pattern</td>
+</tr>
+<tr>
+<td>G</td>
+<td>hold    &gt;&gt; pattern</td>
+</tr>
+<tr>
+<td>h</td>
+<td>pattern &gt;  hold</td>
+</tr>
+<tr>
+<td>H</td>
+<td>pattern &gt;&gt; hold</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'H; g'</span> file</span><br><span class="line"><span class="comment">## 用法太高级，等用到再说吧。</span></span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="指定行首-行尾添加内容"><a href="#指定行首-行尾添加内容" class="headerlink" title="指定行首/行尾添加内容"></a>指定行首/行尾添加内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'/match_pattern/&#123;s/^/ADDED_TEXT/&#125;'</span> file</span><br></pre></td></tr></table></figure>
+<h3 id="替换指定行内容"><a href="#替换指定行内容" class="headerlink" title="替换指定行内容"></a>替换指定行内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 匹配某行</span></span><br><span class="line">sed <span class="string">'/match_pattern/ c content of new line'</span> file</span><br><span class="line"></span><br><span class="line"><span class="comment">## 使用行号</span></span><br><span class="line">sed <span class="string">'1 c content of new line'</span> file</span><br><span class="line"><span class="comment">## $表示最后一行的行号</span></span><br><span class="line">sed <span class="string">'$ c content of new line'</span> file</span><br><span class="line"></span><br><span class="line"><span class="comment">## 将 c 替换为 i或a 分别表示在行前或行后新加一行</span></span><br></pre></td></tr></table></figure>
+<h3 id="注释一段代码"><a href="#注释一段代码" class="headerlink" title="注释一段代码"></a>注释一段代码</h3><p>注释掉 model 中的 spcify 块</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e '/^specify/i /*' -e '/^endspecify/a */' USEO_H.v</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://coolshell.cn/articles/9104.html" target="_blank" rel="noopener">CoolShell-SED 简明教程</a></p>
+<p><a href="https://www.cnblogs.com/liwei0526vip/p/5644163.html" target="_blank" rel="noopener">sed入门详解教程</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/sed/" rel="tag"><i class="fa fa-tag"></i> sed</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/study/Linux/perl/" rel="next" title="perl 语法">
+                <i class="fa fa-chevron-left"></i> perl 语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/25/study/Linux/shell/" rel="prev" title="shell 相关">
+                shell 相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Shaocheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用选项"><span class="nav-number">1.</span> <span class="nav-text">常用选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#n-选项"><span class="nav-number">1.1.</span> <span class="nav-text">-n 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-选项"><span class="nav-number">1.2.</span> <span class="nav-text">-i 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-选项"><span class="nav-number">1.3.</span> <span class="nav-text">-e 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f-选项"><span class="nav-number">1.4.</span> <span class="nav-text">-f 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-选项"><span class="nav-number">1.5.</span> <span class="nav-text">-r 选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#s命令"><span class="nav-number">2.1.</span> <span class="nav-text">s命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本替换格式"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本替换格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符中包含单引号"><span class="nav-number">2.1.2.</span> <span class="nav-text">字符中包含单引号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在每一行行首添加内容"><span class="nav-number">2.1.3.</span> <span class="nav-text">在每一行行首添加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在每一行行尾添加内容"><span class="nav-number">2.1.4.</span> <span class="nav-text">在每一行行尾添加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只替换第3行内容"><span class="nav-number">2.1.5.</span> <span class="nav-text">只替换第3行内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只替换第3行到第6行的内容"><span class="nav-number">2.1.6.</span> <span class="nav-text">只替换第3行到第6行的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只替换每行的第2个old"><span class="nav-number">2.1.7.</span> <span class="nav-text">只替换每行的第2个old</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只替换每行的第3个以后的old"><span class="nav-number">2.1.8.</span> <span class="nav-text">只替换每行的第3个以后的old</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只替换每行所有的old"><span class="nav-number">2.1.9.</span> <span class="nav-text">只替换每行所有的old</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换多个模式"><span class="nav-number">2.1.10.</span> <span class="nav-text">替换多个模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式捕获与引用"><span class="nav-number">2.1.11.</span> <span class="nav-text">模式捕获与引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i命令"><span class="nav-number">2.2.</span> <span class="nav-text">i命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a命令"><span class="nav-number">2.3.</span> <span class="nav-text">a命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c命令"><span class="nav-number">2.4.</span> <span class="nav-text">c命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d命令"><span class="nav-number">2.5.</span> <span class="nav-text">d命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p命令"><span class="nav-number">2.6.</span> <span class="nav-text">p命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N命令"><span class="nav-number">2.7.</span> <span class="nav-text">N命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地址"><span class="nav-number">2.8.</span> <span class="nav-text">地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字定址单行"><span class="nav-number">2.8.1.</span> <span class="nav-text">数字定址单行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式匹配单行"><span class="nav-number">2.8.2.</span> <span class="nav-text">模式匹配单行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从模式匹配到模式匹配"><span class="nav-number">2.8.3.</span> <span class="nav-text">从模式匹配到模式匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从数字定址到模式匹配"><span class="nav-number">2.8.4.</span> <span class="nav-text">从数字定址到模式匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从模式匹配到数字定址"><span class="nav-number">2.8.5.</span> <span class="nav-text">从模式匹配到数字定址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从模式匹配到相对数字定址"><span class="nav-number">2.8.6.</span> <span class="nav-text">从模式匹配到相对数字定址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂的数字定址"><span class="nav-number">2.8.7.</span> <span class="nav-text">复杂的数字定址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址反转"><span class="nav-number">2.8.8.</span> <span class="nav-text">地址反转</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令嵌套"><span class="nav-number">2.9.</span> <span class="nav-text">命令嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pattern-Space-amp-Hold-Space"><span class="nav-number">2.10.</span> <span class="nav-text">Pattern Space &amp; Hold Space</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指定行首-行尾添加内容"><span class="nav-number">3.1.</span> <span class="nav-text">指定行首/行尾添加内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换指定行内容"><span class="nav-number">3.2.</span> <span class="nav-text">替换指定行内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释一段代码"><span class="nav-number">3.3.</span> <span class="nav-text">注释一段代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Shaocheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

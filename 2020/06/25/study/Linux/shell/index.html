@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,shell,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="bjobs/bkill12bjobs -hbkill -h 设置 shell 为 vi/emacs 模式bash 下的设置12345set -o        ## 查看当前的设置 set -o vi     ## 设置为 vi 模式set -o emacs  ## 设置为 emacs 模式## 以下所有的快捷键都是在 emacs 模式下的操作## vi 模式下的操作与 vim 编辑器操作相同 c">
+<meta name="keywords" content="linux,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 相关">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/study/Linux/shell/index.html">
+<meta property="og:site_name" content="Silicon Walker">
+<meta property="og:description" content="bjobs/bkill12bjobs -hbkill -h 设置 shell 为 vi/emacs 模式bash 下的设置12345set -o        ## 查看当前的设置 set -o vi     ## 设置为 vi 模式set -o emacs  ## 设置为 emacs 模式## 以下所有的快捷键都是在 emacs 模式下的操作## vi 模式下的操作与 vim 编辑器操作相同 c">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/06/25/study/_resources/ca23591dd5964b7c89db0280bf613b27.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1589781183714.png">
+<meta property="og:updated_time" content="2020-06-25T06:50:10.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell 相关">
+<meta name="twitter:description" content="bjobs/bkill12bjobs -hbkill -h 设置 shell 为 vi/emacs 模式bash 下的设置12345set -o        ## 查看当前的设置 set -o vi     ## 设置为 vi 模式set -o emacs  ## 设置为 emacs 模式## 以下所有的快捷键都是在 emacs 模式下的操作## vi 模式下的操作与 vim 编辑器操作相同 c">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/25/study/_resources/ca23591dd5964b7c89db0280bf613b27.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/Linux/shell/">
+
+
+
+
+
+  <title>shell 相关 | Silicon Walker</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silicon Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/Linux/shell/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silicon Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell 相关</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-25T00:00:00+08:00">
+                2020-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="bjobs-bkill"><a href="#bjobs-bkill" class="headerlink" title="bjobs/bkill"></a>bjobs/bkill</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bjobs -h</span><br><span class="line">bkill -h</span><br></pre></td></tr></table></figure>
+<h2 id="设置-shell-为-vi-emacs-模式"><a href="#设置-shell-为-vi-emacs-模式" class="headerlink" title="设置 shell 为 vi/emacs 模式"></a>设置 shell 为 vi/emacs 模式</h2><h3 id="bash-下的设置"><a href="#bash-下的设置" class="headerlink" title="bash 下的设置"></a>bash 下的设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o        <span class="comment">## 查看当前的设置 </span></span><br><span class="line"><span class="built_in">set</span> -o vi     <span class="comment">## 设置为 vi 模式</span></span><br><span class="line"><span class="built_in">set</span> -o emacs  <span class="comment">## 设置为 emacs 模式</span></span><br><span class="line"><span class="comment">## 以下所有的快捷键都是在 emacs 模式下的操作</span></span><br><span class="line"><span class="comment">## vi 模式下的操作与 vim 编辑器操作相同</span></span><br></pre></td></tr></table></figure>
+<h3 id="cshell-下的设置"><a href="#cshell-下的设置" class="headerlink" title="cshell 下的设置"></a>cshell 下的设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bindkey -a    ## 查看当前所有的bindkey的设置</span><br><span class="line">bindkey -v    ## 设置命令行为vi模式</span><br><span class="line">bindkey -e    ## 设置命令行为emacs模式</span><br></pre></td></tr></table></figure>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>基本原则：与 Ctrl 有关的组合键作用于单个<code>字符</code>，与 Alt 有关的组合键作用于单个 <code>单词</code>。</p>
+<h3 id="快速移动"><a href="#快速移动" class="headerlink" title="快速移动"></a>快速移动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Ctrl<span class="_">-a</span>  <span class="comment">## 光标移动到行首</span></span><br><span class="line">Ctrl<span class="_">-e</span>  <span class="comment">## 光标移动到行尾</span></span><br><span class="line"></span><br><span class="line">Ctrl<span class="_">-f</span>  <span class="comment">## 光标向右移动一个字符</span></span><br><span class="line">Alt<span class="_">-f</span>   <span class="comment">## 光标向右移动一个单词</span></span><br><span class="line">Ctrl-b  <span class="comment">## 光标向左移动一个字符</span></span><br><span class="line">Alt-b   <span class="comment">## 光标向左移动一个单词</span></span><br><span class="line"></span><br><span class="line">Ctrl-xx <span class="comment">## 在光标在当前位置与行首之前来回切换</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除字符"><a href="#删除字符" class="headerlink" title="删除字符"></a>删除字符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Ctrl-h         <span class="comment">## 向左删除一个字符，相当于 Backspace</span></span><br><span class="line">Ctrl<span class="_">-d</span>         <span class="comment">## 向右删除一个字符</span></span><br><span class="line"></span><br><span class="line">Alt-backspace  <span class="comment">## 删除从当前位置到当前词首的所有内容</span></span><br><span class="line">ctrl-w         <span class="comment">## 删除从当前位置到当前词首的所有内容(分隔符不同？)</span></span><br><span class="line">Alt<span class="_">-d</span>          <span class="comment">## 删除从当前位置到当前词尾的所有内容</span></span><br><span class="line"></span><br><span class="line">Ctrl-k         <span class="comment">## 删除当前光标右边所有字符</span></span><br><span class="line">Ctrl-u         <span class="comment">## 清空整行所有字符</span></span><br><span class="line"></span><br><span class="line">Ctrl-y         <span class="comment">## 粘贴上次删除的字符</span></span><br></pre></td></tr></table></figure>
+<h3 id="改变字符位置"><a href="#改变字符位置" class="headerlink" title="改变字符位置"></a>改变字符位置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ctrl-t  <span class="comment">## 交换当前字母和其前一个字母</span></span><br><span class="line">ALt-t   <span class="comment">## 交换光标两边的单词，应该是交换光标所在单词和其左侧单词的位置</span></span><br></pre></td></tr></table></figure>
+<h3 id="转换大小写"><a href="#转换大小写" class="headerlink" title="转换大小写"></a>转换大小写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Alt-c  <span class="comment">## 将光标所在位置字母（光标后面的单词）转换为大写</span></span><br><span class="line">       <span class="comment">## 若光标不在单词中，则将光标后的字母转换为大写</span></span><br><span class="line">       <span class="comment">## 即使原来的单词是全部大写，或者大小写混合，该操作之后结果是光标后第一个字母大写，光标后当前单词其余部分全部小写</span></span><br><span class="line">       <span class="comment">## 如 AbC|dEfGGhh -&gt; AbCDefgghh|</span></span><br><span class="line">       <span class="comment">## 转换完之后光标自动移动到词尾</span></span><br><span class="line">       </span><br><span class="line">Alt-u  <span class="comment">## 将光标所在位置到词尾的所有字母转换为大写</span></span><br><span class="line">Alt<span class="_">-l</span>  <span class="comment">## 将光标所在位置到词尾的所有字母转换为小写</span></span><br></pre></td></tr></table></figure>
+<h3 id="Bang-命令"><a href="#Bang-命令" class="headerlink" title="Bang 命令"></a>Bang 命令</h3><h4 id="执行上条命令"><a href="#执行上条命令" class="headerlink" title="执行上条命令"></a>执行上条命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!!        <span class="comment">## 执行上一条命令</span></span><br><span class="line">!xx       <span class="comment">## 执行最近一条以 xx 开头的命令</span></span><br><span class="line">^xx       <span class="comment">## 删除上一条命令中的 xx</span></span><br><span class="line">^xx^yy    <span class="comment">## 将上一条命令中的第一个 xx 替换为 yy</span></span><br><span class="line">^xx^yy^   <span class="comment">## 将上一条命令中的所有 xx 替换为 yy</span></span><br><span class="line">!$        <span class="comment">## 上条命令的最后一个参数</span></span><br><span class="line">!*        <span class="comment">## 上条命令的所有参数</span></span><br></pre></td></tr></table></figure>
+<h4 id="打印上条命令"><a href="#打印上条命令" class="headerlink" title="打印上条命令"></a>打印上条命令</h4><p>上述所有命令都适用次规则：在其后加上 <code>:p</code> 可以将处理之后的命令打印到屏幕上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!xx:p       ## 打印最近一条以 xx 开头的命令，而不执行</span><br><span class="line">^xx^yy^:p   ## 将上一条命令中的所有 xx 替换为 yy，但只打印不执行</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+p  <span class="comment">##向上翻历史命令</span></span><br><span class="line">Ctrl+n  <span class="comment">##向下翻历史命令</span></span><br><span class="line"></span><br><span class="line">Alt+_，即 Alt+<span class="built_in">shift</span>+-  <span class="comment">## 使用上一个命令的最后一个参数，很常用，很高效</span></span><br><span class="line"></span><br><span class="line">Ctrl-m                <span class="comment">## 相当于回车键</span></span><br><span class="line"></span><br><span class="line">Alt-数字（可正可负）</span><br><span class="line"><span class="comment">## 如果后面接字符，表示倍数，如 [Alt-10，k] 会插入10个k字符</span></span><br><span class="line"><span class="comment">## 如果后面接命令，则表示该命令作用的字符位置。</span></span><br><span class="line"><span class="comment">## 如 Alt-(-10)，Alt-c 表示将当前字符左侧第10个字符转换为大写</span></span><br><span class="line"><span class="comment">## 在有多个tab页的情况下无效，alt用于切换tab</span></span><br></pre></td></tr></table></figure>
+<h3 id="EOF快捷键"><a href="#EOF快捷键" class="headerlink" title="EOF快捷键"></a>EOF快捷键</h3><h4 id="不用快捷键"><a href="#不用快捷键" class="headerlink" title="不用快捷键"></a>不用快捷键</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /tmp/<span class="built_in">test</span> &lt;&lt;EOF    <span class="comment">##Begin Mark</span></span><br><span class="line"><span class="built_in">type</span> </span><br><span class="line">content </span><br><span class="line">here</span><br><span class="line">EOF                       <span class="comment">##End of File</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /tmp/<span class="built_in">test</span> &lt;&lt;EOF</span><br><span class="line"><span class="built_in">type</span> content here</span><br><span class="line">[Ctrl-D]               <span class="comment">## Use Ctrl-D as End of File</span></span><br></pre></td></tr></table></figure>
+<h3 id="上条命令的最后一个参数"><a href="#上条命令的最后一个参数" class="headerlink" title="上条命令的最后一个参数"></a>上条命令的最后一个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch /tmp/a-very-long-file-name.txt</span><br><span class="line">chmod u+x [Alt-.]   <span class="comment">## 自动添加上一条命令的最后一个参数（不起作用）</span></span><br><span class="line">                    <span class="comment">## shift-alt-_ 三键同时按下会填充上一条命令的最后一个参数</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置-prompt"><a href="#设置-prompt" class="headerlink" title="设置 prompt"></a>设置 prompt</h2><p><code>%{\e[X;Y;Zm%}</code>    表示定义开始颜色，其中的 X 代表前景色 Y 代表背景色 Z 代表颜色深度，一般可省略</p>
+<p><code>%{\e[m%}</code>    表示当前颜色结束</p>
+<p>颜色列表可以通过 <code>man tcsh</code> 命令，在结果中搜索 <code>cyan</code>，或任意已知名字的颜色单词</p>
+<p>提示符中变量的定义可以通过 <code>man tcsh</code> 命令，在结果中搜索 <code>%/</code>查看</p>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><h3 id="0-到任意多个任意字符"><a href="#0-到任意多个任意字符" class="headerlink" title="0 到任意多个任意字符"></a>0 到任意多个任意字符</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*</span><br></pre></td></tr></table></figure>
+<h3 id="一个任意字符"><a href="#一个任意字符" class="headerlink" title="一个任意字符"></a>一个任意字符</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">？</span><br></pre></td></tr></table></figure>
+<h3 id="自定义字符集"><a href="#自定义字符集" class="headerlink" title="自定义字符集"></a>自定义字符集</h3><p><img src="../../_resources/ca23591dd5964b7c89db0280bf613b27.png" alt="ae10cb1c4c686ab53c20c791b2bf578c.png"></p>
+<h3 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或"></a>逻辑或</h3><p>使用花括号包围，逗号分隔</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;str1, str2&#125;</span><br><span class="line">ls &#123;rf,sram&#125;_*/VERILOG/*[^pwr].v</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1589781183714.png" alt="1589781183714"></p>
+<h2 id="alias-参数"><a href="#alias-参数" class="headerlink" title="alias 参数"></a>alias 参数</h2><p><code>csh</code> 中不能自定义函数，所以只能用 <code>alias</code> 曲线救国；</p>
+<p><code>alias</code> 的参数：</p>
+<p>由于 <code>!</code> 是特殊字符，所以需要前面的 <code>\</code> 进行转义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\!:1 - 表示第一个参数</span><br><span class="line"></span><br><span class="line">\!$ 或</span><br><span class="line">\!:$ - 表示最后一个参数</span><br><span class="line"></span><br><span class="line">\!* 或</span><br><span class="line">\!:* - 表示所有的参数</span><br></pre></td></tr></table></figure>
+<h3 id="find-命令的例子"><a href="#find-命令的例子" class="headerlink" title="find 命令的例子"></a>find 命令的例子</h3><p>使用 <code>alias</code> 的方式暂时无法做到在 <code>find</code> 的参数前后都加上 <code>*</code> .</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias find '\find . -name "\!:1" '</span><br></pre></td></tr></table></figure>
+<h2 id="csh-脚本参数"><a href="#csh-脚本参数" class="headerlink" title="csh 脚本参数"></a>csh 脚本参数</h2><h3 id="与-bash-兼容的方式"><a href="#与-bash-兼容的方式" class="headerlink" title="与 bash 兼容的方式"></a>与 bash 兼容的方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$0</span> - 表示当前脚本的文件名</span><br><span class="line"></span><br><span class="line"><span class="variable">$1</span> - 表示第一个参数</span><br><span class="line"></span><br><span class="line"><span class="variable">$#</span> - 表示参数个数</span><br></pre></td></tr></table></figure>
+<h3 id="argv-列表方式"><a href="#argv-列表方式" class="headerlink" title="argv 列表方式"></a>argv 列表方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$argv</span>[1]      - 表示第一个参数</span><br><span class="line"><span class="variable">$argv</span>[<span class="variable">$#argv</span>] - 表示最后一个参数</span><br><span class="line"><span class="variable">$#argv</span>        - 表示参数个数</span><br></pre></td></tr></table></figure>
+<h2 id="lazy-find-脚本"><a href="#lazy-find-脚本" class="headerlink" title="lazy_find 脚本"></a>lazy_find 脚本</h2><p>该脚本实现了在 <code>find</code> 的参数前后都加上 <code>*</code>，从而实现 <code>lazy find</code> .</p>
+<p>脚本内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/csh -f</span></span><br><span class="line"></span><br><span class="line">find . -name "*$1*"</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 或者</span></span></span><br><span class="line">find . -name "*$argv[1]*"</span><br></pre></td></tr></table></figure>
+<p>在 cshrc 中配置如下，当在命令行执行 <code>lf sth</code>，相当于执行 <code>find . -name *sth*</code> .</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> lf   <span class="string">'~/pin/lazy_find.csh'</span></span><br></pre></td></tr></table></figure>
+<h2 id="ls-命令"><a href="#ls-命令" class="headerlink" title="ls 命令"></a>ls 命令</h2><h3 id="显示文件绝对路径"><a href="#显示文件绝对路径" class="headerlink" title="显示文件绝对路径"></a>显示文件绝对路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls `<span class="built_in">pwd</span>`/*</span><br></pre></td></tr></table></figure>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><h3 id="showkey"><a href="#showkey" class="headerlink" title="showkey"></a>showkey</h3><p>查看按键的终端输入，和对应的ASCII编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showkey -a</span><br></pre></td></tr></table></figure>
+<h3 id="复制目录结构"><a href="#复制目录结构" class="headerlink" title="复制目录结构"></a>复制目录结构</h3><p>复制时同时复制目录的文件结构：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--parents  ## 保持目录结构复制</span><br></pre></td></tr></table></figure>
+<h3 id="删除软链接目录"><a href="#删除软链接目录" class="headerlink" title="删除软链接目录"></a>删除软链接目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf dir_link   ## 只删除软链接</span><br><span class="line">rm -rf dir_link/  ## 删除原目录</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.embeddedlinux.org.cn/html/xinshourumen/201602/02-5021.html" target="_blank" rel="noopener">embeddedlinux</a></p>
+<p><a href="https://linuxtoy.org/archives/bash-shortcuts.html" target="_blank" rel="noopener">让你提升命令行效率的 Bash 快捷键</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/26/study/Linux/sed/" rel="next" title="sed 语法">
+                <i class="fa fa-chevron-left"></i> sed 语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/25/study/Linux/python/" rel="prev" title="python 语法">
+                python 语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Shaocheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bjobs-bkill"><span class="nav-number">1.</span> <span class="nav-text">bjobs/bkill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-shell-为-vi-emacs-模式"><span class="nav-number">2.</span> <span class="nav-text">设置 shell 为 vi/emacs 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bash-下的设置"><span class="nav-number">2.1.</span> <span class="nav-text">bash 下的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cshell-下的设置"><span class="nav-number">2.2.</span> <span class="nav-text">cshell 下的设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速移动"><span class="nav-number">3.1.</span> <span class="nav-text">快速移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除字符"><span class="nav-number">3.2.</span> <span class="nav-text">删除字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变字符位置"><span class="nav-number">3.3.</span> <span class="nav-text">改变字符位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换大小写"><span class="nav-number">3.4.</span> <span class="nav-text">转换大小写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bang-命令"><span class="nav-number">3.5.</span> <span class="nav-text">Bang 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行上条命令"><span class="nav-number">3.5.1.</span> <span class="nav-text">执行上条命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打印上条命令"><span class="nav-number">3.5.2.</span> <span class="nav-text">打印上条命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">3.6.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EOF快捷键"><span class="nav-number">3.7.</span> <span class="nav-text">EOF快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不用快捷键"><span class="nav-number">3.7.1.</span> <span class="nav-text">不用快捷键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用快捷键"><span class="nav-number">3.7.2.</span> <span class="nav-text">使用快捷键</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上条命令的最后一个参数"><span class="nav-number">3.8.</span> <span class="nav-text">上条命令的最后一个参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-prompt"><span class="nav-number">4.</span> <span class="nav-text">设置 prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">5.</span> <span class="nav-text">通配符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-到任意多个任意字符"><span class="nav-number">5.1.</span> <span class="nav-text">0 到任意多个任意字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个任意字符"><span class="nav-number">5.2.</span> <span class="nav-text">一个任意字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义字符集"><span class="nav-number">5.3.</span> <span class="nav-text">自定义字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑或"><span class="nav-number">5.4.</span> <span class="nav-text">逻辑或</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias-参数"><span class="nav-number">6.</span> <span class="nav-text">alias 参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find-命令的例子"><span class="nav-number">6.1.</span> <span class="nav-text">find 命令的例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csh-脚本参数"><span class="nav-number">7.</span> <span class="nav-text">csh 脚本参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与-bash-兼容的方式"><span class="nav-number">7.1.</span> <span class="nav-text">与 bash 兼容的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#argv-列表方式"><span class="nav-number">7.2.</span> <span class="nav-text">argv 列表方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy-find-脚本"><span class="nav-number">8.</span> <span class="nav-text">lazy_find 脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls-命令"><span class="nav-number">9.</span> <span class="nav-text">ls 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示文件绝对路径"><span class="nav-number">9.1.</span> <span class="nav-text">显示文件绝对路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他-1"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#showkey"><span class="nav-number">10.1.</span> <span class="nav-text">showkey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制目录结构"><span class="nav-number">10.2.</span> <span class="nav-text">复制目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除软链接目录"><span class="nav-number">10.3.</span> <span class="nav-text">删除软链接目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">11.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Shaocheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

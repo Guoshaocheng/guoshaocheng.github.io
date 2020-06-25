@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,vim,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文总结了vim基本的操作方式和一些常用的命令。">
+<meta name="keywords" content="linux,vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim 用法">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/study/Linux/vim/index.html">
+<meta property="og:site_name" content="Silicon Walker">
+<meta property="og:description" content="本文总结了vim基本的操作方式和一些常用的命令。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img7c483c55c13047929e5f04106a28104c.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783389481.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783440816.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783354374.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1589787754469.png">
+<meta property="og:updated_time" content="2020-06-25T06:50:49.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim 用法">
+<meta name="twitter:description" content="本文总结了vim基本的操作方式和一些常用的命令。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img7c483c55c13047929e5f04106a28104c.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/Linux/vim/">
+
+
+
+
+
+  <title>vim 用法 | Silicon Walker</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silicon Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/Linux/vim/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silicon Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vim 用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-25T00:00:00+08:00">
+                2020-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文总结了vim基本的操作方式和一些常用的命令。</p>
+<a id="more"></a>
+<h1 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h1><h2 id="文本跳转"><a href="#文本跳转" class="headerlink" title="文本跳转"></a>文本跳转</h2><h3 id="行首行尾跳转"><a href="#行首行尾跳转" class="headerlink" title="行首行尾跳转"></a>行首行尾跳转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0  -&gt; <span class="comment">## 到本行行首</span></span><br><span class="line">^  -&gt; <span class="comment">## 到本行第一个非blank字符的位置（blank字符包括空格，tab，换行，回车）</span></span><br><span class="line">$  -&gt; <span class="comment">## 到本行行尾</span></span><br><span class="line">g_ -&gt; <span class="comment">## 到本行最后一个非blank字符的位置</span></span><br></pre></td></tr></table></figure>
+<h3 id="词首词尾跳转"><a href="#词首词尾跳转" class="headerlink" title="词首词尾跳转"></a>词首词尾跳转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 小写字母认为单词的定义是：由字母，数字和下划线组成的一组连续字符，如 name_1</span></span><br><span class="line"><span class="comment">## 大写字母认为单词的定义是：通过blank字符分割的一组字符，如 (name_1,name_2);</span></span><br><span class="line">w(W)    -&gt; 跳转到下一个单词的开头</span><br><span class="line">b(B)    -&gt; 跳转到上一个单词的开头</span><br><span class="line">e(E)    -&gt; 跳转到下一个单词的结尾</span><br><span class="line">ge(gE)  -&gt; 跳转到上一个单词的结尾</span><br></pre></td></tr></table></figure>
+<h3 id="行内跳转"><a href="#行内跳转" class="headerlink" title="行内跳转"></a>行内跳转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fa  -&gt; 到下一个 a 字符处（a 可以为任意字符）</span><br><span class="line">Fa  -&gt; 与fa作用相同，反向查找</span><br><span class="line">ta  -&gt; 到下一个 a 字符的前一个字符处</span><br><span class="line">Ta  -&gt; 与ta作用相同，反向查找</span><br><span class="line">dt<span class="string">" -&gt; 删除光标当前位置到下一个 "</span> 之间的所有字符（不包括 <span class="string">"）</span></span><br></pre></td></tr></table></figure>
+<h3 id="行间跳转"><a href="#行间跳转" class="headerlink" title="行间跳转"></a>行间跳转</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gg         -&gt; 跳转到首行</span><br><span class="line">G          -&gt; 跳转到尾行</span><br><span class="line">nG/ngg/:n  -&gt; 跳转到第 n 行</span><br><span class="line">%          -&gt; 在匹配括号之间跳转,包括 (),&#123;&#125;,[]</span><br><span class="line">*          -&gt; 向前搜索光标当前所在单词</span><br><span class="line"><span class="comment">#          -&gt; 向后搜索光标当前所在单词</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件跳转"><a href="#文件跳转" class="headerlink" title="文件跳转"></a>文件跳转</h2><h3 id="跳转列表"><a href="#跳转列表" class="headerlink" title="跳转列表"></a>跳转列表</h3><p><code>:ju(mps)</code> 显示当前窗口的跳转列表，每个单独的窗口都有一份自己的跳转列表。</p>
+<p>跳转动作指大范围的文件内移动和文件间移动，包括针对句子和段落的命令和 <code>[conut]G</code> 命令；</p>
+<p>用 <code>&lt;c-o&gt; 和 &lt;c-i&gt;</code> 可以分别反向和正向遍历，前面可以加数字表示命令的次数；</p>
+<h3 id="改变列表"><a href="#改变列表" class="headerlink" title="改变列表"></a>改变列表</h3><p><code>:changes</code> 显示当前缓冲区所有的修改记录。</p>
+<p>用 <code>g; 和 g,</code> 可以分别反向和正向遍历，前面可以加数字表示命令的次数；</p>
+<p><code>g;</code> 命令与 <code>u&lt;c-r&gt;</code> 效果相同，区别在于不会造成文档内容暂态的修改。</p>
+<h2 id="位置标记"><a href="#位置标记" class="headerlink" title="位置标记"></a>位置标记</h2><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 以 `(esc下方) 为例，'(单引号)作用类似，区别如上</span></span><br><span class="line">``   <span class="comment">## 回到跳转之前的位置，</span></span><br><span class="line"></span><br><span class="line">:marks       <span class="comment">## 命令可以查看当前的标记列表</span></span><br><span class="line">:delmarks a  <span class="comment">## 删除a标记</span></span><br><span class="line">:delmarks!   <span class="comment">## 删除所有标记</span></span><br><span class="line">d`a          <span class="comment">## 删除标记为a的行</span></span><br><span class="line">y`a          <span class="comment">## 复制标记为a的行</span></span><br></pre></td></tr></table></figure>
+<h3 id="手动位置标记"><a href="#手动位置标记" class="headerlink" title="手动位置标记"></a>手动位置标记</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m&#123;a-zA-Z&#125;    <span class="comment">## 对光标当前当进行标记，</span></span><br><span class="line">             <span class="comment">## 小写字母只对当前buffer可见，即只能在当前文件内跳转</span></span><br><span class="line">             <span class="comment">## 大写字母则全局可见，即可以在不同的文件间进行跳转</span></span><br><span class="line">             <span class="comment">## 例如在一个文件中使用mA标记某行，再打开另一个文件之后，可以使用下面的跳转命令返回第一个文件</span></span><br><span class="line"><span class="string">'&#123;a-zA-Z&#125;    ## 单引号，返回上一个命令标记的行，光标置于行首第一个非空字符</span></span><br><span class="line"><span class="string">             ## 即只恢复行的位置</span></span><br><span class="line"><span class="string">`&#123;a-z-A-Z&#125;   ## esc下方的按键，返回上一个命令标记的行，光标置于标记时光标所在位置</span></span><br><span class="line"><span class="string">             ## 即同时恢复行的位置和列的位置</span></span><br></pre></td></tr></table></figure>
+<h3 id="自动位置标记"><a href="#自动位置标记" class="headerlink" title="自动位置标记"></a>自动位置标记</h3><h4 id="上次修改的位置"><a href="#上次修改的位置" class="headerlink" title="上次修改的位置"></a>上次修改的位置</h4><p><code></code>.` 回到上次修改的位置</p>
+<h4 id="上次插入的位置"><a href="#上次插入的位置" class="headerlink" title="上次插入的位置"></a>上次插入的位置</h4><p><code></code>^` 回到上次插入的位置</p>
+<p><code>gi</code> 命令可以快速回到上次插入模式所在的位置，并进入 <code>insert</code> 模式</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="快速复制"><a href="#快速复制" class="headerlink" title="快速复制"></a>快速复制</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 基本语法</span></span><br><span class="line">&lt;start_addr&gt;&lt;cmd&gt;&lt;end_addr&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 下面所有的 y 命令都可以替换为 d 命令， c 命令和 v 命令</span></span><br><span class="line">0y$     <span class="comment">## 复制从行首到行尾的所有字符</span></span><br><span class="line">ye      <span class="comment">## 复制从当前位置到当前单词的最后一个字符</span></span><br><span class="line">y2/foo  <span class="comment">## 复制光标当前位置到第二个 foo 之间的字符（不包括第二个foo）</span></span><br><span class="line">y3/foo  <span class="comment">## 复制光标当前位置到第三个 foo 之间的字符（不包括第三个foo）</span></span><br><span class="line">yta     <span class="comment">## 复制光标当前位置到下一个 a 字符之间的所有字符（不包括 a 字符）</span></span><br><span class="line">y2ta    <span class="comment">## 复制光标当前位置到第二个 a 字符之间的所有字符（不包括 a 字符）</span></span><br><span class="line">yfa     <span class="comment">## 复制光标当前位置到下一个 a 字符之间的所有字符（包括 a 字符）</span></span><br><span class="line">y2fa    <span class="comment">## 复制光标当前位置到第二个 a 字符之间的所有字符（包括 a 字符）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 一行字符，初始状态下光标位于 Sec|ond 处</span></span><br><span class="line"><span class="comment">## 下面所有的 y 命令都可以替换为 d 命令， c 命令和 v 命令</span></span><br><span class="line">start (begin (First bracket) (<span class="string">"Sec|ond bracket"</span>) end)</span><br><span class="line">yi<span class="string">"  -&gt;  Second bracket</span></span><br><span class="line"><span class="string">ya"</span>  -&gt;  <span class="string">"Second bracket"</span></span><br><span class="line"></span><br><span class="line">yi(  -&gt;  <span class="string">"Second bracket"</span></span><br><span class="line">yi)  -&gt;  <span class="string">"Second bracket"</span></span><br><span class="line"></span><br><span class="line">ya(  -&gt;  (<span class="string">"Second bracket"</span>)</span><br><span class="line">ya)  -&gt;  (<span class="string">"Second bracket"</span>)</span><br><span class="line"></span><br><span class="line">y2i( -&gt;  begin (First bracket) (<span class="string">"Second bracket"</span>) end </span><br><span class="line">y2a( -&gt;  (begin (First bracket) (<span class="string">"Second bracket"</span>) end)</span><br></pre></td></tr></table></figure>
+<h2 id="宏录制"><a href="#宏录制" class="headerlink" title="宏录制"></a>宏录制</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 将操作记录在寄存器 a 中</span></span></span><br><span class="line">qa&lt;action&gt;q</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 播放寄存器 a 中录制的宏</span></span></span><br><span class="line">@a </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 播放 100 次寄存器 a 中录制的宏</span></span></span><br><span class="line">100@a </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 播放上一次录制的宏</span></span></span><br><span class="line">@@</span><br></pre></td></tr></table></figure>
+<h2 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 查看当前的缓冲区</span></span></span><br><span class="line">:ls</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 切换 buffer</span></span></span><br><span class="line"> buffer n    -&gt;  切换到 n 号buffer</span><br><span class="line"> buffer 文件名（不必写全，只需要区别于其他buffer的文件名即可）</span><br><span class="line"> </span><br><span class="line"> bp/bprevious -&gt; 切换到上一个buffer</span><br><span class="line"> bn/bnext     -&gt; 切换到下一个buffer</span><br><span class="line"> bf/bfirst    -&gt; 切换到第一个buffer</span><br><span class="line"> bl/blast     -&gt; 切换到最后一个buffer</span><br></pre></td></tr></table></figure>
+<h2 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a>数字操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ctrl<span class="_">-a</span>  <span class="comment">## 对光标所在单词或其后第一个数字加一</span></span><br><span class="line">Ctrl-x  <span class="comment">## 对光标所在单词或其后第一个数字减一</span></span><br><span class="line"></span><br><span class="line">n+Ctrl<span class="_">-a</span> <span class="comment">## 将数字加n</span></span><br><span class="line">n+Ctrl-x <span class="comment">## 将数字减n</span></span><br><span class="line"></span><br><span class="line">g+Ctrl<span class="_">-a</span> <span class="comment">## 将一列数字依次递加</span></span><br><span class="line">         <span class="comment">## 即使用列选模式选中一列数字之后，按下g+Ctral-a，然后第一列数字加一，第二列加二，...</span></span><br><span class="line">         </span><br><span class="line">2+g+Ctrl<span class="_">-a</span> <span class="comment">## 将一列数字依次递加 2</span></span><br></pre></td></tr></table></figure>
+<p>当对 007 执行 Ctrl-a 操作时，默认情况下会变成 010，因为在默认情况下 vim 会认为以 <code>0</code> 开头的数字是八进制的数字，因此 007+1 = 010。</p>
+<p>同理，vim 认为以 <code>0x</code>开头的数字是 16 进制的数字，因此 <code>0x09+1=0x0a</code>。</p>
+<p>使用 <code>set nrformats=xx</code>可以改变 vim 的缺省行为，使用 <code>help nrformats</code>可以查阅支持的选项。</p>
+<h2 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h2><p>vim8 新增了终端功能，可以直接在vim中开启一个终端。</p>
+<h3 id="终端位置"><a href="#终端位置" class="headerlink" title="终端位置"></a>终端位置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:term(inal)            <span class="comment">## 默认上下分屏，在上方打开terminal </span></span><br><span class="line">:vert term             <span class="comment">## 左右分屏，在左边打开terminal</span></span><br><span class="line">:leftabove (vert) term <span class="comment">## 在左边或上边打开terminal</span></span><br><span class="line">:rightblow (vert) term <span class="comment">## 在右边或下边打开terminal</span></span><br><span class="line"></span><br><span class="line">:tab term              <span class="comment">## 在新的tab打开terminal</span></span><br></pre></td></tr></table></figure>
+<h3 id="打开路径"><a href="#打开路径" class="headerlink" title="打开路径"></a>打开路径</h3><p>终端打开之后会默认进入当前vim窗口的工作路径，即在vim中输入 <code>:pwd</code> 的结果。</p>
+<ul>
+<li>通过 <code>:lcd {path}</code> 命令可以修改当前vim窗口的工作路径，如果 path 为空则进入 home 目录；</li>
+<li>通过 <code>:cd {path}</code> 命令有同样的作用，区别在于 <code>lcd</code> 命令只改变当前窗口，<code>cd</code> 会改变当前屏幕所有窗口；</li>
+<li>通过 <code>:cd %:h</code> 命令进入当前文件所在的路径；</li>
+</ul>
+<h3 id="按键绑定"><a href="#按键绑定" class="headerlink" title="按键绑定"></a>按键绑定</h3><p>terminal模式下的按键绑定使用 <code>tnoremap</code> ，<code>&lt;c-\&gt;&lt;c-n&gt;</code> 使 terminal 从 insert mode 到 normal mode。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tnoremap jk &lt;<span class="keyword">c</span>-\&gt;<span class="symbol">&lt;c-n&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="窗口移动"><a href="#窗口移动" class="headerlink" title="窗口移动"></a>窗口移动</h3><pre><code>tnoremap &lt;c-h&gt; &lt;c-w&gt;h
+tnoremap &lt;c-j&gt; &lt;c-w&gt;j
+tnoremap &lt;c-k&gt; &lt;c-w&gt;k
+tnoremap &lt;c-l&gt; &lt;c-w&gt;l
+</code></pre><h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><p>normal -&gt; insert</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">level 0 -&gt; i,a</span><br><span class="line">level 1 -&gt; I,A,o,O</span><br><span class="line">level 2 -&gt; c,C + range</span><br></pre></td></tr></table></figure>
+<p>insert -&gt; normal</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;esc&gt;, &lt;Ctrl-[&gt;  <span class="comment">## 退出insert模式，进入normal模式</span></span><br><span class="line">&lt;Ctrl-o&gt;         <span class="comment">## 运行一次normal模式下的命令，然后自动切换回insert模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="Ex-Mode"><a href="#Ex-Mode" class="headerlink" title="Ex Mode"></a>Ex Mode</h2><h3 id="关于-Ex-命令的历史"><a href="#关于-Ex-命令的历史" class="headerlink" title="关于 Ex 命令的历史"></a>关于 Ex 命令的历史</h3><p>Unix下最初的文本编辑器是<code>ed</code>，然后经过几代的改进变成了<code>ex</code>，ex编辑器支持使用 <code>:visual</code>命令切换到屏幕编辑模式，简写为<code>:vi</code>，即vi编辑器名字的由来，vim表示<code>vi improved</code>，即vi编辑器的增强版。</p>
+<h3 id="进入Ex模式"><a href="#进入Ex模式" class="headerlink" title="进入Ex模式"></a>进入Ex模式</h3><p>在normal模式下，按下 <code>:</code>就进入 Ex 命令模式，按下<code>&lt;esc&gt;</code>切换回normal模式。</p>
+<p>重复上一个 Ex 命令的方法是 <code>@:</code>。</p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img7c483c55c13047929e5f04106a28104c.png" alt="5ff322950548c420bdc81a55572b5170.png"></p>
+<p>将Ex mode下默认的快捷键映射为与shell命令行（Emacs）相同的快捷键</p>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783389481.png" alt="1589787754469"></p>
+<h3 id="常用Ex命令格式"><a href="#常用Ex命令格式" class="headerlink" title="常用Ex命令格式"></a>常用Ex命令格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 如果不指定range或line，则作用于当前行(除了global命令)</span></span><br><span class="line"><span class="comment">## 如果不指定接收寄存器，则将结果放置于默认寄存器</span></span><br><span class="line">:[range]d(delete) [x]  -&gt; 删除指定范围内的行，并将删除的行放到x寄存器中，delete可简写为d</span><br><span class="line">:[range]y(yank)   [x]  -&gt; 复制指定范围内的行，并将复制的行放到x寄存器中，yank可简写为y</span><br><span class="line">:[line]put        [x]  -&gt; 在指定行之后粘贴x寄存器中的内容，put不能简写为p，因为p表示<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## addr变量中，0表示第一行之前，$表示最后一行</span></span><br><span class="line">:[range]t(co,copy) &#123;addr&#125; -&gt; 将指定范围内的行copy到指定addr行之下</span><br><span class="line">:[range]m(move) &#123;addr&#125; -&gt; 将指定范围内的行move到指定addr行之下</span><br><span class="line">:[range]join           -&gt; 将指定范围内的行合并为一行</span><br><span class="line">:[range]normal &#123;cmd&#125;   -&gt; 对指定范围内的行指定normal模式下的命令</span><br><span class="line"></span><br><span class="line">:[range]s(substisute)  -&gt; 对指定范围内的行指定替换操作</span><br><span class="line">:[range]g(global)      -&gt; 对指定范围内的行指定global命令</span><br></pre></td></tr></table></figure>
+<p>上述两个命令的分隔符可以使用 <code>/</code> <code>#</code> <code>%</code> <code>,</code> <code>+</code> <code>=</code> <code>！</code> 等等</p>
+<h3 id="定址"><a href="#定址" class="headerlink" title="定址"></a>定址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;start_adddr&#125;,&#123;end_addr&#125;，如 :2,5p</span><br><span class="line"><span class="comment">## 其中，start_addr和end_addr可以是 . $ 0 'm '&lt; '&gt; </span></span><br><span class="line">   <span class="comment">## . 表示当前行的行号</span></span><br><span class="line">   <span class="comment">## $ 表示最后一行的行号</span></span><br><span class="line">   <span class="comment">## 0 表示第一行上方</span></span><br><span class="line">   <span class="comment">## 'm 表示使用m标记的行</span></span><br><span class="line">   <span class="comment">## '&lt; 表示高亮选区首行的行号</span></span><br><span class="line">   <span class="comment">## '&gt; 表示高亮选区尾行的行号</span></span><br><span class="line"></span><br><span class="line">% 表示文件中的所有行，等于 1,$</span><br><span class="line"><span class="string">'&lt;,'</span>&gt; 表示文件中目前被选中所有行</span><br><span class="line"></span><br><span class="line"><span class="comment">## 用模式指定范围,start_addr和end_addr可以是匹配模式</span></span><br><span class="line"><span class="comment">## 当文件中存在多个匹配时，vim会选择当前光标后的第一个匹配</span></span><br><span class="line">:/abc/,/def/p</span><br><span class="line"></span><br><span class="line"><span class="comment">## 上述命令会匹配包括abc和def所在的行</span></span><br><span class="line"><span class="comment">## 下面的命令会排除匹配abc和def的行</span></span><br><span class="line"><span class="comment">## 对地址增加偏移</span></span><br><span class="line">:/abc/+1,/def/-1p</span><br></pre></td></tr></table></figure>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="搜索反斜杠"><a href="#搜索反斜杠" class="headerlink" title="搜索反斜杠"></a>搜索反斜杠</h3><h4 id="反向搜索"><a href="#反向搜索" class="headerlink" title="反向搜索"></a>反向搜索</h4><p>因为反向搜索的命令符是 <code>?</code> ，所以查找域的结束字符也是 <code>?</code> ，因此不需要对反斜杠进行转义；</p>
+<p>但是如果要搜索 <code>？</code> ，则 需要对 <code>?</code> 进行转义。</p>
+<p>比如要搜索 <code>//${PELICAN2_RTL_DIR}/sram/</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?//$&#123;PELICAN2_RTL_DIR&#125;/sram/</span><br></pre></td></tr></table></figure>
+<h4 id="使用-vim-函数"><a href="#使用-vim-函数" class="headerlink" title="使用 vim 函数"></a>使用 vim 函数</h4><h5 id="getcmdtype-函数"><a href="#getcmdtype-函数" class="headerlink" title="getcmdtype 函数"></a>getcmdtype 函数</h5><p>根据当前搜索方向返回不同字符，正向搜索时返回 <code>/</code>，反向搜索时返回 <code>？</code> 。</p>
+<h5 id="escape-函数"><a href="#escape-函数" class="headerlink" title="escape 函数"></a>escape 函数</h5><p>用法：<code>escape(@u,&#39;?\/&#39;)</code>；</p>
+<p>作用：将 <code>u</code> 寄存器中的字符串中的 <code>?\/</code> 进行转义，返回转义之后的字符串。</p>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ol>
+<li>先将要搜索的字符串复制到 u 寄存器中；</li>
+<li>输入 <code>/V&lt;c-r&gt;=</code>，然后输入 <code>escape(@u,&#39;/\&#39;)</code>(正向搜索)，或  <code>escape(@u,&#39;?\&#39;)</code>(反向搜索) ;</li>
+</ol>
+<h5 id="脚本化"><a href="#脚本化" class="headerlink" title="脚本化"></a>脚本化</h5><ol>
+<li><p>实现 vim 自定义函数 <code>EscapeSlash</code>，功能是转义 <code>u</code> 寄存器中的 <code>/\</code> 字符；</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function! s:EscapeSlash()</span><br><span class="line">    let @f = escape(@u,'/\')</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将函数调用绑定到按键；</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nnoremap &lt;localleader&gt;ef :call &lt;SID&gt;EscapeSlash()&lt;CR&gt;/&lt;C-R&gt;=@f&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此时，步骤变为：</p>
+<ol>
+<li>先将要搜索的字符串复制到 u 寄存器中；</li>
+<li>按下 <code>&lt;localleader&gt;ef</code>；</li>
+</ol>
+<h3 id="搜索-tab"><a href="#搜索-tab" class="headerlink" title="搜索 tab"></a>搜索 tab</h3><p>依次按下Ctrl-v，Ctrl-i，或Ctrl-v，TAB（Ctrl-i等效于TAB），<code>&lt;c-v&gt; &lt;c-i&gt;</code></p>
+<p>搜索时按下<code>&lt;c-v&gt; &lt;c-i&gt;</code>也可以搜索 tab 字符</p>
+<h3 id="大小写区分"><a href="#大小写区分" class="headerlink" title="大小写区分"></a>大小写区分</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/\c ## 不区分大小写</span><br><span class="line">/\C ## 区分大小写</span><br></pre></td></tr></table></figure>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>当字符串中包含很多特殊字符，尤其是 <code>/</code> 时，s 命令的分隔符使用反斜杠以外的字符。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. /\V$&#123;PELICAN2_RTL_DIR&#125;\/sram\/</span><br><span class="line">2. :%s==$&#123;PRJ_MODEL&#125;/mem_model/flcmix/=</span><br></pre></td></tr></table></figure>
+<h2 id="global命令"><a href="#global命令" class="headerlink" title="global命令"></a>global命令</h2><p>global可以在指定范围内的行，并匹配指定模式的行执行Ex命令。</p>
+<p>根据vim的文档，global命令的分隔符可以是任意的 <code>single-byte character</code> ，比如 <code>! % + = , # _</code> 等。</p>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:[range] g(global)  /pattern/ [cmd]</span><br><span class="line">:[range] v(vglobal) /pattern/ [cmd] <span class="comment">## vglobal命令作用于不匹配pattern的所有行</span></span><br></pre></td></tr></table></figure>
+<p>如果没有指定范围，global命令的作用范围是整个文件，即<code>range</code>默认为 <code>%</code>。</p>
+<p>如果没有指定匹配模式，则默认使用查找历史中上一次的匹配模式。一般先在查找模式下进行正则匹配，确认匹配正确之后，在之后的global命令将pattern处留空（<code>//</code>不能省略），这样可以保证作用域的正确。</p>
+<p>如果没有指定命令，则默认执行<code>p(print)</code>命令，cmd可以是global之外的任何Ex命令。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">:g/abc/d     <span class="comment">## 删除文件中匹配abc的所有行</span></span><br><span class="line">:v/abc/d     <span class="comment">## 删除文件中不匹配abc的所有行</span></span><br><span class="line"></span><br><span class="line">:g/abc/y A   <span class="comment">## 将匹配abc的行复制到a寄存器</span></span><br><span class="line">:g/abc/d A   <span class="comment">## 将匹配abc的行剪切到a寄存器</span></span><br><span class="line"></span><br><span class="line">:g/abc/t(co/copy) $  <span class="comment">## 将匹配abc的行复制到文件最后</span></span><br><span class="line">:g/abc/t(co/copy) 0  <span class="comment">## 将匹配abc的行复制到文件开头</span></span><br><span class="line"></span><br><span class="line">:g/abc/m(move)    $  <span class="comment">## 将匹配abc的行剪切到文件最后</span></span><br><span class="line">:g/abc/m(move)    0  <span class="comment">## 将匹配abc的行剪切到文件开头</span></span><br><span class="line"></span><br><span class="line">:g/abc/norm(normal) A123  <span class="comment">## 将匹配abc的行进入insert模式，插入123，并自动切回normal模式</span></span><br></pre></td></tr></table></figure>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>指定特定寄存器的方式为 <code>&quot;reg_name</code></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="无名寄存器-quot"><a href="#无名寄存器-quot" class="headerlink" title="无名寄存器 &quot;"></a>无名寄存器 <code>&quot;</code></h3><p>当没有指定寄存器时，vim 将默认使用 <code>&quot;</code> 寄存器；因此指定无名寄存器与否，效果相同。</p>
+<p><code>x s c d y</code> 等命令都会改变无名寄存器的内容。</p>
+<h3 id="复制寄存器-0"><a href="#复制寄存器-0" class="headerlink" title="复制寄存器 0"></a>复制寄存器 <code>0</code></h3><p>只有 <code>y</code> 命令才会改变复制寄存器的内容</p>
+<h3 id="黑洞寄存器"><a href="#黑洞寄存器" class="headerlink" title="黑洞寄存器 _"></a>黑洞寄存器 <code>_</code></h3><p>使用删除命令时，如果指定该寄存器，删除的内容将消失，不会保存在任何地方，当然也不会影响其他任何寄存器。</p>
+<h3 id="有名寄存器-a-z"><a href="#有名寄存器-a-z" class="headerlink" title="有名寄存器 a-z"></a>有名寄存器 <code>a-z</code></h3><p>通用寄存器，指定特定的寄存器用于保存特定的内容。</p>
+<h3 id="剪切板寄存器"><a href="#剪切板寄存器" class="headerlink" title="剪切板寄存器 +*"></a>剪切板寄存器 <code>+*</code></h3><p>这两个寄存器是为了与vim外部的系统剪贴板进行交互。</p>
+<p>对于X11视窗系统，有剪贴板和主剪贴板之分，二者区别为：</p>
+<p>使用 <code>rpm -qa | grep x11</code> 命令查看是否是X11系统。</p>
+<ul>
+<li>剪贴板，使用剪贴，复制，粘贴命令操作，对应 <code>+</code> 寄存器</li>
+<li>主剪贴板，保存上次被高亮选中的文本，使用鼠标中键粘贴，对应 <code>*</code> 寄存器</li>
+</ul>
+<p>复制到剪贴板</p>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783440816.png" alt="1591783354374"></p>
+<p>复制到主剪贴板（直接选中）</p>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1591783354374.png" alt="1591783389481"></p>
+<p>任意打开一个gvim窗口，输入 <code>:reg</code> 命令，即可看到两个寄存器中的值。</p>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img1589787754469.png" alt="1591783440816"></p>
+<p>而 Windows 和 Mac OS 没有主剪贴板，所以此时两个寄存器没有区别，可以混用。</p>
+<h3 id="表达式寄存器"><a href="#表达式寄存器" class="headerlink" title="表达式寄存器 ="></a>表达式寄存器 <code>=</code></h3><p>用于返回一段 vim 脚本表达式的结果</p>
+<h3 id="其他寄存器"><a href="#其他寄存器" class="headerlink" title="其他寄存器"></a>其他寄存器</h3><ul>
+<li>% 表示当前文件名</li>
+<li># 表示轮换文件名</li>
+<li>. 保存上次插入的文本<ul>
+<li>包括 <code>i a c o</code> 等命令，和 <code>r</code> 命令</li>
+<li>确切地说，记录的应该是在插入模式下的任何操作</li>
+</ul>
+</li>
+<li>: 保存上次执行的 Ex 命令</li>
+<li>/ 保存上次查找的模式</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="退出-vim"><a href="#退出-vim" class="headerlink" title="退出 vim"></a>退出 vim</h2><h3 id="不保存修改内容"><a href="#不保存修改内容" class="headerlink" title="不保存修改内容"></a>不保存修改内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:q&lt;cr&gt;</span><br><span class="line">:qa&lt;cr&gt;</span><br><span class="line">:q!&lt;cr&gt;</span><br><span class="line">:qa!&lt;cr&gt;</span><br><span class="line">Shift+z+q</span><br></pre></td></tr></table></figure>
+<h3 id="保存修改内容"><a href="#保存修改内容" class="headerlink" title="保存修改内容"></a>保存修改内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:wq&lt;cr&gt;</span><br><span class="line">:wqa&lt;cr&gt;</span><br><span class="line">Shift+z+z</span><br><span class="line">:x&lt;cr&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="另存为其他文件"><a href="#另存为其他文件" class="headerlink" title="另存为其他文件"></a>另存为其他文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:sav[eas] &lt;path/to/file&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="执行外部命令"><a href="#执行外部命令" class="headerlink" title="执行外部命令"></a>执行外部命令</h2><h3 id="执行shell命令"><a href="#执行shell命令" class="headerlink" title="执行shell命令"></a>执行shell命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:!ls </span><br><span class="line">:!<span class="built_in">pwd</span></span><br><span class="line">:r !&#123;cmd&#125;             -&gt; 将cmd执行的结果读入到当前文件当前行的下一行</span><br><span class="line">:r path/file          -&gt; 将外部文件内容读入到当前文件当前行的下一行</span><br><span class="line"></span><br><span class="line">:[range]w  file       -&gt; 将指定范围的行写入到其他文件</span><br><span class="line">:[range]w! file       -&gt; 将指定范围的行写入到其他文件，如果其他文件不空则覆盖</span><br><span class="line">:[range]w  &gt;&gt; file    -&gt; 将指定范围的行追加到其他文件</span><br><span class="line">:[range]w! &gt;&gt; file    -&gt; 将指定范围的行追加到其他文件，文件不存在则创建</span><br><span class="line">:[range]w! &gt;&gt; !&#123;cmd&#125;  -&gt; 将指定范围的行作为外部命令的输入，执行外部命令</span><br></pre></td></tr></table></figure>
+<h3 id="执行perl命令"><a href="#执行perl命令" class="headerlink" title="执行perl命令"></a>执行perl命令</h3><ol>
+<li>在vim中写入类似的perl脚本，<code>foreach (0..9) {print &quot;num is $_ \n&quot;}</code></li>
+<li>在visual模式下选中所有的perl代码，<code>:!perl</code></li>
+<li>vim会自动将perl脚本的执行结果替换perl脚本</li>
+</ol>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li>元字符是具有特殊意义的字符，可以表达自身字符本身以外的含义。</li>
+<li>由于 vim 本质上还是一个编辑器，所以 vim 中的元字符与其他的编程语言中的元字符有一些不同，普通模式下的大部分元字符必须加上反斜杠进行转义才能起到元字符的作用。</li>
+</ul>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><ul>
+<li>如果要搜索 <code>/</code>，在所有模式下都需要加上 <code>\</code> 转移符；</li>
+<li>如果要搜索 <code>\</code>，经试验可以加上 <code>\</code> 转移符，也可以不加，都可以搜索到<code>\</code>；</li>
+</ul>
+<h3 id="四种模式"><a href="#四种模式" class="headerlink" title="四种模式"></a>四种模式</h3><h4 id="magic-模式"><a href="#magic-模式" class="headerlink" title="magic 模式"></a>magic 模式</h4><ul>
+<li><p>这是 vim 中的默认模式，也是 vim 推荐的用法。</p>
+</li>
+<li><p>在 <code>\m</code>(magic) 模式下，除了三个元字符之外，其他的元字符都要加上反斜杠进行转义。</p>
+</li>
+<li><p>自身可以直接表示正则表达式含义的元字符：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  - 用于匹配行末</span></span><br><span class="line">^  - 用于匹配行首</span><br><span class="line">.* - 用于匹配任意字符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.</code> 匹配的是任意单个的字符，而 <code>*</code> 匹配的是任意的数量。</p>
+</li>
+<li><p><code>.</code> 也可以与其他表示数量的元字符使用，同样不用加反斜杠。</p>
+</li>
+<li><p><code>*</code> 也可以与其他表示字符的元字符使用，也不用加反斜杠</p>
+<ul>
+<li>特殊之处在于，单独搜索 <code>*</code> 时，<code>*</code> 表示符号自身的含义；</li>
+<li>但是当 <code>*</code> 前面有字符时，<code>*</code> 将表示正则表达式中的数量；</li>
+</ul>
+</li>
+</ul>
+<h4 id="nomagic-模式"><a href="#nomagic-模式" class="headerlink" title="nomagic 模式"></a>nomagic 模式</h4><ul>
+<li><p><code>\M</code> 模式与 <code>\m</code> 模式很相近，唯一的不同是对待 <code>.</code> 的区别, <code>\M</code> 模式下将其视为普通的字符。</p>
+</li>
+<li><p>自身可以直接表示正则表达式含义的元字符：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">  - 用于匹配行末</span></span><br><span class="line">^  - 用于匹配行首</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="very-magic-模式"><a href="#very-magic-模式" class="headerlink" title="very magic 模式"></a>very magic 模式</h4><ul>
+<li>在此模式下，<code>所有的元字符都具有特殊含义</code>，在正则表达式中可以直接使用；<ul>
+<li><code>一切</code> 并不完全准确，只有字符类的元字符才可以不加反斜杠，字母类的元字符 <code>(\w,\d,\s,\x)</code> 还是要加上反斜杠。</li>
+</ul>
+</li>
+<li>如果要表示字符本身的含义，则需要使用反斜杠；</li>
+</ul>
+<h4 id="very-nomagic-模式"><a href="#very-nomagic-模式" class="headerlink" title="very nomagic 模式"></a>very nomagic 模式</h4><ul>
+<li>在此模式下，<code>将所有的字符视为其本身的含义</code>，类似于fgrep的做法；</li>
+<li>如果要使用正则表达式，则一切元字符都 <code>必须</code> 加反斜杠，但是一般只会在不用正则表达式的情况下才会开启该模式。</li>
+</ul>
+<h3 id="元字符分类"><a href="#元字符分类" class="headerlink" title="元字符分类"></a>元字符分类</h3><p>以下皆以 <code>magic</code> 模式下的写法进行说明</p>
+<h4 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">- 匹配任意单个字符</span><br><span class="line"></span><br><span class="line">[abc]</span><br><span class="line">- 匹配中括号中任意一个字符</span><br><span class="line">[^abc]</span><br><span class="line">- 匹配除方括号中字符外的任意一个字符</span><br><span class="line"></span><br><span class="line">\d</span><br><span class="line">- 匹配任意数字，等同于 `[0-9]`</span><br><span class="line">\D</span><br><span class="line">- 匹配任意数字之外的字符，等同于 `[^0-9]`</span><br><span class="line"></span><br><span class="line">\w</span><br><span class="line">- 匹配任意一个数字或字母，等同于 `[0-9a-zA-Z]`</span><br><span class="line">\W</span><br><span class="line">- 匹配任意一个字母或数字之外的字符，等同于 `[^0-9a-zA-Z]`</span><br><span class="line"></span><br><span class="line">\s</span><br><span class="line">- 匹配任意空白字符</span><br><span class="line">\S</span><br><span class="line">- 匹配任意非空白字符</span><br><span class="line"></span><br><span class="line">\x</span><br><span class="line">- 匹配任意一个十六进制的字符，等同于 `[0-9a-fA-F]`</span><br><span class="line">\X</span><br><span class="line">- 匹配任意非一个十六进制的字符，等同于 `[^0-9a-fA-F]`</span><br></pre></td></tr></table></figure>
+<h4 id="匹配数量"><a href="#匹配数量" class="headerlink" title="匹配数量"></a>匹配数量</h4><h5 id="贪婪匹配，匹配优先"><a href="#贪婪匹配，匹配优先" class="headerlink" title="贪婪匹配，匹配优先"></a>贪婪匹配，匹配优先</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*  - 0 到任意多个，贪婪匹配</span><br><span class="line">\+ - 1 到任意多个，贪婪匹配</span><br><span class="line">\? - 0 个或 1 个，贪婪匹配</span><br><span class="line"></span><br><span class="line">\&#123;n&#125; - 恰好 n 个</span><br><span class="line"></span><br><span class="line">\&#123;n,m&#125; - n 个到 m 个之间</span><br><span class="line">\&#123;n,&#125;  - 最少 n 个，贪婪匹配</span><br><span class="line">\&#123;,m&#125;  - 最多 m 个，贪婪匹配</span><br></pre></td></tr></table></figure>
+<h5 id="非贪婪匹配，忽略优先"><a href="#非贪婪匹配，忽略优先" class="headerlink" title="非贪婪匹配，忽略优先"></a>非贪婪匹配，忽略优先</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\&#123;-n,m&#125; - 匹配 n 到 m 个，但是匹配到 n 个之后就不会再去尝试匹配下一个字符</span><br><span class="line"></span><br><span class="line">\&#123;-,m&#125;  - 匹配 0 到 m 个，在非贪婪匹配模式下，这种情况会全部匹配，因为可以匹配 0 个，而匹配到 0 个之后就不会再去尝试匹配下一个字符。</span><br><span class="line">\&#123;-&#125;    - 匹配0个或任意多个</span><br><span class="line">\&#123;-,1&#125;  - 匹配0个或一个</span><br><span class="line"></span><br><span class="line">\&#123;-n,&#125;  - 至少匹配 n 个，这种情况下会优先匹配 n 个；</span><br><span class="line">\&#123;-1,&#125;  - 至少匹配 1 个，这种情况下会优先匹配 1 个；</span><br></pre></td></tr></table></figure>
+<h4 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> - 匹配行尾</span></span><br><span class="line"></span><br><span class="line">^ - 匹配行首</span><br><span class="line"></span><br><span class="line">\&lt;, \&gt; - 匹配单词的开始和结尾</span><br></pre></td></tr></table></figure>
+<h3 id="变量捕获"><a href="#变量捕获" class="headerlink" title="变量捕获"></a>变量捕获</h3><h4 id="普通捕获"><a href="#普通捕获" class="headerlink" title="普通捕获"></a>普通捕获</h4><ul>
+<li>使用 <code>&amp;</code> 表示所有匹配到的内容；</li>
+<li>使用 <code>\(</code> 和 <code>\)</code> 括起的匹配内容可以在后面使用 <code>\1</code>, <code>\2</code> 进行捕获。</li>
+</ul>
+<h4 id="函数式捕获"><a href="#函数式捕获" class="headerlink" title="函数式捕获"></a>函数式捕获</h4><ul>
+<li>在函数式中使用时，可以使用 <code>submatch(1)</code>, <code>submatch(2)</code> 来引用 <code>\1</code>， <code>\2</code> 的内容。</li>
+<li>函数式的使用方式为 <code>s/str/\=函数式</code><ul>
+<li><code>line(&quot;.&quot;)</code> 表示当前行的行号</li>
+<li><code>line(&quot;&lt;&quot;)</code> 表示当前选中内容行首的行号</li>
+</ul>
+</li>
+</ul>
+<h3 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h3><p>以下都以 <code>very magic</code> 模式下为例：</p>
+<h4 id="顺序环视"><a href="#顺序环视" class="headerlink" title="顺序环视"></a>顺序环视</h4><p>搜索后面是 <code>ctrl</code> 的 <code>dfi_</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\vdfi_(ctrl)@=</span><br></pre></td></tr></table></figure>
+<h4 id="顺序否定环视"><a href="#顺序否定环视" class="headerlink" title="顺序否定环视"></a>顺序否定环视</h4><p>搜索后面不是 <code>ctrl</code> 的 <code>dfi_</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\vdfi_(ctrl)@!</span><br></pre></td></tr></table></figure>
+<h4 id="逆序环视"><a href="#逆序环视" class="headerlink" title="逆序环视"></a>逆序环视</h4><p>搜索前面是 <code>mstr_</code> 的 <code>ack</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\v(mstr_)@&lt;=ack</span><br></pre></td></tr></table></figure>
+<h4 id="逆序否定环视"><a href="#逆序否定环视" class="headerlink" title="逆序否定环视"></a>逆序否定环视</h4><p>搜索前面不是 <code>mstr_</code> 的 <code>ack</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\v(mstr_)@&lt;!ack</span><br></pre></td></tr></table></figure>
+<h3 id="顺序环视的另外实现"><a href="#顺序环视的另外实现" class="headerlink" title="顺序环视的另外实现"></a>顺序环视的另外实现</h3><p><code>\zs</code> 表示捕获的开始位置，<code>\ze</code> 表示捕获的结束位置。</p>
+<p>使用<code>\zs</code> 和 <code>\ze</code> 实现上面的例子：</p>
+<p>搜索后面是 <code>ctrl</code> 的 <code>dfi_</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\zsdfi_\zectrl</span><br></pre></td></tr></table></figure>
+<p>搜索前面是 <code>mstr_</code> 的 <code>ack</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mstr_\zsack\ze</span><br></pre></td></tr></table></figure>
+<h2 id="折叠"><a href="#折叠" class="headerlink" title="折叠"></a>折叠</h2><h3 id="设置折叠模式"><a href="#设置折叠模式" class="headerlink" title="设置折叠模式"></a>设置折叠模式</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## fdm=fodlmethod</span></span><br><span class="line">set fdm=indent/marker/manual/syntax/**</span><br></pre></td></tr></table></figure>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">zi <span class="comment">## toggle</span></span><br><span class="line">zm <span class="comment">## 关闭折叠</span></span><br><span class="line">zr <span class="comment">## 打开折叠</span></span><br><span class="line">zd <span class="comment">## 删除折叠</span></span><br><span class="line">zM <span class="comment">## 关闭所有折叠</span></span><br><span class="line">zR <span class="comment">## 打开所有折叠</span></span><br><span class="line">zD <span class="comment">## 删除所有折叠</span></span><br></pre></td></tr></table></figure>
+<h3 id="manual-mode"><a href="#manual-mode" class="headerlink" title="manual mode"></a>manual mode</h3><p>创建当前行起到第100行的折叠</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zf100G</span><br></pre></td></tr></table></figure>
+<p>创建当前行起到其后100行的折叠</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zf100j</span><br></pre></td></tr></table></figure>
+<p>创建当前行起，后面10行的折叠（一共折叠11行）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10zf&lt;cr&gt; 或</span><br><span class="line">10zf+    或</span><br><span class="line">10zf&lt;UP&gt;</span><br></pre></td></tr></table></figure>
+<p>类似，折叠前面10行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10zf-  或</span><br><span class="line">10zf&lt;DN&gt;</span><br></pre></td></tr></table></figure>
+<p>在括号处执行，折叠与其匹配的括号中的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zf%</span><br></pre></td></tr></table></figure>
+<p>在visual mode下，折叠选中的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zf</span><br></pre></td></tr></table></figure>
+<h2 id="vimdiff"><a href="#vimdiff" class="headerlink" title="vimdiff"></a>vimdiff</h2><h3 id="查看下一差异"><a href="#查看下一差异" class="headerlink" title="查看下一差异"></a>查看下一差异</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">]c</span><br></pre></td></tr></table></figure>
+<h3 id="查看上一差异"><a href="#查看上一差异" class="headerlink" title="查看上一差异"></a>查看上一差异</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[c</span><br></pre></td></tr></table></figure>
+<h3 id="重新对比"><a href="#重新对比" class="headerlink" title="重新对比"></a>重新对比</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:diffupdate</span><br></pre></td></tr></table></figure>
+<h3 id="合并差异"><a href="#合并差异" class="headerlink" title="合并差异"></a>合并差异</h3><p>假设光标当前所在文件为a，另一文件为b</p>
+<p>以b为标准，修改a，使a与b相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">do</span><br></pre></td></tr></table></figure>
+<p>以a为标准，修改b，使b与a相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp</span><br></pre></td></tr></table></figure>
+<h3 id="重新对比-1"><a href="#重新对比-1" class="headerlink" title="重新对比"></a>重新对比</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:diffupdate</span><br></pre></td></tr></table></figure>
+<h3 id="折叠-1"><a href="#折叠-1" class="headerlink" title="折叠"></a>折叠</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zo  ## 打开折叠</span><br><span class="line">zc  ## 关闭折叠</span><br></pre></td></tr></table></figure>
+<h2 id="快速在命令行插入单词"><a href="#快速在命令行插入单词" class="headerlink" title="快速在命令行插入单词"></a>快速在命令行插入单词</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Ctrl-r&gt;&lt;Ctrl-w&gt;  <span class="comment">## 将当前光标所在单词插入到命令行光标所在位置</span></span><br></pre></td></tr></table></figure>
+<h2 id="同步滚屏"><a href="#同步滚屏" class="headerlink" title="同步滚屏"></a>同步滚屏</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> scrollbind <span class="comment">## 所有要同步滚屏的分屏都要设置一次该命令</span></span><br><span class="line">:<span class="built_in">set</span> noscrollbind </span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> wrap           <span class="comment">## 当一行太长不能在屏幕上显示全时，换行显示</span></span><br><span class="line"><span class="built_in">set</span> nowrap         <span class="comment">## 不换行显示，此时可以水平滚屏</span></span><br><span class="line"><span class="built_in">set</span> scrollbind=hor <span class="comment">## 绑定左右同步滚屏</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> scroll=x      <span class="comment">## 使用Ctrl-D/Ctrl-U翻页时翻过的行数</span></span><br><span class="line"><span class="built_in">set</span> scrolloff=x   <span class="comment">## 从光标当前行到屏幕首行或到屏幕尾行的最小行数，如果该值很大，则光标总是位于屏幕中间一行</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看插件列表"><a href="#查看插件列表" class="headerlink" title="查看插件列表"></a>查看插件列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:scriptnames</span><br></pre></td></tr></table></figure>
+<h2 id="保存会话"><a href="#保存会话" class="headerlink" title="保存会话"></a>保存会话</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:mksession ~/.session.vim    <span class="comment">## 保存当前vim的打开状态</span></span><br><span class="line">:mksession! ~/.session.vim   <span class="comment">## 保存当前vim的打开状态，覆盖之前的session文件</span></span><br><span class="line">vim -S ~/.session.vim        <span class="comment">## 恢复session中保存的状态</span></span><br></pre></td></tr></table></figure>
+<h2 id="显示tab键"><a href="#显示tab键" class="headerlink" title="显示tab键"></a>显示tab键</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set list</span><br><span class="line">set nolist ## 取消显示tab</span><br></pre></td></tr></table></figure>
+<h2 id="改变当前窗口工作目录"><a href="#改变当前窗口工作目录" class="headerlink" title="改变当前窗口工作目录"></a>改变当前窗口工作目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:lcd &#123;path&#125;</span><br></pre></td></tr></table></figure>
+<p>上述命令之后改变当前窗口的cwd，如果一个标签页中包含了多个窗口，想要改变整个标签页的cwd时，使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:windo lcd &#123;path&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/25/study/Linux/python/" rel="next" title="python 语法">
+                <i class="fa fa-chevron-left"></i> python 语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/25/study/C语言/gcc/" rel="prev" title="GCC 工具链">
+                GCC 工具链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Shaocheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跳转"><span class="nav-number">1.</span> <span class="nav-text">跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本跳转"><span class="nav-number">1.1.</span> <span class="nav-text">文本跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行首行尾跳转"><span class="nav-number">1.1.1.</span> <span class="nav-text">行首行尾跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词首词尾跳转"><span class="nav-number">1.1.2.</span> <span class="nav-text">词首词尾跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行内跳转"><span class="nav-number">1.1.3.</span> <span class="nav-text">行内跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行间跳转"><span class="nav-number">1.1.4.</span> <span class="nav-text">行间跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件跳转"><span class="nav-number">1.2.</span> <span class="nav-text">文件跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跳转列表"><span class="nav-number">1.2.1.</span> <span class="nav-text">跳转列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变列表"><span class="nav-number">1.2.2.</span> <span class="nav-text">改变列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置标记"><span class="nav-number">1.3.</span> <span class="nav-text">位置标记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动位置标记"><span class="nav-number">1.3.1.</span> <span class="nav-text">手动位置标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动位置标记"><span class="nav-number">1.3.2.</span> <span class="nav-text">自动位置标记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上次修改的位置"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">上次修改的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上次插入的位置"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">上次插入的位置</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速复制"><span class="nav-number">2.1.</span> <span class="nav-text">快速复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏录制"><span class="nav-number">2.2.</span> <span class="nav-text">宏录制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区"><span class="nav-number">2.3.</span> <span class="nav-text">缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字操作"><span class="nav-number">2.4.</span> <span class="nav-text">数字操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端"><span class="nav-number">2.5.</span> <span class="nav-text">终端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#终端位置"><span class="nav-number">2.5.1.</span> <span class="nav-text">终端位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开路径"><span class="nav-number">2.5.2.</span> <span class="nav-text">打开路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按键绑定"><span class="nav-number">2.5.3.</span> <span class="nav-text">按键绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口移动"><span class="nav-number">2.5.4.</span> <span class="nav-text">窗口移动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式"><span class="nav-number">3.</span> <span class="nav-text">模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ex-Mode"><span class="nav-number">3.1.</span> <span class="nav-text">Ex Mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-Ex-命令的历史"><span class="nav-number">3.1.1.</span> <span class="nav-text">关于 Ex 命令的历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入Ex模式"><span class="nav-number">3.1.2.</span> <span class="nav-text">进入Ex模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-number">3.1.3.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用Ex命令格式"><span class="nav-number">3.1.4.</span> <span class="nav-text">常用Ex命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定址"><span class="nav-number">3.1.5.</span> <span class="nav-text">定址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-number">3.2.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索反斜杠"><span class="nav-number">3.2.1.</span> <span class="nav-text">搜索反斜杠</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#反向搜索"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">反向搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-vim-函数"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">使用 vim 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#getcmdtype-函数"><span class="nav-number">3.2.1.2.1.</span> <span class="nav-text">getcmdtype 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#escape-函数"><span class="nav-number">3.2.1.2.2.</span> <span class="nav-text">escape 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#步骤"><span class="nav-number">3.2.1.2.3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#脚本化"><span class="nav-number">3.2.1.2.4.</span> <span class="nav-text">脚本化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索-tab"><span class="nav-number">3.2.2.</span> <span class="nav-text">搜索 tab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大小写区分"><span class="nav-number">3.2.3.</span> <span class="nav-text">大小写区分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">3.3.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#global命令"><span class="nav-number">3.4.</span> <span class="nav-text">global命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令格式"><span class="nav-number">3.4.1.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">3.4.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器"><span class="nav-number">4.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">4.1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无名寄存器-quot"><span class="nav-number">4.1.1.</span> <span class="nav-text">无名寄存器 &quot;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制寄存器-0"><span class="nav-number">4.1.2.</span> <span class="nav-text">复制寄存器 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#黑洞寄存器"><span class="nav-number">4.1.3.</span> <span class="nav-text">黑洞寄存器 _</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有名寄存器-a-z"><span class="nav-number">4.1.4.</span> <span class="nav-text">有名寄存器 a-z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪切板寄存器"><span class="nav-number">4.1.5.</span> <span class="nav-text">剪切板寄存器 +*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式寄存器"><span class="nav-number">4.1.6.</span> <span class="nav-text">表达式寄存器 =</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他寄存器"><span class="nav-number">4.1.7.</span> <span class="nav-text">其他寄存器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#退出-vim"><span class="nav-number">5.1.</span> <span class="nav-text">退出 vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不保存修改内容"><span class="nav-number">5.1.1.</span> <span class="nav-text">不保存修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存修改内容"><span class="nav-number">5.1.2.</span> <span class="nav-text">保存修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另存为其他文件"><span class="nav-number">5.1.3.</span> <span class="nav-text">另存为其他文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行外部命令"><span class="nav-number">5.2.</span> <span class="nav-text">执行外部命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行shell命令"><span class="nav-number">5.2.1.</span> <span class="nav-text">执行shell命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行perl命令"><span class="nav-number">5.2.2.</span> <span class="nav-text">执行perl命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">5.3.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符"><span class="nav-number">5.3.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种模式"><span class="nav-number">5.3.2.</span> <span class="nav-text">四种模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#magic-模式"><span class="nav-number">5.3.2.1.</span> <span class="nav-text">magic 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nomagic-模式"><span class="nav-number">5.3.2.2.</span> <span class="nav-text">nomagic 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#very-magic-模式"><span class="nav-number">5.3.2.3.</span> <span class="nav-text">very magic 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#very-nomagic-模式"><span class="nav-number">5.3.2.4.</span> <span class="nav-text">very nomagic 模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符分类"><span class="nav-number">5.3.3.</span> <span class="nav-text">元字符分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配字符"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">匹配字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配数量"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">匹配数量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#贪婪匹配，匹配优先"><span class="nav-number">5.3.3.2.1.</span> <span class="nav-text">贪婪匹配，匹配优先</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非贪婪匹配，忽略优先"><span class="nav-number">5.3.3.2.2.</span> <span class="nav-text">非贪婪匹配，忽略优先</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配位置"><span class="nav-number">5.3.3.3.</span> <span class="nav-text">匹配位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量捕获"><span class="nav-number">5.3.4.</span> <span class="nav-text">变量捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通捕获"><span class="nav-number">5.3.4.1.</span> <span class="nav-text">普通捕获</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数式捕获"><span class="nav-number">5.3.4.2.</span> <span class="nav-text">函数式捕获</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环视"><span class="nav-number">5.3.5.</span> <span class="nav-text">环视</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序环视"><span class="nav-number">5.3.5.1.</span> <span class="nav-text">顺序环视</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序否定环视"><span class="nav-number">5.3.5.2.</span> <span class="nav-text">顺序否定环视</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逆序环视"><span class="nav-number">5.3.5.3.</span> <span class="nav-text">逆序环视</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逆序否定环视"><span class="nav-number">5.3.5.4.</span> <span class="nav-text">逆序否定环视</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序环视的另外实现"><span class="nav-number">5.3.6.</span> <span class="nav-text">顺序环视的另外实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#折叠"><span class="nav-number">5.4.</span> <span class="nav-text">折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置折叠模式"><span class="nav-number">5.4.1.</span> <span class="nav-text">设置折叠模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">5.4.2.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#manual-mode"><span class="nav-number">5.4.3.</span> <span class="nav-text">manual mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vimdiff"><span class="nav-number">5.5.</span> <span class="nav-text">vimdiff</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看下一差异"><span class="nav-number">5.5.1.</span> <span class="nav-text">查看下一差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看上一差异"><span class="nav-number">5.5.2.</span> <span class="nav-text">查看上一差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新对比"><span class="nav-number">5.5.3.</span> <span class="nav-text">重新对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并差异"><span class="nav-number">5.5.4.</span> <span class="nav-text">合并差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新对比-1"><span class="nav-number">5.5.5.</span> <span class="nav-text">重新对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#折叠-1"><span class="nav-number">5.5.6.</span> <span class="nav-text">折叠</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速在命令行插入单词"><span class="nav-number">5.6.</span> <span class="nav-text">快速在命令行插入单词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步滚屏"><span class="nav-number">5.7.</span> <span class="nav-text">同步滚屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看插件列表"><span class="nav-number">5.8.</span> <span class="nav-text">查看插件列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存会话"><span class="nav-number">5.9.</span> <span class="nav-text">保存会话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示tab键"><span class="nav-number">5.10.</span> <span class="nav-text">显示tab键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变当前窗口工作目录"><span class="nav-number">5.11.</span> <span class="nav-text">改变当前窗口工作目录</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Shaocheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c语言,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据类型sizeof() 表示不同的数据类型对应的字节数 1234sizeof(short/int/long/double/long int)// ORint a;sizeof(a);  sizeof(char) = 1 byte sizeof(short) = 2 byte sizeof(int) = 1 word sizeof(long) = 1 word sizeof(long long)">
+<meta name="keywords" content="c语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C 语法">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/study/C语言/基础语法/index.html">
+<meta property="og:site_name" content="Silicon Walker">
+<meta property="og:description" content="数据类型sizeof() 表示不同的数据类型对应的字节数 1234sizeof(short/int/long/double/long int)// ORint a;sizeof(a);  sizeof(char) = 1 byte sizeof(short) = 2 byte sizeof(int) = 1 word sizeof(long) = 1 word sizeof(long long)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img9c65e51d97014109905640179e542920.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img7591f5141dd54066b271f73bf889d073.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img57bf6e55ee96413bb3b314e32adaec48.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img195cb203dc5b4b70a62f434388a86c00.png">
+<meta property="og:updated_time" content="2020-06-25T06:41:45.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C 语法">
+<meta name="twitter:description" content="数据类型sizeof() 表示不同的数据类型对应的字节数 1234sizeof(short/int/long/double/long int)// ORint a;sizeof(a);  sizeof(char) = 1 byte sizeof(short) = 2 byte sizeof(int) = 1 word sizeof(long) = 1 word sizeof(long long)">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img9c65e51d97014109905640179e542920.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/study/C语言/基础语法/">
+
+
+
+
+
+  <title>C 语法 | Silicon Walker</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silicon Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/study/C语言/基础语法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silicon Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C 语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-25T14:45:56+08:00">
+                2020-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p><code>sizeof()</code> 表示不同的数据类型对应的字节数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(<span class="keyword">short</span>/<span class="keyword">int</span>/<span class="keyword">long</span>/<span class="keyword">double</span>/<span class="keyword">long</span> <span class="keyword">int</span>)</span><br><span class="line"><span class="comment">// OR</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">sizeof</span>(a);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>sizeof(char)</code> = 1 byte</li>
+<li><code>sizeof(short)</code> = 2 byte</li>
+<li><code>sizeof(int)</code> = 1 word</li>
+<li><code>sizeof(long)</code> = 1 word</li>
+<li><code>sizeof(long long)</code> = 8 byte</li>
+</ul>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h2><p>c语言中无法以二进制的格式输出数字</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%d, <span class="keyword">int</span>, <span class="keyword">short</span>, <span class="keyword">char</span></span><br><span class="line">%u, <span class="keyword">unsigned</span></span><br><span class="line">%ld, <span class="keyword">long</span>, <span class="keyword">long</span> <span class="keyword">long</span></span><br><span class="line">%lf, <span class="keyword">long</span> <span class="keyword">float</span></span><br><span class="line">%o，用于输出<span class="number">8</span>进制格式的数字</span><br><span class="line">%x，用于输出<span class="number">8</span>进制格式的数字（小写字母）</span><br><span class="line">%X，用于输出<span class="number">8</span>进制格式的数字（大写字母）</span><br></pre></td></tr></table></figure>
+<p>八进制和十进制只是如何将数字表达为字符串，与计算机内部表示形式无关。</p>
+<p>八进制的存在是因为早期的计算机字节是12的倍数。</p>
+<h2 id="表示范围"><a href="#表示范围" class="headerlink" title="表示范围"></a><strong>表示范围</strong></h2><p>char ：-128 - 127（-2^7 到 -2^7-1）</p>
+<p>short ：-32768-32767（-2^15 到 -2^15-1）</p>
+<p>int 类型的位宽取决于CPU中寄存器的位宽，因此在不同位宽的计算机上表示的字节数不同。</p>
+<p>整形<code>short/int/long/</code> 类型在计算机内部使用二进制补码存储；</p>
+<p>浮点类型<code>double/float</code> 在计算机内部使用编码形式存储，不是自然二进制数，不能直接进行运算。？？？</p>
+<h1 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h1><p>补码的意义就是补码和原码相加可以得到一个最高位溢出的 “0”。</p>
+<p>二进制补码的理解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1001=9，0010=2。</span></span><br><span class="line"><span class="comment">// 0010 补码等于自身取反加一，即1101+1=1110</span></span><br><span class="line"><span class="comment">// 其实就是 1110+0010=1_0000</span></span><br><span class="line"><span class="number">1001</span><span class="number">-0010</span>=<span class="number">1001</span>+<span class="number">1110</span><span class="number">-1</span>_0000=<span class="number">1</span>_0111<span class="number">-1</span>_0000=<span class="number">0111</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 使用十进制进行类比，36的十进制补码为64，因为36+64=100</span></span><br><span class="line"><span class="comment">// 十进制的补码求法也可以用类似“取反加一”的算法，只是“取反”要对 9 进行取反</span></span><br><span class="line"><span class="comment">// 例如，6取反为3，4取反为5，所以36“取反”加一为 63+1=64</span></span><br><span class="line"><span class="number">90</span><span class="number">-36</span> = <span class="number">90</span>+<span class="number">64</span><span class="number">-100</span> = <span class="number">54</span></span><br></pre></td></tr></table></figure>
+<h2 id="补码例子"><a href="#补码例子" class="headerlink" title="补码例子"></a>补码例子</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="number">255</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %d"</span>, c) ; <span class="comment">// c = -1</span></span><br></pre></td></tr></table></figure>
+<p>因为 char 类型只能表示 1 个字节，所以 i 在计算机内部的二进制表示为 1111_1111, 此时最高位表示符号位，因此表示 -1。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> i = <span class="number">255</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"i = %d"</span>, i) ; <span class="comment">// i = 255</span></span><br></pre></td></tr></table></figure>
+<p>而 int 类型可以表示 4 个字节，所以此时 i 在计算机内部的二进制表示为 00000000_00000000_00000000_11111111，最高位为0，表示当前为正数。</p>
+<p><strong>显式指定非符号数</strong></p>
+<ul>
+<li><p>可以在数字后面加 <code>u/U</code> 表示 unsigned 或者 <code>l/L</code> 表示long</p>
+</li>
+<li><p><code>unsinged char i = 255</code> 可以用 i 表示 255 。</p>
+</li>
+<li><p>使用 unsigned 不是为了扩大一个二进制数能表示的范围，而是为了进行移位运算。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="number">127</span> ;</span><br><span class="line">c = c + <span class="number">1</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %d"</span>, c) ; <span class="comment">// c = -128</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者这样写</span></span><br><span class="line"><span class="keyword">char</span> c = <span class="number">128</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %d"</span>, c) ; <span class="comment">// c = -128</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>因为 127 = 0111_1111, 127 + 1 = 128 = 1000_0000, 最高位表示符号位。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> c = <span class="number">127</span> ;</span><br><span class="line">c = c +<span class="number">1</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %d"</span>, c) ; <span class="comment">// c = 128</span></span><br></pre></td></tr></table></figure>
+<p>无符号最高位表示数值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> c = <span class="number">255</span> ;</span><br><span class="line">c = c +<span class="number">1</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %d"</span>, c) ; <span class="comment">// c = 0</span></span><br></pre></td></tr></table></figure>
+<p>8位无符号所能表示的最大的数为255，加一之后发生溢出，低八位为全 0。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="number">-1</span> ;</span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"c = %u"</span>, c) ; <span class="comment">// c = 4294967295 = 2^32-1</span></span><br></pre></td></tr></table></figure>
+<p>暂时未想通</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>C99 编译器遇到之前未定义，未声明的函数时，会尝试猜测函数所有参数为<code>int</code>类型，返回值为<code>int</code>类型。</p>
+<p>当调用函数时，传入参数与函数定义时的参数类型不匹配时，编译器会自动进行类型转换，因此可能会掩盖一些错误。</p>
+<h2 id="main函数的返回值"><a href="#main函数的返回值" class="headerlink" title="main函数的返回值"></a>main函数的返回值</h2><p>如果 <code>return -1</code>，<code>echo $?</code>会得到255，这个是为什么？跟变量的类型有关。</p>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img9c65e51d97014109905640179e542920.png" alt="886e15315525aacaf36f55820f23ca76.png"></p>
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="for和while"><a href="#for和while" class="headerlink" title="for和while"></a>for和while</h2><ul>
+<li><p>任何for循环可以改写成while循环</p>
+</li>
+<li><p>for循环的流程是：</p>
+</li>
+</ul>
+<ol>
+<li>执行第一个表达式，初始化 i 变量；</li>
+<li>执行第二个表达式，判断是否成立；<ol>
+<li>如果成立，跳到下一步；</li>
+<li>如果不成立，跳出循环；</li>
+</ol>
+</li>
+<li>执行循环体；</li>
+<li>执行第三个表达式；</li>
+<li>跳到第二步，执行第二个表达式；</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img7591f5141dd54066b271f73bf889d073.png" alt="52ad3248a768158af776b7006d1f3d02.png"></p>
+<h2 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h2><ul>
+<li>continue 语句是指不再执行本次循环中，continue语句下面的循环体；</li>
+<li>break 语句是指跳出整个循环，但是只能跳出一层循环；</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img57bf6e55ee96413bb3b314e32adaec48.png" alt="b9f83f788d5e1c617c7c1daa04f80b93.png"></p>
+<h1 id="define"><a href="#define" class="headerlink" title="#define"></a>#define</h1><p>define 进行宏定义</p>
+<ol>
+<li><p><code>define</code> 后没有分号</p>
+</li>
+<li><p><code>define</code> 的内容可以多行，直到遇到注释符号或者一行结束</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRT printf(<span class="meta-string">"hello world 1"</span>) ; \</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"hello world 2"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>define</code> 可以定义空的宏，即只有宏，没有值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHIP_ON</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG_ON</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>define</code> 定义带参数的函数宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> func(x)  ((x) * 2 + 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(a,b) ((a)&gt;(b) ? (a) : (b))</span></span><br></pre></td></tr></table></figure>
+<p>注意事项</p>
+<ol>
+<li>整个宏要加括号，且每个参数都要加括号，否则可能会出错.<br>如果 <code>#define func(x)  (x) * 2 + 1</code> , 则 <code>10*func(1)+1</code> 预处理之后变为 <code>10* 1*2+1 +1=22</code> ,<br>而预期要得到的是 <code>10*(1*2+1)+1=31</code></li>
+<li>参数宏后面最好不加分号</li>
+</ol>
+</li>
+<li><p>预定义的宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__LINE__  ## 当前行号</span><br><span class="line">__FILE__  ## 当前文件名</span><br><span class="line">__DATE__  ## 编译时的日期</span><br><span class="line">__TIME__  ## 编译时的时间</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="include"><a href="#include" class="headerlink" title="#include"></a>#include</h1><p>插入文件中内容，进行纯文本的替换</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"max.h"</span>   ## 在当前目录找 max.h，如果找不到再去编译器指定目录找</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; ## 只在编译器指定目录找,linux系统中为 /usr/include</span></span></span><br><span class="line">## 可以通过环境变量和编译器命令行参数设置寻找头文件的目录</span><br></pre></td></tr></table></figure>
+<h2 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h2><ul>
+<li><code>stdio.h</code> 文件中包含 <code>printf</code> 函数的<strong>原型</strong>，因此 <code>#include &lt;stdio.h&gt;</code> 只是将 <code>printf</code>函数的原型复制到 <code>#include &lt;stdio.h&gt;</code> 所在的行；</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">printf</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *__restrict __format, ...)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>至于 <code>printf</code> 函数的<strong>定义</strong>则在另外的位置。</p>
+</li>
+<li><p>include头文件的作用只是为了让编译器知道 <code>printf</code> 函数的原型，保证调用时参数类型的正确；</p>
+</li>
+<li><p>如果没有 <code>#include stdio.h</code> 则编译器默认函数参数类型及返回值类型都是 int 类型；</p>
+</li>
+<li>具体的 <code>printf</code> 函数的实现在另外的地方，在比如某个<code>.lib(windows)</code> 或者 <code>.a(Linux)</code> 库中，现在的c编译器默认都会引入这些标准库的函数实现；</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Guoshaocheng/image_hosting/master/img195cb203dc5b4b70a62f434388a86c00.png" alt="811b91552f1a8e8e769ab4402cc28001.png"></p>
+<h2 id="头文件的使用规范"><a href="#头文件的使用规范" class="headerlink" title="头文件的使用规范"></a>头文件的使用规范</h2><ul>
+<li>在使用（main函数所在文件）和定义函数的地方都应该 <code>#include</code> 对应的头文件</li>
+<li>一般任何 c 文件都有对应的 h 文件，把所有的对外公开的<strong>函数原型</strong>和<strong>全局变量</strong>的声明放进去<ul>
+<li>全局变量可以在不同的C文件之间共享</li>
+<li>全局变量前面需要加 extern 关键字，表明可以被外部函数使用</li>
+</ul>
+</li>
+<li>static 用法<ul>
+<li>在函数前面加上static，则该函数只能在其所在的编译单元中使用；</li>
+<li>在全局变量前面加上static，则该全局变量只能在其所在编译单元中使用；</li>
+</ul>
+</li>
+</ul>
+<h2 id="标准头文件结构"><a href="#标准头文件结构" class="headerlink" title="标准头文件结构"></a>标准头文件结构</h2><ul>
+<li>可以避免头文件的重复引用问题</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __FILE_NAME_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __FILE_NAME_H__</span></span><br><span class="line"></span><br><span class="line">#<span class="meta"># body of head file</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="变量和声明"><a href="#变量和声明" class="headerlink" title="变量和声明"></a>变量和声明</h1><p>声明不产生代码，包括：</p>
+<ul>
+<li>函数原型</li>
+<li>变量/结构/枚举/声明</li>
+<li>宏声明</li>
+<li>类型声明（typedef）</li>
+</ul>
+<p>定义会产生代码，包括：</p>
+<ul>
+<li>函数定义</li>
+<li>全局变量</li>
+</ul>
+<p>初始化是定义做的事情，声明不会做初始化的工作</p>
+<ul>
+<li><code>int i;</code> 是变量定义</li>
+<li><code>extern int i;</code> 是变量声明</li>
+<li>函数定义是定义，函数原型是声明</li>
+</ul>
+<p>一般，推荐在头文件中只放声明。</p>
+<ul>
+<li>可以避免在不同的编译单元中存在同名的函数</li>
+<li>但是某些编译器允许使用weak修饰符来允许存在同名的函数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c语言/" rel="tag"><i class="fa fa-tag"></i> c语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/25/study/C语言/函数返回数组/" rel="next" title="函数返回数组">
+                <i class="fa fa-chevron-left"></i> 函数返回数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/25/study/C语言/指针/" rel="prev" title="C 语言指针">
+                C 语言指针 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Shaocheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式"><span class="nav-number">1.1.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表示范围"><span class="nav-number">1.2.</span> <span class="nav-text">表示范围</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补码"><span class="nav-number">2.</span> <span class="nav-text">补码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#补码例子"><span class="nav-number">2.1.</span> <span class="nav-text">补码例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#main函数的返回值"><span class="nav-number">3.1.</span> <span class="nav-text">main函数的返回值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环"><span class="nav-number">4.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for和while"><span class="nav-number">4.1.</span> <span class="nav-text">for和while</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break和continue"><span class="nav-number">4.2.</span> <span class="nav-text">break和continue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define"><span class="nav-number">5.</span> <span class="nav-text">#define</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">6.</span> <span class="nav-text">#include</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#误区"><span class="nav-number">6.1.</span> <span class="nav-text">误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#头文件的使用规范"><span class="nav-number">6.2.</span> <span class="nav-text">头文件的使用规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准头文件结构"><span class="nav-number">6.3.</span> <span class="nav-text">标准头文件结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量和声明"><span class="nav-number">7.</span> <span class="nav-text">变量和声明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Shaocheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

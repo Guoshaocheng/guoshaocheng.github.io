@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,perl,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="变量Scalar 标量 $ 标量可以是 undef，数值，字符串，其他变量的引用 布尔类型的 “false” 可能是 undef，数值 0 ，字符串“”，字符串“0” 运算符的使用 数值运算符 : &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, ==, !=, &amp;lt;=&amp;gt;, +, * 字符串运算符 : lt, gt, le, ge, eq, ne, cmp, ., x    Array">
+<meta name="keywords" content="linux,perl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="perl 语法">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/study/Linux/perl/index.html">
+<meta property="og:site_name" content="Silicon Walker">
+<meta property="og:description" content="变量Scalar 标量 $ 标量可以是 undef，数值，字符串，其他变量的引用 布尔类型的 “false” 可能是 undef，数值 0 ，字符串“”，字符串“0” 运算符的使用 数值运算符 : &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, ==, !=, &amp;lt;=&amp;gt;, +, * 字符串运算符 : lt, gt, le, ge, eq, ne, cmp, ., x    Array">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-25T06:03:47.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="perl 语法">
+<meta name="twitter:description" content="变量Scalar 标量 $ 标量可以是 undef，数值，字符串，其他变量的引用 布尔类型的 “false” 可能是 undef，数值 0 ，字符串“”，字符串“0” 运算符的使用 数值运算符 : &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, ==, !=, &amp;lt;=&amp;gt;, +, * 字符串运算符 : lt, gt, le, ge, eq, ne, cmp, ., x    Array">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/11/study/Linux/perl/">
+
+
+
+
+
+  <title>perl 语法 | Silicon Walker</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silicon Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/study/Linux/perl/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Shaocheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silicon Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">perl 语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T00:00:00+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="Scalar-标量"><a href="#Scalar-标量" class="headerlink" title="Scalar 标量 $"></a>Scalar 标量 $</h2><ul>
+<li>标量可以是 undef，数值，字符串，其他变量的引用</li>
+<li>布尔类型的 “false” 可能是 undef，数值 0 ，字符串“”，字符串“0”</li>
+<li>运算符的使用<ul>
+<li>数值运算符 : &lt;, &gt;, &lt;=, &gt;=, ==, !=, &lt;=&gt;, +, *</li>
+<li>字符串运算符 : lt, gt, le, ge, eq, ne, cmp, ., x</li>
+</ul>
+</li>
+</ul>
+<h2 id="Array-数组"><a href="#Array-数组" class="headerlink" title="Array 数组 @"></a>Array 数组 @</h2><ul>
+<li>调用 Perl 脚本的参数列表被保存在保留 array 变量 @ARGV 中</li>
+<li>当字符串中包含 “@” 字符时会造成歧义，有两种方法避免<ul>
+<li>使用反斜杠 “\“ 对@进行转移</li>
+<li>使用单引号包含字符串</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hash-哈希"><a href="#Hash-哈希" class="headerlink" title="Hash 哈希 %"></a>Hash 哈希 %</h2><ul>
+<li>hash 中的键没有特定的保存顺序，而是以一种高效的方式进行存储</li>
+<li>可以直接将 hash 转化为两倍数量的 array，原来 hash 中的键值将在转换后的 array 中交替出现</li>
+<li>使用<strong>方括号</strong>取 array 的值，使用<strong>花括号</strong>取 hash 的值</li>
+<li>array 和 hash 都不能嵌套，所以对于 hash 来说，只要将键值对按顺序书写即可。</li>
+</ul>
+<h2 id="Lists-列表"><a href="#Lists-列表" class="headerlink" title="Lists 列表"></a>Lists 列表</h2><ul>
+<li>列表不是变量，列表只是一个暂存值，可以被赋值给一个 array 或 hash 变量</li>
+<li>Perl 无法区分一个 List 是 Array 还是 Hash，所以 List 列表不能嵌套，但是 Hash 可以嵌套？？</li>
+<li>任何嵌套的列表会被当作一维的长列表来处理</li>
+</ul>
+<hr>
+<h1 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h1><ul>
+<li>每个 Perl 表达式要么在 Scalar 上下文求值，要么在 List 上下文中求值。</li>
+<li>在 Scalar 上下文中求值的 List 表达式会返回 List 中的最后一个 Scalar</li>
+<li>Perl 提供了内置函数 scalar 可以让任何表达式在 Scalar 上下文进行求值</li>
+</ul>
+<h2 id="数据结构的嵌套和引用"><a href="#数据结构的嵌套和引用" class="headerlink" title="数据结构的嵌套和引用"></a>数据结构的嵌套和引用</h2><p>Scalar 可以包含任意变量的引用，包括 Array 和 Hash，作为其元素。</p>
+<p>引用时要使用反斜杠进行转义</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @colors = (<span class="string">"red"</span>,<span class="string">"orange"</span>,<span class="string">"blue"</span>,<span class="string">"yellow"</span>);</span><br><span class="line"><span class="comment"># 引用列表变量</span></span><br><span class="line"><span class="keyword">my</span> $arrayRef = \@colors;</span><br><span class="line"><span class="comment"># 得到列表的长度</span></span><br><span class="line"><span class="keyword">my</span> $arrayLength = @colors;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问引用的 Array 变量</span></span><br><span class="line"><span class="keyword">print</span> $&#123;$arrayRef&#125;[<span class="number">0</span>];	<span class="comment"># red</span></span><br><span class="line"><span class="comment"># 使用 -&gt; 访问，与上一句等价</span></span><br><span class="line"><span class="keyword">print</span> $arrayRef-&gt;[<span class="number">0</span>];   <span class="comment"># red</span></span><br></pre></td></tr></table></figure>
+<p>声明嵌套的数据结构的方法</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用方括号声明匿名 Array，花括号声明匿名 Hash，返回的是声明匿名数据结构的引用</span></span><br><span class="line"><span class="keyword">my</span> %account = (</span><br><span class="line">	<span class="string">"number"</span> =&gt; <span class="string">"31415926"</span>,</span><br><span class="line">	<span class="string">"opened"</span> =&gt; <span class="string">"3000-01-01"</span>,</span><br><span class="line">	<span class="string">"owners"</span> =&gt; [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"name"</span> =&gt; <span class="string">"Philip Fry"</span>,</span><br><span class="line">			<span class="string">"DOB"</span>  =&gt; <span class="string">"1974-08-06"</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"name"</span> =&gt; <span class="string">"Hubert Farnsworth"</span>,</span><br><span class="line">			<span class="string">"DOB"</span>  =&gt; <span class="string">"2841-04-09"</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>访问嵌套数据结构的方法</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"\t"</span>, $account&#123;<span class="string">"owners"</span>&#125;-&gt;[<span class="number">0</span>]-&gt;&#123;<span class="string">"name"</span>&#125;, <span class="string">" (born "</span>, $account&#123;<span class="string">"owners"</span>&#125;-&gt;[<span class="number">0</span>]-&gt;&#123;<span class="string">"DOB"</span>&#125;, <span class="string">")\n"</span>;</span><br><span class="line"><span class="comment"># 输出为：Philip Fry(born 1974-08-06)</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"\t"</span>, $account&#123;<span class="string">"owners"</span>&#125;-&gt;[<span class="number">1</span>]-&gt;&#123;<span class="string">"name"</span>&#125;, <span class="string">" (born "</span>, $account&#123;<span class="string">"owners"</span>&#125;-&gt;[<span class="number">1</span>]-&gt;&#123;<span class="string">"DOB"</span>&#125;, <span class="string">")\n"</span>;</span><br><span class="line"><span class="comment"># 输出为：Hubert Farnsworth(born 2841-04-09)</span></span><br></pre></td></tr></table></figure>
+<p>Array 引用的陷阱</p>
+<p>Array1 是包含 5 个元素的数组</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @array1 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">print</span> @array1; <span class="comment"># "12345"</span></span><br></pre></td></tr></table></figure>
+<p>Array2 是包含 1 个元素的数组，这个元素是一个含有 5 个元素的 Array 的匿名引用</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @array2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment"># 直接输出匿名引用的值</span></span><br><span class="line"><span class="keyword">print</span> @array2,<span class="string">"\n"</span>; <span class="comment"># Sth like "ARRAY(0x182c180)"</span></span><br><span class="line"><span class="comment"># 访问匿名数组的值</span></span><br><span class="line"><span class="keyword">print</span> @&#123;@array2[<span class="number">0</span>]&#125;,<span class="string">"\n"</span>; <span class="comment"># 12345</span></span><br></pre></td></tr></table></figure>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="模式匹配修饰符"><a href="#模式匹配修饰符" class="headerlink" title="模式匹配修饰符"></a>模式匹配修饰符</h2><h2 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h2><p>贪婪匹配会先尽可能地匹配，然后再一点一点的回溯，直到匹配成功。</p>
+<p>此处，<code>\w+</code> 将先匹配 <code>SOMETHINGaabddf</code>，然后吐出最后一个 <code>f</code>，探后吐出倒数第二个 <code>d</code>，然后再吐出倒数第三个 <code>d</code>，然后发现此时可以匹配了，于是匹配结束。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $_ = <span class="string">"ddrSOMETHINGaabddf"</span> ;</span><br><span class="line"><span class="keyword">print</span> $1 <span class="keyword">if</span> <span class="keyword">m</span>=ddr\w+(ddf|aab)= ;</span><br><span class="line"><span class="comment">## ddf</span></span><br></pre></td></tr></table></figure>
+<h2 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h2><p>贪婪匹配会先尽可能少地匹配，然后一点一点地吃掉下一个字符，直到匹配成功。</p>
+<p>此处，<code>\w+</code> 将先匹配 <code>S</code>，然后再吃掉一个 <code>O</code>，发现还是无法匹配，一直到吃掉 <code>G</code>，发现此时可以匹配成功，于是匹配结束。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $_ = <span class="string">"ddrSOMETHINGaabddf"</span> ;</span><br><span class="line"><span class="keyword">print</span> $1 <span class="keyword">if</span> <span class="keyword">m</span>=ddr\w+?(ddf|aab)= ;</span><br><span class="line"><span class="comment">## aab</span></span><br></pre></td></tr></table></figure>
+<h3 id="非贪婪量词"><a href="#非贪婪量词" class="headerlink" title="非贪婪量词"></a>非贪婪量词</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+     -&gt; +?</span><br><span class="line">*     -&gt; *?</span><br><span class="line">?     -&gt; ??</span><br><span class="line">&#123;n,<span class="keyword">m</span>&#125; -&gt; &#123;n,<span class="keyword">m</span>&#125;?</span><br></pre></td></tr></table></figure>
+<h2 id="固化分组"><a href="#固化分组" class="headerlink" title="固化分组"></a>固化分组</h2><p>按照贪婪模式进行匹配，但是不进行回溯，也叫占有优先匹配。</p>
+<h3 id="占有优先量词"><a href="#占有优先量词" class="headerlink" title="占有优先量词"></a>占有优先量词</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+     -&gt; ++</span><br><span class="line">*     -&gt; *+</span><br><span class="line">?     -&gt; ?+</span><br><span class="line">&#123;n,<span class="keyword">m</span>&#125; -&gt; &#123;n,<span class="keyword">m</span>&#125;+</span><br></pre></td></tr></table></figure>
+<h2 id="环视"><a href="#环视" class="headerlink" title="环视"></a>环视</h2><h3 id="顺序环视"><a href="#顺序环视" class="headerlink" title="顺序环视"></a>顺序环视</h3><p>匹配后面是 <code>suffix</code> 的  <code>pat</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pat(?=suffix)/ <span class="comment">## 顺序肯定环视</span></span><br></pre></td></tr></table></figure>
+<p>匹配后面不是 <code>suffix</code> 的  <code>pat</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pat(?!suffix)/ <span class="comment">## 顺序否定环视</span></span><br></pre></td></tr></table></figure>
+<h3 id="逆序环视"><a href="#逆序环视" class="headerlink" title="逆序环视"></a>逆序环视</h3><p>匹配前面是 <code>prefix</code> 的  <code>pat</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;=prefix)pat/ <span class="comment">## 逆序肯定环视</span></span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">/prefix\Kpat/    <span class="comment">## 匹配prefixpat，但是不讲prefix放到 $&amp; 变量</span></span><br><span class="line">                 <span class="comment">## Keep the stuff left of the \K</span></span><br></pre></td></tr></table></figure>
+<p>匹配前面不是 <code>prefix</code> 的  <code>pat</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!prefix)pat/ <span class="comment">## 逆序否定环视</span></span><br></pre></td></tr></table></figure>
+<h3 id="不定长环视"><a href="#不定长环视" class="headerlink" title="不定长环视"></a>不定长环视</h3><p>匹配前面不是 <code>prefix_1</code> ，且不是 <code>prefix_2</code>  的 <code>pat</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!prefix_1)(?&lt;!prefix_2)pat/</span><br></pre></td></tr></table></figure>
+<h2 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h2><h3 id="默认捕获变量"><a href="#默认捕获变量" class="headerlink" title="默认捕获变量"></a>默认捕获变量</h3><p>在当前捕获字符串之前的字符串</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$` <span class="comment">## below to Esc</span></span><br><span class="line"><span class="keyword">or</span></span><br><span class="line">$&#123;^PREMATCH&#125;</span><br></pre></td></tr></table></figure>
+<p>当前捕获字符串</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$&amp;</span><br><span class="line"><span class="keyword">or</span></span><br><span class="line">$&#123;^MATCH&#125;</span><br></pre></td></tr></table></figure>
+<p>在当前捕获字符串之后的字符串</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$' <span class="comment">## right to ;</span></span><br><span class="line"><span class="keyword">or</span></span><br><span class="line">$&#123;^POSTMATCH&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="捕获变量"><a href="#捕获变量" class="headerlink" title="捕获变量"></a>捕获变量</h3><p>在正则表达式中使用括号进行分组，按照括号顺序捕获。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/((abc)(def))\<span class="number">2</span>\<span class="number">1</span>\<span class="number">3</span>/   <span class="comment">## $1 $2 $3</span></span><br><span class="line">/((abc)(def))\g<span class="string">&#123;2&#125;</span>\g<span class="string">&#123;1&#125;</span>\g<span class="string">&#123;3&#125;</span>/</span><br></pre></td></tr></table></figure>
+<h3 id="不捕获模式"><a href="#不捕获模式" class="headerlink" title="不捕获模式"></a>不捕获模式</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?:pat)abc/</span><br></pre></td></tr></table></figure>
+<h3 id="命名捕获"><a href="#命名捕获" class="headerlink" title="命名捕获"></a>命名捕获</h3><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;NAME&gt;pat)\g<span class="string">&#123;NAME&#125;</span>/  <span class="comment">## $+&#123;NAME&#125;</span></span><br><span class="line">/(?&lt;NAME&gt;pat)\k&lt;NAME&gt;<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<h1 id="正则实例"><a href="#正则实例" class="headerlink" title="正则实例"></a>正则实例</h1><h2 id="多行匹配"><a href="#多行匹配" class="headerlink" title="多行匹配"></a>多行匹配</h2><p>第一种方法：逐行读入之后，使用空字符将每行连接起来；</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> FIN, <span class="string">"&lt;"</span>, $full_path;</span><br><span class="line"><span class="keyword">my</span> $file = <span class="keyword">join</span> <span class="string">''</span>, &lt;FIN&gt; ;</span><br><span class="line"><span class="keyword">close</span> FIN ;</span><br></pre></td></tr></table></figure>
+<p>第二种方法：改变输入分隔符变量 <code>$/</code> ；</p>
+<p>默认  <code>$/</code> 是换行符，在文件读入时逐行读入；改变该变量之后，读入时将整个文件作为一个大字符串读入；</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">undef</span> $/ ;</span><br></pre></td></tr></table></figure>
+<h1 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h1><ul>
+<li>注意 <strong>elsif</strong> 写法</li>
+<li>推荐使用 <code>print &quot;It&#39;s cold\n&quot; if $temp &lt; 0;</code> 的写法</li>
+<li>但是推荐使用<code>print &quot;It&#39;s cold\n&quot; unless $temp &gt; 0</code>，意为除非温度大于 0，否则打印信息</li>
+<li>if 语句在 Scalar 上下文中进行求值，比如 <code>if(@array)</code>当且仅当 array 中包含大于等于 1 个元素时返回 <code>True</code>，而 array 内元素的值则无关紧要</li>
+</ul>
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><p>使用 <code>foreach</code> 循环，避免使用 <code>for</code> 循环</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $str ( @array ) &#123;</span><br><span class="line">    <span class="keyword">print</span> $str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 若未指定迭代器，则 Perl 默认使用 $_</span></span><br><span class="line"><span class="keyword">foreach</span> ( @array ) &#123;</span><br><span class="line">    <span class="keyword">print</span> $_;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者更加简化</span></span><br><span class="line"><span class="keyword">print</span> $_ <span class="keyword">foreach</span> @array ;</span><br><span class="line"><span class="comment"># 甚至可以再省略 $_</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">foreach</span> @array ;</span><br></pre></td></tr></table></figure>
+<p>如果需要使用下标，可以使用 range 运算符创建一个匿名的整数列表</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $i (<span class="number">0</span>..$#array) &#123;</span><br><span class="line">    <span class="keyword">print</span> $i,<span class="string">":"</span>,$array[$i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遍历哈希"><a href="#遍历哈希" class="headerlink" title="遍历哈希"></a>遍历哈希</h2><ul>
+<li>先使用内置 keys 函数取得包含这个 Hash 所有键的 Array</li>
+<li>然后使用 foreach 来遍历 整个 Hash</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> <span class="keyword">my</span> $keys (<span class="keyword">sort</span> <span class="keyword">keys</span> %hash) &#123;</span><br><span class="line">    <span class="keyword">print</span> $keys,<span class="string">":"</span>,$hash&#123;$keys&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h2><p>next 和 last</p>
+<p>next 与 if 一起使用，在满足某个条件时跳转到某个标号</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到 100 以内的质数的程序</span></span><br><span class="line">CANDIDATE : <span class="keyword">for</span> <span class="keyword">my</span> $cand (<span class="number">2</span>..<span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">my</span> $div ( <span class="number">2</span>..sqrt $cand) &#123;</span><br><span class="line">        <span class="keyword">next</span> CANDIDATE <span class="keyword">if</span> $cand % $div == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">print</span> $cand,<span class="string">" is a prime number\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><h2 id="push-pop-shift-unshift"><a href="#push-pop-shift-unshift" class="headerlink" title="push/pop/shift/unshift"></a>push/pop/shift/unshift</h2><p>pop，shift 分别<strong>抽取并返回</strong> Array 的第一个和最后一个元素</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$last_ele  = <span class="keyword">pop</span>   @arr ;</span><br><span class="line">$first_ele = <span class="keyword">shift</span> @arr ;</span><br></pre></td></tr></table></figure>
+<p>push 和 unshift 分别向 Array 尾部和头部<strong>添加</strong>一个元素</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">push</span> @arr, $a ;</span><br><span class="line"><span class="keyword">push</span> @arr, @arr_1 ;</span><br><span class="line"><span class="keyword">unshift</span></span><br></pre></td></tr></table></figure>
+<h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><p><strong>splice</strong> 函数<strong>返回</strong>删除的 array 的切片，并用另一个 array 的切片替换之</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># usage : splice( @old_array,offset,length,@new_array)</span></span><br><span class="line"><span class="comment"># 将 old_array 中从 offset 开始，长度为 length的部分，替换为 new_array</span></span><br><span class="line"><span class="keyword">my</span> @new_array = (<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>);</span><br><span class="line"><span class="keyword">my</span> @old_array = (<span class="string">"ha"</span>,<span class="string">"ga"</span>,<span class="string">"la"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">splice</span>(@new_array,<span class="number">1</span>,<span class="number">3</span>,@old_array),<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># twothreefour</span></span><br><span class="line"><span class="keyword">print</span> @new_array,<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># onehagalafive</span></span><br></pre></td></tr></table></figure>
+<h2 id="join"><a href="#join" class="headerlink" title="join"></a>join</h2><p>join** 函数把多个字符串拼接成一个字符串</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @elements = (<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>);</span><br><span class="line"><span class="keyword">print</span> @elements,<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># onetwothreefourfive</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"@elements\n"</span>;</span><br><span class="line"><span class="comment"># one two three four five</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">join</span>(<span class="string">","</span>,@elements),<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># one,two,three,four,five</span></span><br></pre></td></tr></table></figure>
+<h2 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h2><p><strong>reverse</strong> 函数将传入的列表逆序返回，在 Scalar 上下文中，如果是字符串就将字符串逆序返回，如果是列表，就将列表先连连接成字符串，再将字符串反转返回。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="keyword">reverse</span>(<span class="string">"Hello"</span>,<span class="string">"World"</span>);</span><br><span class="line"><span class="comment"># World Hello</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">reverse</span>(<span class="string">"HelloWorld"</span>);</span><br><span class="line"><span class="comment"># HelloWorld</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">scalar</span> <span class="keyword">reverse</span>(<span class="string">"Hello"</span>,<span class="string">"World"</span>);</span><br><span class="line"><span class="comment"># dlroWolleH</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">scalar</span> <span class="keyword">reverse</span>(<span class="string">"HelloWorld"</span>);</span><br><span class="line"><span class="comment"># dlroWolleH</span></span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p><strong>map</strong> 函数接受一个 array，并将某个操作作用于这个 array 中的每一个 scalar，然后返回处理之后的 scalar 组成的 array</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @elements = (<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>);</span><br><span class="line"><span class="comment"># uc 命令可以将其后的字符串转化为大写字母，相应的 lc 命令转化为小写字母</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">join</span>(<span class="string">"-&gt;"</span>,<span class="keyword">map</span>(<span class="keyword">uc</span> $_) @elements),<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># ONE-&gt;TWO-&gt;THREE-&gt;FOUR-&gt;FIVE</span></span><br></pre></td></tr></table></figure>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p><strong>grep</strong> 函数接受一个 array，并判断该 array 中的每一个 scalar 是否满足某一条件，如果返回值为 <strong>true</strong>，则将该 scalar 放到经过筛选的 array中</p>
+<p>grep 函数在标量上下文中返回参数数组中符合匹配的元素个数</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @elements = (<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>,<span class="string">"four"</span>,<span class="string">"five"</span>);</span><br><span class="line"><span class="comment"># 可以直接使用 qw 代替双引号加括号</span></span><br><span class="line"><span class="keyword">my</span> @elements = <span class="string">qw (one two three four five)</span>;</span><br><span class="line"><span class="comment"># 返回列表中字符串的长度为 4 的元素</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">join</span> <span class="string">"-"</span>,<span class="keyword">grep</span> &#123;<span class="keyword">length</span> $_ == <span class="number">4</span>&#125; @elements;</span><br><span class="line"><span class="comment"># four-five</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># grep 函数用于判断列表中是否包含某个元素</span></span><br><span class="line"><span class="comment"># 若返回的列表长度大于等于 1，则说明含有该元素</span></span><br><span class="line"><span class="keyword">print</span> <span class="keyword">scalar</span> <span class="keyword">grep</span> &#123;$_ eq <span class="string">"two"</span>&#125; @elements;</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+<p><strong>sort</strong> 函数对输入的 array 进行排序，默认按字母表顺序</p>
+<p><strong>cmp</strong> 运算符适用于字符串的比较，按照字母顺序比较</p>
+<p><strong>&lt;=&gt;</strong> 运算符（宇宙飞船运算符）适用于数字的比较 <em>上述两个不清楚怎样使用</em></p>
+<h1 id="子程序"><a href="#子程序" class="headerlink" title="子程序"></a>子程序</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>自定义子程序接受的参数是一个列表 - 内置 array 变量 <strong>@_</strong>，列表可以为空</p>
+<ul>
+<li>如果参数只有一个 scalar，则其会被转化为包含一个 scalar 的列表</li>
+<li>如果参数是包含 n 个元素的 hash，则其会被转化为 2n 个元素的列表</li>
+</ul>
+<p>Perl 以引用方式调用子程序，即子程序使用的变量或值不是实参的副本，他们本身就是实参。</p>
+<p>在子程序中使用参数之前，应该先将他们提取出来。</p>
+<ul>
+<li>参数数量不多于 4 个可以直接提取</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 逐个提取</span></span><br><span class="line">	<span class="keyword">my</span> $oldString = $_[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">my</span> $width     = $_[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">my</span> $padChar   = $_[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一次性提取</span></span><br><span class="line"><span class="keyword">my</span> ($oldString, $width, $padChar) = @_ ；</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数数量不多于 4 个时也可以使用 shift 逐个移出参数</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $oldString = <span class="keyword">shift</span> @_;</span><br><span class="line"><span class="keyword">my</span> $width     = <span class="keyword">shift</span> @_;</span><br><span class="line"><span class="keyword">my</span> $padChar   = <span class="keyword">shift</span> @_;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果不给 shift 函数提供参数，其默认会对 @_ 进行操作<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $oldString = <span class="keyword">shift</span>;</span><br><span class="line"><span class="keyword">my</span> $width     = <span class="keyword">shift</span>;</span><br><span class="line"><span class="keyword">my</span> $padChar   = <span class="keyword">shift</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于有大量参数的子程序，最佳方法是构造参数的 hash 来调用子程序，然后将整个 @_ 放到一个 hash 中</p>
+<ul>
+<li>创建子程序的时候，<em>子程序名称后面不能加小括号？？</em></li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子程序</span></span><br><span class="line"><span class="function"><span class="keyword">sub</span> <span class="title">sub_ex</span> </span>&#123;</span><br><span class="line">    <span class="keyword">my</span> %args = @_;</span><br><span class="line">    <span class="keyword">my</span> $result = $args&#123;<span class="string">"name"</span>&#125;,<span class="string">"+"</span>,$args&#123;<span class="string">"age"</span>&#125;,<span class="string">"+"</span>,$args&#123;<span class="string">"gender"</span>&#125;,<span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 调用方式</span></span><br><span class="line"><span class="keyword">print</span> sub_ex(<span class="string">"name"</span>=&gt;<span class="string">"sun"</span>,<span class="string">"age"</span>=&gt;<span class="string">"10"</span>,<span class="string">"gender"</span>=&gt;<span class="string">"man"</span>);</span><br><span class="line"><span class="comment"># sun+10+man</span></span><br></pre></td></tr></table></figure>
+<h2 id="子程序调用上下文"><a href="#子程序调用上下文" class="headerlink" title="子程序调用上下文"></a>子程序调用上下文</h2><ul>
+<li>通过使用 <strong>wantarray</strong> 函数（此处 array 指 list，可以是 array 或 hash），子程序会根据调用上下文表现出不同的行为</li>
+</ul>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子程序</span></span><br><span class="line"><span class="function"><span class="keyword">sub</span> <span class="title">conSub</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">qw(evernote KK Etna)</span> <span class="keyword">if</span> <span class="keyword">wantarray</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"scalar"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 array 上下文中调用</span></span><br><span class="line"><span class="keyword">my</span> @arrayCont = conSub();</span><br><span class="line"><span class="keyword">print</span> <span class="keyword">join</span> <span class="string">","</span>,@arrayCont;</span><br><span class="line"><span class="comment"># evernote,KK,Etna,</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 scalar 上下文中调用</span></span><br><span class="line"><span class="keyword">my</span> $scalarCont = conSub();</span><br><span class="line"><span class="keyword">print</span> $scalarCont;</span><br><span class="line"><span class="comment"># scalar</span></span><br></pre></td></tr></table></figure>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>每当一个进程在Windows或Linux系统（以及其他大部分的系统）中结束，它将产生一个16位的状态字</p>
+<ul>
+<li>高8位表示返回码，值落在0到255之间，其中 <code>0</code> 约定俗成地表示无条件的成功，而其他值则表示不同程度的失败</li>
+<li>另外8位则少有人关心，它们<em>表示了错误的原因，比如因为收到了信号或者产生 core dump 信息</em></li>
+</ul>
+<p>你可以使用 <code>exit</code> 函数选择你自己的返回码退出 perl 脚本</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_script.pl</span></span><br><span class="line"><span class="keyword">print</span> @ARGV;</span><br><span class="line"><span class="keyword">exit</span> <span class="number">37</span>;</span><br></pre></td></tr></table></figure>
+<p>perl 中子程序结束后的状态字被放到内置 scalar 变量 <code>$?</code> 中，可以通过 <code>$? &gt;&gt; 8</code> 去除 16 位状态码中的高 8 位返回码</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># system 的输出与 $? 相同</span></span><br><span class="line"><span class="keyword">my</span> $rc = <span class="keyword">system</span> <span class="string">"perl"</span>,<span class="string">"test_script.pl"</span>,<span class="string">"foo"</span>,<span class="string">"nar"</span>,<span class="string">"baz"</span>;</span><br><span class="line"><span class="comment"># foonarbaz</span></span><br><span class="line">$status_code = $rc &gt;&gt; <span class="number">8</span>;</span><br><span class="line"><span class="keyword">print</span> $status_code;</span><br><span class="line"><span class="comment"># 37</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 反引号的输出结果就是标准输出</span></span><br><span class="line"><span class="keyword">my</span> $text = <span class="string">`perl test_script.pl foo bar baz`</span>;</span><br><span class="line"><span class="keyword">print</span> $text,<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># foonarbaz</span></span><br><span class="line"><span class="keyword">print</span> $? &gt;&gt; <span class="number">8</span>,<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># 37</span></span><br></pre></td></tr></table></figure>
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $! 包含了错误信息</span></span><br><span class="line"><span class="keyword">open</span> (HANDLER,<span class="string">"&lt;"</span>,<span class="string">"$file_var"</span>) || <span class="keyword">die</span> <span class="string">"Couldn't open "</span>.<span class="string">"$file"</span>.<span class="string">"because: "</span>.$!;</span><br></pre></td></tr></table></figure>
+<h2 id="文件检测"><a href="#文件检测" class="headerlink" title="文件检测"></a>文件检测</h2><ul>
+<li><code>-e</code> 用于检测文件是否存在</li>
+<li><code>-d</code> 用于测试文件是否是目录</li>
+<li><code>-f</code> 用于测试文件是否是普通文件</li>
+</ul>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><h2 id="File-Copy"><a href="#File-Copy" class="headerlink" title="File:Copy"></a>File:Copy</h2><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> File::Copy <span class="string">qw(copy)</span>;</span><br><span class="line">copy(<span class="string">"./novas.rc"</span>, <span class="string">"./tmp/"</span>)            <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">"Copy failed!!\n"</span> ;</span><br><span class="line">copy(<span class="string">"./novas.rc"</span>, <span class="string">"./tmp/novas.rc_cp"</span>) <span class="keyword">or</span> <span class="keyword">die</span> <span class="string">"Copy failed!!\n"</span> ;</span><br></pre></td></tr></table></figure>
+<h2 id="File-Basename"><a href="#File-Basename" class="headerlink" title="File::Basename"></a>File::Basename</h2><h3 id="basename"><a href="#basename" class="headerlink" title="basename"></a>basename</h3><p>如果不指定后缀，则只返回返回文件名；</p>
+<p>如果指定后缀，则返回去除后缀的文件名。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$\ = $/ ; <span class="comment">## 作用是在print的最后自动加上换行符</span></span><br><span class="line"><span class="keyword">my</span> $full_path = <span class="string">"/home/cn1021/test.pl"</span> ;</span><br><span class="line"><span class="keyword">my</span> @suffix = <span class="string">qw(.pl)</span> ;</span><br><span class="line"><span class="keyword">print</span> basename($full_path) ;          <span class="comment">## test.pl</span></span><br><span class="line"><span class="keyword">print</span> basename($full_path, @suffix) ; <span class="comment">## test</span></span><br></pre></td></tr></table></figure>
+<h3 id="dirname"><a href="#dirname" class="headerlink" title="dirname"></a>dirname</h3><p>返回不包含文件名的文件路径</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> dirname($full_path) ; <span class="comment">## /home/cn1021</span></span><br></pre></td></tr></table></figure>
+<h3 id="fileparse"><a href="#fileparse" class="headerlink" title="fileparse"></a>fileparse</h3><p>如果不指定后缀，则返回文件名和文件路径组成的数组；</p>
+<p>如果指定后缀，则返回文件名（不含后缀），文件路径，文件后缀组成的数组；</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> @rslt = fileparse($full_path) ;</span><br><span class="line"><span class="keyword">print</span> <span class="keyword">foreach</span> @rslt ; </span><br><span class="line"><span class="comment">## test.pl</span></span><br><span class="line"><span class="comment">## /home/cn1021/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> @rslt = fileparse($full_path, @suffix) ;</span><br><span class="line"><span class="keyword">print</span> <span class="keyword">foreach</span> @rslt ; </span><br><span class="line"><span class="comment">## test</span></span><br><span class="line"><span class="comment">## /home/cn1021/</span></span><br><span class="line"><span class="comment">## .pl</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> ($base, $path, $sufx) = fileparse($full_path, @suffix) ;</span><br><span class="line"><span class="comment">## $base = test</span></span><br><span class="line"><span class="comment">## $path = /home/cn1021/</span></span><br><span class="line"><span class="comment">## $sufx = .pl</span></span><br></pre></td></tr></table></figure>
+<h2 id="File-Find"><a href="#File-Find" class="headerlink" title="File::Find"></a>File::Find</h2><p>子程序 <code>wanted</code> 用于实现需要 find 的文件的 <code>pattern</code>，以及 find 之后的操作。</p>
+<p>下面程序会将 <code>@dirs</code> 中的所有路径传递给子程序，子程序会依次对这些路径下所有的文件名进行递归查找，判断其是否与 <code>$pat</code> 匹配。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> File::Find <span class="string">qw(find)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $pat = <span class="keyword">shift</span> ;</span><br><span class="line"><span class="keyword">my</span> @dirs = @ARGV;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">sub</span> <span class="title">wanted</span> </span>&#123;</span><br><span class="line">    <span class="keyword">my</span> $full_path = $File::Find::name;</span><br><span class="line">    <span class="keyword">m</span>=$pat= &amp;&amp; <span class="keyword">print</span> <span class="string">"File name: $full_path \n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">find(&#123;<span class="string">wanted =&gt;</span> \&amp;wanted&#125;, @dirs);</span><br></pre></td></tr></table></figure>
+<h2 id="Getopt"><a href="#Getopt" class="headerlink" title="Getopt"></a>Getopt</h2><p>处理脚本的命令行参数</p>
+<p>默认，选项的首字母作为该选项的间歇，当首字母不能区分时，则加上第二个字母。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> Getopt::Long <span class="string">qw(GetOptions)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> @libs    = (); </span><br><span class="line"><span class="keyword">my</span> %flags   = (); </span><br><span class="line"><span class="keyword">my</span> ($verbose, $all, $more, $diam, $debug, $test, $step);</span><br><span class="line"></span><br><span class="line">GetOptions(</span><br><span class="line">        <span class="string">'verbose+'</span>  =&gt; \$verbose,</span><br><span class="line">        <span class="string">'more!'</span>     =&gt; \$more,</span><br><span class="line">        <span class="string">'std=s'</span>     =&gt; \$std,</span><br><span class="line">        <span class="string">'lib=s'</span>     =&gt; \@libs,</span><br><span class="line">        <span class="string">'flag=s'</span>    =&gt; \%flags,</span><br><span class="line">        <span class="string">'debug:i'</span>   =&gt; \$debug,</span><br><span class="line">        <span class="string">'test|t'</span>    =&gt; \$test,</span><br><span class="line">        <span class="string">'all|everything|universe'</span> =&gt; $all,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="verbose"><a href="#verbose" class="headerlink" title="verbose+"></a>verbose+</h3><p><code>+</code> 表示该选项不接收变量，如果出现一次则 <code>$verbose</code> 变量值为1，出现两次则为2 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --verbose</span><br><span class="line">./test.pl -v</span><br></pre></td></tr></table></figure>
+<h3 id="more"><a href="#more" class="headerlink" title="more!"></a>more!</h3><p><code>!</code>  表示该选项不接收变量，如果出现则 <code>$more</code> 变量值为1，可以在前面加 <code>no</code> 则 <code>$more</code> 变量值为0 。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --more</span><br><span class="line">./test.pl --nomore</span><br></pre></td></tr></table></figure>
+<h3 id="std-s"><a href="#std-s" class="headerlink" title="std=s"></a>std=s</h3><p>表示必须在选项后有一个字符串类型的值；</p>
+<p>可选类型包括字符串 <code>s</code>，整形 <code>i</code>，浮点 <code>f</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --std string</span><br><span class="line">./test.pl --std=string</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># $std : "string"</span></span></span><br></pre></td></tr></table></figure>
+<p>如果关联的变量是数组，则该选项可以出现多次，每次的值都会被push到数组 <code>@libs</code> 中；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --std string_a --std string_b</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># @libs : qw(string_a string_b)</span></span></span><br></pre></td></tr></table></figure>
+<p>如果关联的变量是哈希，则要求参数为一个键值对，格式为 <code>key=value</code> ，会被存储到 <code>%flags</code> 中。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --std a=string_a  --std b=string_b</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># %flags : &#123;a =&gt; "string_a", b =&gt; "string_b"&#125;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="debug-i"><a href="#debug-i" class="headerlink" title="debug:i"></a>debug:i</h3><p>可以在选项后加一个整形值，但是也可以不加，不加则默认的值为 0 。</p>
+<p>如果是 s 类型，则默认值为空字符串。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./test.pl --debug 1  ## $debug = 1</span><br><span class="line">./test.pl --debug    ## $debug = 0</span><br></pre></td></tr></table></figure>
+<h3 id="test-t"><a href="#test-t" class="headerlink" title="test|t"></a>test|t</h3><p>显示指定 <code>--test</code> 选项的简写形式为 <code>-t</code> ；</p>
+<h3 id="all-everything-universe"><a href="#all-everything-universe" class="headerlink" title="all|everything|universe"></a>all|everything|universe</h3><p>简写别名，可以使用任意一个选项名字。</p>
+<h1 id="智能匹配操作符"><a href="#智能匹配操作符" class="headerlink" title="智能匹配操作符"></a>智能匹配操作符</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>判断数组中是否包含某个元素（perl5版本经试验，标量必须在前面）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($value ~~ @array) &#123;<span class="keyword">print</span> <span class="string">"$value was found in @array\n"</span>;&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;<span class="keyword">print</span> <span class="string">"$value was NOT found in @array\n"</span>;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 但是可以这样用</span></span><br><span class="line"><span class="keyword">if</span> (@array ~~ <span class="regexp">/$value/</span>) &#123;<span class="keyword">print</span> <span class="string">"$value was found in @array\n"</span>;&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;<span class="keyword">print</span> <span class="string">"$value was NOT found in @array\n"</span>;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者不用变量</span></span><br><span class="line"><span class="keyword">if</span> (@array ~~ <span class="regexp">/xyz/</span>) &#123;<span class="keyword">print</span> <span class="string">"matched\n"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>判断两个数组是否完全相同（顺序必须一致）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (@arr1 ~~ @arr2) &#123;<span class="keyword">print</span> <span class="string">"same array\n"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>判断哈希的键中是否包含某元素，即  <code>$hash{$value}</code> 是否存在。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($value ~~ %hash) &#123;<span class="keyword">print</span> <span class="string">"$value was found in keys of %hash\n"</span>;&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;<span class="keyword">print</span> <span class="string">"$value was NOT found in keys of %hash\n"</span>;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者</span></span><br><span class="line"><span class="keyword">if</span> (%hash ~~ <span class="regexp">/$value/</span>) &#123;<span class="keyword">print</span> <span class="string">"$value was found in keys of %hash\n"</span>;&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;<span class="keyword">print</span> <span class="string">"$value was NOT found in keys of %hash\n"</span>;&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>判断字符串是否完全相等</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"abc"</span> ~~ <span class="string">"abc"</span> <span class="comment">## 1</span></span><br><span class="line"><span class="string">"abc"</span> ~~ <span class="string">"def"</span> <span class="comment">## 0</span></span><br></pre></td></tr></table></figure>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>判断数字是否相等</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123</span> ~~ <span class="number">123</span>  <span class="comment">## 1</span></span><br></pre></td></tr></table></figure>
+<p>判断数字和类似数字的字符串是否相等</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123</span> ~~ <span class="string">"123"</span>  <span class="comment">## 1</span></span><br></pre></td></tr></table></figure>
+<h1 id="前缀的特殊用法"><a href="#前缀的特殊用法" class="headerlink" title="前缀的特殊用法"></a>前缀的特殊用法</h1><p><code>qw</code> 可以生成双引号和逗号分隔的列表</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $qw = <span class="string">qw(one two three)</span>; <span class="comment"># 等价于 ("one","two","three")</span></span><br></pre></td></tr></table></figure>
+<p><code>qq</code> 可以生成双引号之间的字符串，适用于当字符串中间存在双引号时，避免频繁对字符串中的双引号进行转义</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $qq = <span class="string">qq(i "say" "ok")</span>; <span class="comment"># 等价于 "i \"say\" \"ok\""</span></span><br></pre></td></tr></table></figure>
+<p><code>q</code> 可以生成单引号之间的字符串</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $q = <span class="string">q(i 'say' 'ok')</span>; <span class="comment"># 等价于 'i \'say\' \'ok\''</span></span><br></pre></td></tr></table></figure>
+<p><code>qr</code> 可以创建正则</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">my</span> $qr = <span class="string">qr(\d+)</span>;</span><br><span class="line"><span class="keyword">my</span> $text = <span class="string">"hello 100"</span>;</span><br><span class="line">$result = <span class="string">"ok"</span> <span class="keyword">if</span> ($text =~ $qr);</span><br><span class="line"><span class="keyword">print</span> $result,<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment"># ok</span></span><br></pre></td></tr></table></figure>
+<p><code>qx</code> 可以执行外部命令</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 date 命令得到当前的日期和时间</span></span><br><span class="line"><span class="keyword">my</span> $date = <span class="string">qx(date)</span>;</span><br><span class="line"><span class="keyword">print</span> $date;</span><br><span class="line"><span class="comment"># Sun May  6 22:53:10 DST 2018</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 ls -la 命令获取当前目录下的文件列表</span></span><br><span class="line"><span class="keyword">my</span> $dir = <span class="string">qx(ls -la)</span>;</span><br><span class="line"><span class="keyword">print</span> $dir;</span><br></pre></td></tr></table></figure>
+<h1 id="启用交互式-Perl"><a href="#启用交互式-Perl" class="headerlink" title="启用交互式 Perl"></a>启用交互式 Perl</h1><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl -de <span class="number">1</span></span><br><span class="line"><span class="comment"># or </span></span><br><span class="line">perl -de <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+            <a href="/tags/perl/" rel="tag"><i class="fa fa-tag"></i> perl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/study/Linux/grep/" rel="next" title="grep 命令">
+                <i class="fa fa-chevron-left"></i> grep 命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/26/study/Linux/sed/" rel="prev" title="sed 语法">
+                sed 语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Shaocheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scalar-标量"><span class="nav-number">1.1.</span> <span class="nav-text">Scalar 标量 $</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-数组"><span class="nav-number">1.2.</span> <span class="nav-text">Array 数组 @</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-哈希"><span class="nav-number">1.3.</span> <span class="nav-text">Hash 哈希 %</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lists-列表"><span class="nav-number">1.4.</span> <span class="nav-text">Lists 列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上下文"><span class="nav-number">2.</span> <span class="nav-text">上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构的嵌套和引用"><span class="nav-number">2.1.</span> <span class="nav-text">数据结构的嵌套和引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">3.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式匹配修饰符"><span class="nav-number">3.1.</span> <span class="nav-text">模式匹配修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪婪匹配"><span class="nav-number">3.2.</span> <span class="nav-text">贪婪匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非贪婪匹配"><span class="nav-number">3.3.</span> <span class="nav-text">非贪婪匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非贪婪量词"><span class="nav-number">3.3.1.</span> <span class="nav-text">非贪婪量词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固化分组"><span class="nav-number">3.4.</span> <span class="nav-text">固化分组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#占有优先量词"><span class="nav-number">3.4.1.</span> <span class="nav-text">占有优先量词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环视"><span class="nav-number">3.5.</span> <span class="nav-text">环视</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序环视"><span class="nav-number">3.5.1.</span> <span class="nav-text">顺序环视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆序环视"><span class="nav-number">3.5.2.</span> <span class="nav-text">逆序环视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不定长环视"><span class="nav-number">3.5.3.</span> <span class="nav-text">不定长环视</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#捕获"><span class="nav-number">3.6.</span> <span class="nav-text">捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认捕获变量"><span class="nav-number">3.6.1.</span> <span class="nav-text">默认捕获变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获变量"><span class="nav-number">3.6.2.</span> <span class="nav-text">捕获变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不捕获模式"><span class="nav-number">3.6.3.</span> <span class="nav-text">不捕获模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名捕获"><span class="nav-number">3.6.4.</span> <span class="nav-text">命名捕获</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则实例"><span class="nav-number">4.</span> <span class="nav-text">正则实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多行匹配"><span class="nav-number">4.1.</span> <span class="nav-text">多行匹配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件分支"><span class="nav-number">5.</span> <span class="nav-text">条件分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环"><span class="nav-number">6.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">6.1.</span> <span class="nav-text">遍历数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历哈希"><span class="nav-number">6.2.</span> <span class="nav-text">遍历哈希</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环控制"><span class="nav-number">6.3.</span> <span class="nav-text">循环控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用函数"><span class="nav-number">7.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#push-pop-shift-unshift"><span class="nav-number">7.1.</span> <span class="nav-text">push/pop/shift/unshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splice"><span class="nav-number">7.2.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">7.3.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse"><span class="nav-number">7.4.</span> <span class="nav-text">reverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">7.5.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep"><span class="nav-number">7.6.</span> <span class="nav-text">grep</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子程序"><span class="nav-number">8.</span> <span class="nav-text">子程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">8.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子程序调用上下文"><span class="nav-number">8.2.</span> <span class="nav-text">子程序调用上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统调用"><span class="nav-number">8.3.</span> <span class="nav-text">系统调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件"><span class="nav-number">9.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-number">9.1.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件检测"><span class="nav-number">9.2.</span> <span class="nav-text">文件检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">10.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#File-Copy"><span class="nav-number">10.1.</span> <span class="nav-text">File:Copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File-Basename"><span class="nav-number">10.2.</span> <span class="nav-text">File::Basename</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basename"><span class="nav-number">10.2.1.</span> <span class="nav-text">basename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirname"><span class="nav-number">10.2.2.</span> <span class="nav-text">dirname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fileparse"><span class="nav-number">10.2.3.</span> <span class="nav-text">fileparse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File-Find"><span class="nav-number">10.3.</span> <span class="nav-text">File::Find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getopt"><span class="nav-number">10.4.</span> <span class="nav-text">Getopt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#verbose"><span class="nav-number">10.4.1.</span> <span class="nav-text">verbose+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more"><span class="nav-number">10.4.2.</span> <span class="nav-text">more!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-s"><span class="nav-number">10.4.3.</span> <span class="nav-text">std=s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#debug-i"><span class="nav-number">10.4.4.</span> <span class="nav-text">debug:i</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-t"><span class="nav-number">10.4.5.</span> <span class="nav-text">test|t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-everything-universe"><span class="nav-number">10.4.6.</span> <span class="nav-text">all|everything|universe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#智能匹配操作符"><span class="nav-number">11.</span> <span class="nav-text">智能匹配操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">11.1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希"><span class="nav-number">11.2.</span> <span class="nav-text">哈希</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">11.3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">11.4.</span> <span class="nav-text">数字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前缀的特殊用法"><span class="nav-number">12.</span> <span class="nav-text">前缀的特殊用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启用交互式-Perl"><span class="nav-number">13.</span> <span class="nav-text">启用交互式 Perl</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Shaocheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
